@@ -24,20 +24,24 @@ enum {
 };
 
 
-@interface GameLayer()
--(void) initPhysics;
--(void) addNewSpriteAtPosition:(CGPoint)p;
--(void) addNewWall:(CGPoint)p;
 
-@end
 
 bool ballCreated = false;
 
-@implementation GameLayer
+@implementation GameLayer {
+    CGPoint startLocation;
+    CCTexture2D *blockTexture_;
+	CCTexture2D *spriteTexture_;	// weak ref
+	b2World* world;					// strong ref
+	GLESDebugDraw *m_debugDraw;		// strong ref
+    WallContactListener* contactListener;
+}
 
 -(id) init
 {
 	if( (self=[super init])) {
+        
+        [self initStartLocation];
 		
 		// enable events
 		
@@ -93,11 +97,11 @@ bool ballCreated = false;
     world->SetContactListener(contactListener);
 	
 	uint32 flags = 0;
-//	flags += b2Draw::e_shapeBit;
+	flags += b2Draw::e_shapeBit;
 	//		flags += b2Draw::e_jointBit;
 	//		flags += b2Draw::e_aabbBit;
 	//		flags += b2Draw::e_pairBit;
-	//		flags += b2Draw::e_centerOfMassBit;
+//		flags += b2Draw::e_centerOfMassBit;
 	m_debugDraw->SetFlags(flags);		
 	
 	
@@ -153,11 +157,11 @@ bool ballCreated = false;
     ballCreated = false;
 }
 
--(void) addNewWall:(CGPoint)p {
-    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:blockTexture_];
-    CCNode *parent = [self getChildByTag: kBlockParentNode];
-    [parent addChild: sprite];
-    sprite.position = ccp(p.x, p.y);
+-(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a{
+//    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:blockTexture_];
+//    CCNode *parent = [self getChildByTag: kBlockParentNode];
+//    [parent addChild: sprite];
+//    sprite.position = ccp(p.x, p.y);
     
     b2BodyDef wallDef;
     wallDef.type = b2_staticBody;
@@ -165,20 +169,22 @@ bool ballCreated = false;
     
     b2Body *body = world->CreateBody(&wallDef);
     b2PolygonShape wallShape;
-    wallShape.SetAsBox(.5f, .5f);
+//    wallShape.SetAsBox(.5f, .5f);
+    wallShape.SetAsBox(l/2.0f, .25f, b2Vec2(0.0f, 0.0f), a);
     b2FixtureDef wallFixture;
     wallFixture.shape = &wallShape;
     wallFixture.friction = 0.0f;
     wallFixture.density = 1.0;
     wallFixture.restitution = .8f;
     
-    WallCollisionHandler* handler = [[WallCollisionHandler alloc] initWithWorld:world andBody:body andSprite: sprite];
+//    WallCollisionHandler* handler = [[WallCollisionHandler alloc] initWithWorld:world andBody:body andSprite: sprite];
+    WallCollisionHandler* handler = [[WallCollisionHandler alloc] initWithWorld:world andBody:body];
     [self addChild:handler];
     wallFixture.userData = handler;
     
     body->CreateFixture(&wallFixture);
         
-    [sprite setPhysicsBody:body];
+//    [sprite setPhysicsBody:body];
 }
 
 -(void) addNewSpriteAtPosition:(CGPoint)p
@@ -233,21 +239,70 @@ bool ballCreated = false;
 	[[GameScene sharedInstance] cleanupDeletableItems];
 }
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	//Add a new body/atlas sprite at the touched location
-	for( UITouch *touch in touches ) {
-		CGPoint location = [touch locationInView: [touch view]];
-		
-		location = [[CCDirector sharedDirector] convertToGL: location];
+-(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CCLOG(@"BOOM 1");
+    for(UITouch *touch in touches) {
+        startLocation = [touch locationInView: [touch view]];
+        break;
+    }
+    
+}
 
-		if(!ballCreated) {
-            [self addNewSpriteAtPosition: location];
+-(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    CCLOG(@"BOOM 2");
+    startLocation = [touch locationInView: [touch view]];
+    return true;
+}
+
+-(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    for(UITouch *touch in touches) {
+        if(!ballCreated) {
+//        if(0){
+            [self addNewSpriteAtPosition: [touch locationInView: [touch view]]];
             ballCreated = true;
-        } else {
-            [self addNewWall: location];
+        } else if(startLocation.x >= 0 && startLocation.y >= 0) {
+            CGPoint endLocation = [touch locationInView: [touch view]];
+            
+//            b2Vec2 swipeVector = b2Vec2((endLocation.x - startLocation.x), (endLocation.y - startLocation.y)); 
+            b2Vec2 swipeVector = b2Vec2((startLocation.x - endLocation.x), (startLocation.y - endLocation.y)); 
+            float angle = (-1) * [self vec2rad: swipeVector];
+            float distance = sqrtf( (swipeVector.x * swipeVector.x) + (swipeVector.y * swipeVector.y));
+            distance = distance/PTM_RATIO;
+            CGPoint center = ccp((endLocation.x + startLocation.x)/2, (endLocation.y + startLocation.y)/2);
+            center = [[CCDirector sharedDirector] convertToGL: center];
+            
+            [self addNewWall:center withLength:distance andAndle:angle];
         }
-	}
+        break;
+    }
+    [self initStartLocation];
+}
+
+
+-(void) initStartLocation {
+    startLocation.x = -1;
+    startLocation.y = -1;
+}
+
+//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//	//Add a new body/atlas sprite at the touched location
+//	for( UITouch *touch in touches ) {
+//		CGPoint location = [touch locationInView: [touch view]];
+//		
+//		location = [[CCDirector sharedDirector] convertToGL: location];
+//
+//		if(!ballCreated) {
+//            [self addNewSpriteAtPosition: location];
+//            ballCreated = true;
+//        } else {
+//            [self addNewWall: location];
+//        }
+//	}
+//}
+
+-(float) vec2rad : (b2Vec2) v{
+    return atan2(v.y,v.x);
 }
 
 -(void) dealloc

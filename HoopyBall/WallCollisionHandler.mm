@@ -15,20 +15,22 @@
     @private
     b2Body* body;
     b2World* world;
-    CCSprite* sprite;
+//    CCSprite* sprite;
 }
 
--(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body andSprite: (CCSprite*)_sprite{
+//-(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body andSprite: (CCSprite*)_sprite{
+-(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body {
     if(self = [super init]) {
         body = _body;
         world = _world;
-        sprite = _sprite;
+//        sprite = _sprite;
     }
     return self;
 }
 
 -(void) handleCollision{
-    [[GameScene sharedInstance] markBodyForDeletion:body andSprite: sprite inWorld:world];
+//    [[GameScene sharedInstance] markBodyForDeletion:body andSprite: sprite inWorld:world];
+    [[GameScene sharedInstance] markBodyForDeletion:body inWorld:world];
 }
 
 - (void)dealloc

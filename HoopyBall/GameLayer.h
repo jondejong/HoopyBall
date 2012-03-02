@@ -14,13 +14,15 @@
 
 @interface GameLayer : CCLayer
 {
-    CCTexture2D *blockTexture_;
-	CCTexture2D *spriteTexture_;	// weak ref
-	b2World* world;					// strong ref
-	GLESDebugDraw *m_debugDraw;		// strong ref
-    WallContactListener* contactListener;
+    
 }
 
 -(void)handleEndGame;
+
+-(void) initPhysics;
+-(void) addNewSpriteAtPosition:(CGPoint)p;
+-(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a;
+-(void) initStartLocation;
+-(float) vec2rad : (b2Vec2) v;
 
 @end

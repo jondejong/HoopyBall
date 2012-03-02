@@ -14,7 +14,8 @@
     
 }
 
--(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body andSprite: (CCSprite*)_sprite;
+//-(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body andSprite: (CCSprite*)_sprite;
+-(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body;
 
 -(void) handleCollision;
 

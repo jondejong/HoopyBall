@@ -20,7 +20,8 @@
 -(void) handleUnpause;
 -(void) handleEndGame;
 
--(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world;
+//-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world;
+-(void) markBodyForDeletion: (b2Body*)body inWorld: (b2World*) world;
 -(void) cleanupDeletableItems;
 
 @end

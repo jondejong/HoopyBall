@@ -14,15 +14,16 @@
     @private
     b2Body* body;
     b2World* world;
-    CCSprite * sprite;
+//    CCSprite * sprite;
 }
 
 
--(id) initWithBody: (b2Body*)_body andSprite: _sprite inWorld: (b2World*)_world {
+//-(id) initWithBody: (b2Body*)_body andSprite: _sprite inWorld: (b2World*)_world {
+-(id) initWithBody: (b2Body*)_body inWorld: (b2World*)_world {
     if(self = [super init]) {
         body = _body;
         world = _world;
-        sprite = _sprite;
+//        sprite = _sprite;
     }
     return self;
 }
@@ -35,9 +36,9 @@
     return world;
 }
 
--(CCSprite*) sprite {
-    return sprite;
-}
+//-(CCSprite*) sprite {
+//    return sprite;
+//}
 
 - (void)dealloc
 {

@@ -78,8 +78,9 @@ enum {
     [[CCDirector sharedDirector] replaceScene: [HelloWorldLayer scene]];
 }
 
--(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {
-    [bodiesToDelete addObject:[[DeletableBody alloc] initWithBody:body andSprite: sprite inWorld:world]];
+//-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {
+-(void) markBodyForDeletion: (b2Body*)body inWorld: (b2World*) world {
+    [bodiesToDelete addObject:[[DeletableBody alloc] initWithBody:body inWorld:world]];
 }
 
 -(void) cleanupDeletableItems {
@@ -89,8 +90,8 @@ enum {
         b2World* world = [db world]; 
         b2Body* body = [db body];
         world->DestroyBody(body);
-        CCSprite* sprite = [db sprite];
-        [sprite removeFromParentAndCleanup:true];
+//        CCSprite* sprite = [db sprite];
+//        [sprite removeFromParentAndCleanup:true];
     }
     [bodiesToDelete dealloc];
      bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
