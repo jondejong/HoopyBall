@@ -8,7 +8,7 @@
 
 #import "WallCollisionHandler.h"
 #import "GameScene.h"
-
+#import "GamePlayRootNode.h"
 
 @implementation WallCollisionHandler {
     

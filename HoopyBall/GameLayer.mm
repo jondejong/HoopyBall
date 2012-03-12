@@ -17,13 +17,14 @@
 
 #import "PhysicsSprite.h"
 #import "GameScene.h"
+#import "GamePlayRootNode.h"
+#import "GB2ShapeCache.h"
 
 enum {
 	kTagParentNode = 1,
-    kBlockParentNode = 2
+    kBlockParentNode = 2,
+    kBallSprite = 3
 };
-
-
 
 
 bool ballCreated = false;
@@ -32,6 +33,7 @@ bool ballCreated = false;
     CGPoint startLocation;
     CCTexture2D *blockTexture_;
 	CCTexture2D *spriteTexture_;	// weak ref
+    b2Body* ballBody;
 	b2World* world;					// strong ref
 	GLESDebugDraw *m_debugDraw;		// strong ref
     WallContactListener* contactListener;
@@ -40,7 +42,7 @@ bool ballCreated = false;
 -(id) init
 {
 	if( (self=[super init])) {
-        
+        ballCreated = false;
         [self initStartLocation];
 		
 		// enable events
@@ -53,19 +55,21 @@ bool ballCreated = false;
 		
 		//Set up sprite
 		
-#if 1
-		// Use batch node. Faster
-		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"red_ball_sm.png" capacity:10];
-		spriteTexture_ = [parent texture];
+        
+#if USE_GREEN_GUY
+		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"hb_guy.png" capacity:1];
+        spriteTexture_ = [parent texture];
+        [self addChild:parent z:0 tag:kTagParentNode];
+#else
+		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"red_ball_sm.png" capacity:1];
+        spriteTexture_ = [parent texture];
+        [self addChild:parent z:0 tag:kTagParentNode];
+#endif
+        
         
         CCSpriteBatchNode *blockParent = [CCSpriteBatchNode batchNodeWithFile:@"block.png" capacity:50];
         blockTexture_ = [blockParent texture];
-#else
-		// doesn't use batch node. Slower
-		spriteTexture_ = [[CCTextureCache sharedTextureCache] addImage:@"blocks.png"];
-		CCNode *parent = [CCNode node];
-#endif
-		[self addChild:parent z:0 tag:kTagParentNode];
+		
         [self addChild:blockParent z:0 tag:kBlockParentNode];
 		
 		[self scheduleUpdate];
@@ -74,11 +78,12 @@ bool ballCreated = false;
 }
 
 
-
 -(void) initPhysics
 {
 	
-	CGSize s = [[CCDirector sharedDirector] winSize];
+//	CGSize s = [[CCDirector sharedDirector] winSize];
+//    height = s.height;
+//    width = s.width; 
 	
 	b2Vec2 gravity;
 	gravity.Set(0.0f, -10.0f);
@@ -118,20 +123,24 @@ bool ballCreated = false;
 	b2EdgeShape groundBox;		
 	
 	// bottom
-	
-	groundBox.Set(b2Vec2(0,0), b2Vec2(s.width/PTM_RATIO,0));
+    
+    CGSize size = [[GameScene sharedInstance] getCurrentLevelSize];
+	float height = size.height;
+    float width = size.width;
+    
+	groundBox.Set(b2Vec2(0,0), b2Vec2(width/PTM_RATIO,0));
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// top
-	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO));
+	groundBox.Set(b2Vec2(0,height/PTM_RATIO), b2Vec2(width/PTM_RATIO,height/PTM_RATIO));
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// left
-	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(0,0));
+	groundBox.Set(b2Vec2(0,height/PTM_RATIO), b2Vec2(0,0));
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// right
-	groundBox.Set(b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,0));
+	groundBox.Set(b2Vec2(width/PTM_RATIO,height/PTM_RATIO), b2Vec2(width/PTM_RATIO,0));
 	groundBody->CreateFixture(&groundBox,0);
 }
 
@@ -175,7 +184,7 @@ bool ballCreated = false;
     wallFixture.shape = &wallShape;
     wallFixture.friction = 0.0f;
     wallFixture.density = 1.0;
-    wallFixture.restitution = .8f;
+    wallFixture.restitution = WALL_RESTITUTION;
     
 //    WallCollisionHandler* handler = [[WallCollisionHandler alloc] initWithWorld:world andBody:body andSprite: sprite];
     WallCollisionHandler* handler = [[WallCollisionHandler alloc] initWithWorld:world andBody:body];
@@ -189,7 +198,7 @@ bool ballCreated = false;
 
 -(void) addNewSpriteAtPosition:(CGPoint)p
 {
-    CCLOG(@"Add ball %0.2f x %02.f",p.x,p.y);
+//    CCLOG(@"Add ball %0.2f x %02.f",p.x,p.y);
     CCNode *parent = [self getChildByTag:kTagParentNode];
 	
     PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture_ ];						
@@ -203,23 +212,31 @@ bool ballCreated = false;
     bodyDef.type = b2_dynamicBody;
     bodyDef.gravityScale = 0.0f;
     bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
-    bodyDef.linearVelocity.Set(8.0f, 5.0f);
+    bodyDef.linearVelocity.Set(START_VELOCITY_X, START_VELOCITY_Y);
     bodyDef.bullet = true;
-    b2Body *body = world->CreateBody(&bodyDef);
+    ballBody = world->CreateBody(&bodyDef);
 	
     // Define another box shape for our dynamic body.
     b2CircleShape ballShape;
     ballShape.m_radius = .432f;
 	
     // Define the dynamic body fixture.
+
+    
+#if USE_GREEN_GUY
+    GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
+    [shapeCache addFixturesToBody:ballBody forShapeName:@"hb_guy"];
+    sprite.anchorPoint = [shapeCache anchorPointForShape:@"hb_guy"];
+#else
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &ballShape;	
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.0f;
     fixtureDef.restitution = 1.0f;
-    body->CreateFixture(&fixtureDef);
-	
-    [sprite setPhysicsBody:body];
+    ballBody->CreateFixture(&fixtureDef);	
+#endif
+    
+    [sprite setPhysicsBody:ballBody];
 
 }
 
@@ -230,13 +247,24 @@ bool ballCreated = false;
 	//You need to make an informed choice, the following URL is useful
 	//http://gafferongames.com/game-physics/fix-your-timestep/
 	
-	int32 velocityIterations = 5;
+	int32 velocityIterations = 8;
 	int32 positionIterations = 3;
 	
 	// Instruct the world to perform a single step of simulation. It is
 	// generally best to keep the time step and iterations fixed.
 	world->Step(dt, velocityIterations, positionIterations);
 	[[GameScene sharedInstance] cleanupDeletableItems];
+    
+    if(ballCreated) {
+//        PhysicsSprite* s = (PhysicsSprite*)[self getChildByTag:kBallSprite];
+//        CGPoint p = [s getPixelPosition];
+        
+        b2Vec2 pos  = ballBody->GetPosition();
+        
+
+//        CCLOG(@"POSITION: %f, %f", x, y);
+        [[GameScene sharedInstance] updateBGPosition: ccp(pos.x * PTM_RATIO, pos.y * PTM_RATIO )];
+    }
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -248,17 +276,12 @@ bool ballCreated = false;
     
 }
 
--(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    CCLOG(@"BOOM 2");
-    startLocation = [touch locationInView: [touch view]];
-    return true;
-}
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for(UITouch *touch in touches) {
         if(!ballCreated) {
 //        if(0){
-            [self addNewSpriteAtPosition: [touch locationInView: [touch view]]];
+            [self addNewSpriteAtPosition: ccp(50, 100)];
             ballCreated = true;
         } else if(startLocation.x >= 0 && startLocation.y >= 0) {
             CGPoint endLocation = [touch locationInView: [touch view]];
@@ -268,7 +291,19 @@ bool ballCreated = false;
             float angle = (-1) * [self vec2rad: swipeVector];
             float distance = sqrtf( (swipeVector.x * swipeVector.x) + (swipeVector.y * swipeVector.y));
             distance = distance/PTM_RATIO;
-            CGPoint center = ccp((endLocation.x + startLocation.x)/2, (endLocation.y + startLocation.y)/2);
+            
+            float xOffset = [[GameScene sharedInstance] getXOffset];
+            float yOffset = [[GameScene sharedInstance] getYOffset];
+            
+            float midPointX = (endLocation.x + startLocation.x)/2;
+            float midPointY = (endLocation.y + startLocation.y)/2;
+            
+            float newX = midPointX + xOffset;
+            float newY = midPointY - yOffset;
+            
+//            CGPoint center = ccp(newX/PTM_RATIO, newY/PTM_RATIO);
+            
+            CGPoint center = ccp(newX, newY);
             center = [[CCDirector sharedDirector] convertToGL: center];
             
             [self addNewWall:center withLength:distance andAndle:angle];
@@ -284,22 +319,6 @@ bool ballCreated = false;
     startLocation.y = -1;
 }
 
-//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//	//Add a new body/atlas sprite at the touched location
-//	for( UITouch *touch in touches ) {
-//		CGPoint location = [touch locationInView: [touch view]];
-//		
-//		location = [[CCDirector sharedDirector] convertToGL: location];
-//
-//		if(!ballCreated) {
-//            [self addNewSpriteAtPosition: location];
-//            ballCreated = true;
-//        } else {
-//            [self addNewWall: location];
-//        }
-//	}
-//}
 
 -(float) vec2rad : (b2Vec2) v{
     return atan2(v.y,v.x);

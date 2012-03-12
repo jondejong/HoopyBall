@@ -13,4 +13,6 @@
     
 }
 
+//-(void) updateBGPosition: (CGPoint) p;
+
 @end

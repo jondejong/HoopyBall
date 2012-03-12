@@ -14,6 +14,6 @@
 }
 
 -(void) handlePause;
--(void) unpause;
+-(void) handleUnpause;
 
 @end

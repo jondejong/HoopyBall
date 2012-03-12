@@ -7,6 +7,7 @@
 //
 
 #import "cocos2d.h"
+#import "Constants.h"
 
 #import "AppDelegate.h"
 #import "HelloWorldLayer.h"
@@ -34,8 +35,12 @@
 
 	director_.wantsFullScreenLayout = YES;
 
-	// Display FSP and SPF
-	[director_ setDisplayStats:NO];
+	// Display FSP and SPFs
+#if SHOW_FRAMERATE
+	[director_ setDisplayStats:YES];
+#else
+    [director_ setDisplayStats:NO];
+#endif
 
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/60];

@@ -8,6 +8,7 @@
 
 #import "ControlLayer.h"
 #import "GameScene.h"
+#import "GamePlayRootNode.h"
 
 CCMenuItemSprite *pauseButton;
 
@@ -45,13 +46,12 @@ CCMenuItemSprite *pauseButton;
 -(void) handlePause 
 {
     [pauseButton setIsEnabled: false];
-    [[GameScene sharedInstance] handlePause];
+    [[GamePlayRootNode sharedInstance] handlePause];
 }
 
--(void) unpause
+-(void) handleUnpause
 {
     [pauseButton setIsEnabled:true];
-    
 }
 
 @end

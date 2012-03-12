@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Box2D.h"
 
 @interface GoodGuy : CCSprite {
     
 }
+
+-(id) initInWord:(b2World*)world;
 
 @end

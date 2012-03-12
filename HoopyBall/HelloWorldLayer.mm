@@ -11,6 +11,7 @@
 #import "HelloWorldLayer.h"
 //#import "GameLayer.h"
 #import "GameScene.h"
+#import "GamePlayRootNode.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -62,7 +63,7 @@
 		[CCMenuItemFont setFontSize:28];
 
 		CCMenuItem *start = [CCMenuItemFont itemWithString:@"Start Game" block:^(id sender) {
-            [[CCDirector sharedDirector] replaceScene: [GameScene node]];
+            [[CCDirector sharedDirector] replaceScene: [GamePlayRootNode node]];
 		}
 									   ];
 	

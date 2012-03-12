@@ -15,68 +15,98 @@
 #import "HelloWorldLayer.h"
 #import "Support/ccCArray.h"
 #import "DeletableBody.h"
+#import "Constants.h"
+#import "GB2ShapeCache.h"
 
 @implementation GameScene {
-
+    
     @private
-    ControlLayer* controlLayer;
     CCArray* bodiesToDelete;
+    float xOffset;
+    float yOffset;
 }
 
 static GameScene* instance;
 
-enum {
-    BackgroundLayerTag,
-    PauseLayerTag,
-    ControlLayerTag,
-    GameLayerTag
-};
+float height = 0.0;
+float width = 0.0;
 
+
+
+enum {
+    BackgroundLayerTag = 1,
+    PauseLayerTag = 2,
+    ControlLayerTag = 3,
+    GameLayerTag = 4
+};
+ 
 -(id) init
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init])) {
         instance = self;
-
+        xOffset = 0.0f;
+        yOffset = 0.0f;
+        
+#if USE_LARGE_WORLD
+        height = 2048;
+        width = 4096;
+//        height = 1000;
+//        width = 1400;
+#else
+        height = [[CCDirector sharedDirector] winSize].height;
+        width = [[CCDirector sharedDirector] winSize].width;
+#endif
+        
+        [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"hoopy-ball-shapes.plist"];
         [self addChild: [BackgroundLayer node] z:0 tag: BackgroundLayerTag];
-        
-        controlLayer = [ControlLayer node];
         [self addChild:[GameLayer node] z:0 tag:GameLayerTag];
-        [self addChild:controlLayer z:0 tag:ControlLayerTag];
-        
         bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
-
+        
     }
     return self;
-}   
+}  
 
-+(GameScene *) sharedInstance {
++(GameScene*) sharedInstance {
     return instance;
 }
 
--(void) handlePause 
-{
-    CCLayer* boxLayer = (CCLayer *)[self getChildByTag:GameLayerTag];
-    boxLayer.isTouchEnabled = false;
-    [boxLayer pauseSchedulerAndActions];
-    [self addChild: [PauseLayer layer] z:0 tag:PauseLayerTag];
+-(CGSize) getCurrentLevelSize {
+    CGSize s;
+    s.height = height;
+    s.width = width;
+    return s;
 }
 
--(void) handleUnpause
-{
-    [self removeChildByTag:PauseLayerTag cleanup:true];
-    CCLayer* boxLayer = (CCLayer *)[self getChildByTag:GameLayerTag];
-    boxLayer.isTouchEnabled = true;
-    [boxLayer resumeSchedulerAndActions];
-    [controlLayer unpause];
+-(void)updateBGPosition: (CGPoint)position {
+
+#if USE_LARGE_WORLD
+    xOffset = position.x - [[CCDirector sharedDirector] winSize].width / 2.0f;
+    yOffset = position.y - [[CCDirector sharedDirector] winSize].height / 2.0f;
     
+        
+    [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
+    [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]];
+#endif
+}
+
+-(void) handlePause {
+    CCLayer* gameLayer = (CCLayer *)[self getChildByTag:GameLayerTag];
+    gameLayer.isTouchEnabled = false;
+    [gameLayer pauseSchedulerAndActions];    
+}
+
+-(void) handleUnPause {
+    CCLayer* gameLayer = (CCLayer *)[self getChildByTag:GameLayerTag];
+    gameLayer.isTouchEnabled = true;
+    [gameLayer resumeSchedulerAndActions];
 }
 
 -(void) handleEndGame {
     [(GameLayer*)[self getChildByTag:GameLayerTag] handleEndGame];
-    [[CCDirector sharedDirector] replaceScene: [HelloWorldLayer scene]];
 }
+
 
 //-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {
 -(void) markBodyForDeletion: (b2Body*)body inWorld: (b2World*) world {
@@ -97,11 +127,12 @@ enum {
      bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
 }
 
+-(float) getXOffset {return xOffset;}
+-(float) getYOffset {return yOffset;}
+
 -(void) dealloc 
 {
     bodiesToDelete = nil;
-    controlLayer = nil;
-    instance = nil;
     [super dealloc];    
 }
 

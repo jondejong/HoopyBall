@@ -9,6 +9,7 @@
 #import "PauseLayer.h"
 #import "HelloWorldLayer.h"
 #import "GameScene.h"
+#import "GamePlayRootNode.h"
 
 @implementation PauseLayer
 
@@ -57,12 +58,12 @@
 
 -(void) handleEndGame
 {
-    [[GameScene sharedInstance] handleEndGame];
+    [[GamePlayRootNode sharedInstance] handleEndGame];
 }
 
 -(void) handleUnpause
 {
-     [[GameScene sharedInstance] handleUnpause];  
+     [[GamePlayRootNode sharedInstance] handleUnpause];  
 }
 
 -(void) dealloc
