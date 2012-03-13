@@ -22,5 +22,6 @@
 #define SHOW_FRAMERATE 0
 
 #define CAMERA_FOLLOW_BALL 0
+#define CAMERA_SCROLL_SCREEN_OFFSET .25f
 
 #endif

@@ -98,8 +98,8 @@ enum {
     CGSize windowSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameScene sharedInstance] getCurrentLevelSize]; 
     
-    float xThresholdOffset = windowSize.width/4.0f;
-    float yThresholdOffset = windowSize.height/4.0f;
+    float xThresholdOffset = windowSize.width/(1.0f/CAMERA_SCROLL_SCREEN_OFFSET);
+    float yThresholdOffset = windowSize.height/(1.0f/CAMERA_SCROLL_SCREEN_OFFSET);
     
     // Find out the current edge of the viewport
     float cameraX, cameraY, cameraZ;
