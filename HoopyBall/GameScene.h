@@ -21,6 +21,9 @@
 -(void) cleanupDeletableItems;
 
 -(void) updateBGPosition: (CGPoint)position;
+-(void) doUpdateBGPosition: (CGPoint) postition;
+
+
 -(CGSize) getCurrentLevelSize;
 
 -(float) getXOffset;
@@ -29,5 +32,6 @@
 -(void) handlePause;
 -(void) handleUnPause;
 -(void) handleEndGame;
+
 
 @end

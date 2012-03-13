@@ -80,14 +80,54 @@ enum {
 }
 
 -(void)updateBGPosition: (CGPoint)position {
-
 #if USE_LARGE_WORLD
+    [self doUpdateBGPosition:position];
+#endif
+}
+
+-(void) doUpdateBGPosition: (CGPoint) position{
+#if CAMERA_FOLLOW_BALL
+    CCLOG(@"Following ball at %f, %f", position.x, position.y);
     xOffset = position.x - [[CCDirector sharedDirector] winSize].width / 2.0f;
     yOffset = position.y - [[CCDirector sharedDirector] winSize].height / 2.0f;
+            
+    [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
+    [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]]; 
+#else
+    // Grab some values to work wtih
+    CGSize windowSize = [[CCDirector sharedDirector] winSize];
+    CGSize levelSize = [[GameScene sharedInstance] getCurrentLevelSize]; 
     
+    float xThresholdOffset = windowSize.width/4.0f;
+    float yThresholdOffset = windowSize.height/4.0f;
+    
+    // Find out the current edge of the viewport
+    float cameraX, cameraY, cameraZ;
+    
+    [self.camera centerX:&cameraX centerY:&cameraY centerZ:&cameraZ];
+    
+    // see if we need to move the X
+    if( (position.x < (cameraX + xThresholdOffset)) && cameraX > 0) {
+        float xMove = cameraX + xThresholdOffset - position.x;
+        xOffset -= xMove;
         
+    } else if( (position.x > ((cameraX + windowSize.width) - xThresholdOffset)) && (cameraX + windowSize.width) < levelSize.width){
+        float xMove = xThresholdOffset - (cameraX + windowSize.width - position.x);
+        xOffset += xMove;
+    }
+    
+    // see if we need to move the Y
+    if( (position.y < (cameraY + yThresholdOffset)) && cameraY > 0) {
+        float yMove = cameraY + yThresholdOffset - position.y;
+        yOffset -= yMove;
+    } else if( (position.y > ((cameraY + windowSize.height) - yThresholdOffset)) && (cameraY + windowSize.height) <= levelSize.height){
+        float yMove = yThresholdOffset - (cameraY + windowSize.height - position.y);
+        yOffset += yMove;
+    }
+    
     [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
     [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]];
+    
 #endif
 }
 

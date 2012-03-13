@@ -21,4 +21,6 @@
 
 #define SHOW_FRAMERATE 0
 
+#define CAMERA_FOLLOW_BALL 0
+
 #endif
