@@ -1,18 +1,16 @@
 //
-//  GameLayer.h
+//  GameManager.h
 //  HoopyBall
 //
-//  Created by Jonathan DeJong on 2/20/12.
+//  Created by Jonathan DeJong on 3/14/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface BackgroundLayer : CCLayer {
+@interface GameManager : CCNode {
     
 }
-
-//-(void) updateBGPosition: (CGPoint) p;
 
 @end
