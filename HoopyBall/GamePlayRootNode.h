@@ -8,17 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "GameScene.h"
 
 
-@interface GamePlayRootNode : CCNode {
+@interface GamePlayRootNode : CCScene {
     
 }
 
-
-+(GamePlayRootNode *) sharedInstance;
--(void) handlePause;
--(void) handleUnpause;
--(void) handleEndGame;
++(CCScene*) scene;
 
 @end

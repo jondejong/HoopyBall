@@ -16,6 +16,6 @@
 +(PauseLayer *) layer;
 
 -(void) handleUnpause;
--(void) handleEndGame;
+-(void) handleEndLevel;
 
 @end

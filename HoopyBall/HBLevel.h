@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
+#import "Box2D.h"
 
 @protocol HBLevel <NSObject>
+
+-(CGSize) getCurrentLevelSize;
+-(NSString*) getCurrentBackgroundTMX;
 
 @end

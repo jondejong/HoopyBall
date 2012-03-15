@@ -16,9 +16,10 @@
 #import "WallCollisionHandler.h"
 
 #import "PhysicsSprite.h"
-#import "GameScene.h"
+#import "GameManager.h"
 #import "GamePlayRootNode.h"
 #import "GB2ShapeCache.h"
+#import "DeletableBody.h"
 
 enum {
 	kTagParentNode = 1,
@@ -30,6 +31,7 @@ enum {
 bool ballCreated = false;
 
 @implementation GameLayer {
+    @private
     CGPoint startLocation;
     CCTexture2D *blockTexture_;
 	CCTexture2D *spriteTexture_;	// weak ref
@@ -37,11 +39,19 @@ bool ballCreated = false;
 	b2World* world;					// strong ref
 	GLESDebugDraw *m_debugDraw;		// strong ref
     WallContactListener* contactListener;
+    
+
+    CCArray* bodiesToDelete;
+    float xOffset;
+    float yOffset;
 }
 
 -(id) init
 {
 	if( (self=[super init])) {
+         bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
+        xOffset = 0.0f;
+        yOffset = 0.0f;
         ballCreated = false;
         [self initStartLocation];
 		
@@ -49,14 +59,13 @@ bool ballCreated = false;
 		
 		self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
-		
-		// init physics
+
+        // init physics
 		[self initPhysics];
 		
 		//Set up sprite
-		
-        
 #if USE_GREEN_GUY
+        [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"hoopy-ball-shapes.plist"];
 		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"hb_guy.png" capacity:1];
         spriteTexture_ = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
@@ -65,13 +74,8 @@ bool ballCreated = false;
         spriteTexture_ = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
 #endif
-        
-        
-        CCSpriteBatchNode *blockParent = [CCSpriteBatchNode batchNodeWithFile:@"block.png" capacity:50];
-        blockTexture_ = [blockParent texture];
-		
-        [self addChild:blockParent z:0 tag:kBlockParentNode];
-		
+	
+//        [self addChild:[CCTMXTiledMap tiledMapWithTMXFile:@"bg.tmx"] z:-1];
 		[self scheduleUpdate];
 	}
 	return self;
@@ -80,10 +84,6 @@ bool ballCreated = false;
 
 -(void) initPhysics
 {
-	
-//	CGSize s = [[CCDirector sharedDirector] winSize];
-//    height = s.height;
-//    width = s.width; 
 	
 	b2Vec2 gravity;
 	gravity.Set(0.0f, -10.0f);
@@ -124,7 +124,7 @@ bool ballCreated = false;
 	
 	// bottom
     
-    CGSize size = [[GameScene sharedInstance] getCurrentLevelSize];
+    CGSize size = [[GameManager sharedInstance] getCurrentLevelSize];
 	float height = size.height;
     float width = size.width;
     
@@ -160,10 +160,6 @@ bool ballCreated = false;
 	world->DrawDebugData();	
 	
 	kmGLPopMatrix();
-}
-
--(void) handleEndGame {
-    ballCreated = false;
 }
 
 -(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a{
@@ -207,7 +203,6 @@ bool ballCreated = false;
     sprite.position = ccp(p.x, p.y);
 	
     // Define the dynamic body.
-    //Set up a 1m squared box in the physics world
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.gravityScale = 0.0f;
@@ -253,23 +248,18 @@ bool ballCreated = false;
 	// Instruct the world to perform a single step of simulation. It is
 	// generally best to keep the time step and iterations fixed.
 	world->Step(dt, velocityIterations, positionIterations);
-	[[GameScene sharedInstance] cleanupDeletableItems];
+	[self cleanupDeletableItems];
     
     if(ballCreated) {
-//        PhysicsSprite* s = (PhysicsSprite*)[self getChildByTag:kBallSprite];
-//        CGPoint p = [s getPixelPosition];
-        
         b2Vec2 pos  = ballBody->GetPosition();
-        
 
 //        CCLOG(@"POSITION: %f, %f", x, y);
-        [[GameScene sharedInstance] updateBGPosition: ccp(pos.x * PTM_RATIO, pos.y * PTM_RATIO )];
+        [self updateBGPosition: ccp(pos.x * PTM_RATIO, pos.y * PTM_RATIO )];
     }
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    CCLOG(@"BOOM 1");
-    for(UITouch *touch in touches) {
+     for(UITouch *touch in touches) {
         startLocation = [touch locationInView: [touch view]];
         break;
     }
@@ -286,14 +276,10 @@ bool ballCreated = false;
         } else if(startLocation.x >= 0 && startLocation.y >= 0) {
             CGPoint endLocation = [touch locationInView: [touch view]];
             
-//            b2Vec2 swipeVector = b2Vec2((endLocation.x - startLocation.x), (endLocation.y - startLocation.y)); 
             b2Vec2 swipeVector = b2Vec2((startLocation.x - endLocation.x), (startLocation.y - endLocation.y)); 
             float angle = (-1) * [self vec2rad: swipeVector];
             float distance = sqrtf( (swipeVector.x * swipeVector.x) + (swipeVector.y * swipeVector.y));
             distance = distance/PTM_RATIO;
-            
-            float xOffset = [[GameScene sharedInstance] getXOffset];
-            float yOffset = [[GameScene sharedInstance] getYOffset];
             
             float midPointX = (endLocation.x + startLocation.x)/2;
             float midPointY = (endLocation.y + startLocation.y)/2;
@@ -313,12 +299,80 @@ bool ballCreated = false;
     [self initStartLocation];
 }
 
+-(void)updateBGPosition: (CGPoint)position {
+#if USE_LARGE_WORLD
+    [self doUpdateBGPosition:position];
+#endif
+}
+
+-(void) doUpdateBGPosition: (CGPoint) position{
+#if CAMERA_FOLLOW_BALL
+    xOffset = position.x - [[CCDirector sharedDirector] winSize].width / 2.0f;
+    yOffset = position.y - [[CCDirector sharedDirector] winSize].height / 2.0f;
+    
+    [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
+    [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]]; 
+#else
+    // Grab some values to work wtih
+    CGSize windowSize = [[CCDirector sharedDirector] winSize];
+    CGSize levelSize = [[GameManager sharedInstance] getCurrentLevelSize]; 
+    
+    float xThresholdOffset = windowSize.width/(1.0f/CAMERA_SCROLL_SCREEN_OFFSET);
+    float yThresholdOffset = windowSize.height/(1.0f/CAMERA_SCROLL_SCREEN_OFFSET);
+    
+    // Find out the current edge of the viewport
+    float cameraX, cameraY, cameraZ;
+    
+    [self.camera centerX:&cameraX centerY:&cameraY centerZ:&cameraZ];
+    
+    // see if we need to move the X
+    if( (position.x < (cameraX + xThresholdOffset)) && cameraX > 0) {
+        float xMove = cameraX + xThresholdOffset - position.x;
+        xOffset -= xMove;
+        
+    } else if( (position.x > ((cameraX + windowSize.width) - xThresholdOffset)) && (cameraX + windowSize.width) < levelSize.width){
+        float xMove = xThresholdOffset - (cameraX + windowSize.width - position.x);
+        xOffset += xMove;
+    }
+    
+    // see if we need to move the Y
+    if( (position.y < (cameraY + yThresholdOffset)) && cameraY > 0) {
+        float yMove = cameraY + yThresholdOffset - position.y;
+        yOffset -= yMove;
+    } else if( (position.y > ((cameraY + windowSize.height) - yThresholdOffset)) && (cameraY + windowSize.height) <= levelSize.height){
+        float yMove = yThresholdOffset - (cameraY + windowSize.height - position.y);
+        yOffset += yMove;
+    }
+    
+    [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
+    [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]];
+    
+#endif
+}
+
+//-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {
+-(void) markBodyForDeletion: (b2Body*)body{
+    [bodiesToDelete addObject:[[DeletableBody alloc] initWithBody:body]];
+}
+
+-(void) cleanupDeletableItems {
+    
+    for(int i=0; i < [bodiesToDelete count]; i++) {
+        DeletableBody* db = [bodiesToDelete objectAtIndex:i];
+        b2Body* body = [db body];
+        world->DestroyBody(body);
+        //        CCSprite* sprite = [db sprite];
+        //        [sprite removeFromParentAndCleanup:true];
+    }
+    [bodiesToDelete dealloc];
+    bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
+}
+
 
 -(void) initStartLocation {
     startLocation.x = -1;
     startLocation.y = -1;
 }
-
 
 -(float) vec2rad : (b2Vec2) v{
     return atan2(v.y,v.x);

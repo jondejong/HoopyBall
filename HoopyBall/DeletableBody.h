@@ -15,9 +15,9 @@
 }
 
 //-(id) initWithBody: (b2Body*)_body andSprite: (CCSprite*) _sprite inWorld: (b2World*) _world;
--(id) initWithBody: (b2Body*)_body inWorld: (b2World*) _world;
+-(id) initWithBody: (b2Body*)_body;
 -(b2Body*) body;
--(b2World*) world;
+//-(b2World*) world;
 //-(CCSprite*) sprite;
 
 @end

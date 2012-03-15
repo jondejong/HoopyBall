@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Box2D.h"
 
-@interface GameManager : CCNode {
+@interface GameManager : NSObject{
     
 }
+
++(GameManager*) sharedInstance;
+
+-(void) startGame;
+-(void) handlePause;
+-(void) handleUnpause;
+-(void) handleEndLevel;
+-(void) handleStartLevel: (int) level;
+-(CGSize) getCurrentLevelSize;
+
+-(void)markBodyForDeletion: (b2Body*) body;
+
 
 @end

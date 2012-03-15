@@ -9,29 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Box2D.h"
+#import "HBLevel.h"
 
-@interface GameScene : CCScene {
+@interface Level1Scene : CCScene <HBLevel> {
     
 }
-
-+(GameScene*) sharedInstance;
-
-//-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world;
--(void) markBodyForDeletion: (b2Body*)body inWorld: (b2World*) world;
--(void) cleanupDeletableItems;
-
--(void) updateBGPosition: (CGPoint)position;
--(void) doUpdateBGPosition: (CGPoint) postition;
-
-
--(CGSize) getCurrentLevelSize;
-
--(float) getXOffset;
--(float) getYOffset;
-
--(void) handlePause;
--(void) handleUnPause;
--(void) handleEndGame;
+//-(CGSize) getCurrentLevelSize ;
+//-(NSString*) getCurrentBackgroundTMX;
 
 
 @end

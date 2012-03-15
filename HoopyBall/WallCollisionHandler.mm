@@ -7,8 +7,8 @@
 //
 
 #import "WallCollisionHandler.h"
-#import "GameScene.h"
 #import "GamePlayRootNode.h"
+#import "GameManager.h"
 
 @implementation WallCollisionHandler {
     
@@ -30,7 +30,7 @@
 
 -(void) handleCollision{
 //    [[GameScene sharedInstance] markBodyForDeletion:body andSprite: sprite inWorld:world];
-    [[GameScene sharedInstance] markBodyForDeletion:body inWorld:world];
+    [[GameManager sharedInstance] markBodyForDeletion:body];
 }
 
 - (void)dealloc

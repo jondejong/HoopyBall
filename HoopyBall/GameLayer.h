@@ -17,12 +17,19 @@
     
 }
 
--(void)handleEndGame;
+//-(float) getXOffset;
+//-(float) getYOffset;
+
+-(void) markBodyForDeletion: (b2Body*)body;
+-(void) cleanupDeletableItems;
 
 -(void) initPhysics;
 -(void) addNewSpriteAtPosition:(CGPoint)p;
 -(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a;
 -(void) initStartLocation;
 -(float) vec2rad : (b2Vec2) v;
+
+-(void) updateBGPosition: (CGPoint)position;
+-(void) doUpdateBGPosition: (CGPoint) postition;
 
 @end

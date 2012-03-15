@@ -8,21 +8,18 @@
 
 
 // Import the interfaces
-#import "HelloWorldLayer.h"
-//#import "GameLayer.h"
-#import "GameScene.h"
-#import "GamePlayRootNode.h"
+#import "StartScene.h"
+#import "GameManager.h"
+
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
-
-#import "BoxLayer.h"
 
 
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
-@implementation HelloWorldLayer
+@implementation StartScene
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -31,7 +28,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	StartScene *layer = [StartScene node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -62,15 +59,11 @@
 		// Default font size will be 28 points.
 		[CCMenuItemFont setFontSize:28];
 
-		CCMenuItem *start = [CCMenuItemFont itemWithString:@"Start Game" block:^(id sender) {
-            [[CCDirector sharedDirector] replaceScene: [GamePlayRootNode node]];
+		CCMenuItem *start = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
+            [[GameManager sharedInstance] handleStartLevel:1];
 		}
 									   ];
-	
-//        CCMenuItem *start = [CCMenuItemFont itemWithString:@"Start Game" block:^(id sender) {
-//            [[CCDirector sharedDirector] replaceScene: [BoxLayer scene]];
-//		}];
-        
+	        
         CCMenu *menu = [CCMenu menuWithItems:start, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];

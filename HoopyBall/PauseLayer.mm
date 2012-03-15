@@ -7,9 +7,8 @@
 //
 
 #import "PauseLayer.h"
-#import "HelloWorldLayer.h"
-#import "GameScene.h"
-#import "GamePlayRootNode.h"
+#import "Level1Scene.h"
+#import "GameManager.h"
 
 @implementation PauseLayer
 
@@ -44,7 +43,7 @@
 		[CCMenuItemFont setFontSize:28];
         
 		CCMenuItem *resume = [CCMenuItemFont itemWithString:@"Resume Game" target:self selector:@selector(handleUnpause)];
-        CCMenuItem *endGame = [CCMenuItemFont itemWithString:@"End Game" target:self selector:@selector(handleEndGame)];
+        CCMenuItem *endGame = [CCMenuItemFont itemWithString:@"End Level" target:self selector:@selector(handleEndLevel)];
         
         CCMenu *menu = [CCMenu menuWithItems:resume, endGame, nil];
 		
@@ -56,14 +55,14 @@
     return self;
 }
 
--(void) handleEndGame
+-(void) handleEndLevel
 {
-    [[GamePlayRootNode sharedInstance] handleEndGame];
+    [[GameManager sharedInstance] handleEndLevel];
 }
 
 -(void) handleUnpause
 {
-     [[GamePlayRootNode sharedInstance] handleUnpause];  
+     [[GameManager sharedInstance] handleUnpause];  
 }
 
 -(void) dealloc
