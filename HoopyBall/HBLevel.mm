@@ -20,7 +20,7 @@
 }
 
 -(CGPoint) getStartPoint {
-    CGPoint p = ccp(0.0f, PTM_RATIO/2);
+    CGPoint p = ccp(0.0f, PTM_RATIO);
     return p;
 }
 @end
