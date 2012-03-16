@@ -192,7 +192,7 @@ bool ballCreated = false;
 //    [sprite setPhysicsBody:body];
 }
 
--(void) addNewSpriteAtPosition:(CGPoint)p
+-(void) addBall
 {
 //    CCLOG(@"Add ball %0.2f x %02.f",p.x,p.y);
     CCNode *parent = [self getChildByTag:kTagParentNode];
@@ -200,13 +200,14 @@ bool ballCreated = false;
     PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture_ ];						
     [parent addChild:sprite];
 	
-    sprite.position = ccp(p.x, p.y);
+    CGPoint lp = [[GameManager sharedInstance] getCurrentLevelStartPoint];
+    sprite.position = lp; 
 	
     // Define the dynamic body.
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
+    bodyDef.position.Set(lp.x/PTM_RATIO, lp.y/PTM_RATIO);
     bodyDef.linearVelocity.Set(START_VELOCITY_X, START_VELOCITY_Y);
     bodyDef.bullet = true;
     ballBody = world->CreateBody(&bodyDef);
@@ -271,7 +272,7 @@ bool ballCreated = false;
     for(UITouch *touch in touches) {
         if(!ballCreated) {
 //        if(0){
-            [self addNewSpriteAtPosition: ccp(50, 100)];
+            [self addBall];
             ballCreated = true;
         } else if(startLocation.x >= 0 && startLocation.y >= 0) {
             CGPoint endLocation = [touch locationInView: [touch view]];

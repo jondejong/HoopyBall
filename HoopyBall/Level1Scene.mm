@@ -48,14 +48,14 @@ float width = 0.0;
     return self;
 } 
 
--(CGSize) getCurrentLevelSize {
+-(CGSize) getLevelSize {
     CGSize s;
     s.height = height;
     s.width = width;
     return s;
 }
 
--(NSString*) getCurrentBackgroundTMX {
+-(NSString*) getBackgroundTMX {
     return @"bg.tmx";
 }
 

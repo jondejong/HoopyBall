@@ -14,8 +14,9 @@
     
 }
 
--(CGSize) getCurrentLevelSize;
--(NSString*) getCurrentBackgroundTMX;
+-(CGSize) getLevelSize;
+-(NSString*) getBackgroundTMX;
+-(CGPoint) getStartPoint;
 
 @end 
 

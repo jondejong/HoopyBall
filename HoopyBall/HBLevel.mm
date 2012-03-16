@@ -7,14 +7,20 @@
 //
 
 #import "HBLevel.h"
+#import "Constants.h"
 
 @implementation HBLevel
 
--(CGSize) getCurrentLevelSize {
+-(CGSize) getLevelSize {
     CGSize retVal;
     return retVal;
 }
--(NSString*) getCurrentBackgroundTMX {
+-(NSString*) getBackgroundTMX {
     return @"";
+}
+
+-(CGPoint) getStartPoint {
+    CGPoint p = ccp(0.0f, PTM_RATIO/2);
+    return p;
 }
 @end

@@ -20,7 +20,8 @@ CGSize size;
     return self;
 }
 
--(CGSize) getCurrentLevelSize { return size; }
--(NSString*) getCurrentBackgroundTMX { return @"bg2.tmx"; }
+-(CGSize) getLevelSize { return size; }
+-(NSString*) getBackgroundTMX { return @"bg2.tmx"; }
+-(CGPoint) getStartPoint {return ccp(0.0f, 256.0f); }
 
 @end

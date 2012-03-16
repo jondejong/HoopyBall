@@ -22,6 +22,7 @@
 -(void) handleEndLevel;
 -(void) handleStartLevel: (int) level;
 -(CGSize) getCurrentLevelSize;
+-(CGPoint) getCurrentLevelStartPoint;
 
 -(void)markBodyForDeletion: (b2Body*) body;
 

@@ -86,7 +86,7 @@ GameManager * sharedInstance;
     }
 
     gameLayer = [GameLayer node];
-    [gameLayer addChild:[CCTMXTiledMap tiledMapWithTMXFile:[levelScene getCurrentBackgroundTMX]] z:-1];
+    [gameLayer addChild:[CCTMXTiledMap tiledMapWithTMXFile:[levelScene getBackgroundTMX]] z:-1];
     
     controlLayer = [ControlLayer node];
     
@@ -99,11 +99,15 @@ GameManager * sharedInstance;
 }
 
 -(CGSize) getCurrentLevelSize {
-    return [levelScene getCurrentLevelSize];
+    return [levelScene getLevelSize];
 }
 
 -(void)markBodyForDeletion: (b2Body*) body {
     [gameLayer markBodyForDeletion:body];
+}
+
+-(CGPoint) getCurrentLevelStartPoint {
+    return [levelScene getStartPoint];
 }
                     
 - (void)dealloc

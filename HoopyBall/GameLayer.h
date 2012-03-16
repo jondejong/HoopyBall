@@ -24,7 +24,7 @@
 -(void) cleanupDeletableItems;
 
 -(void) initPhysics;
--(void) addNewSpriteAtPosition:(CGPoint)p;
+-(void) addBall;
 -(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a;
 -(void) initStartLocation;
 -(float) vec2rad : (b2Vec2) v;
