@@ -6,7 +6,7 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Level1Scene.h"
+#import "HBLevel.h"
 
 #import "PauseLayer.h"
 #import "ControlLayer.h"
@@ -26,13 +26,6 @@ float height = 0.0;
 float width = 0.0;
 
 
-enum {
-    BackgroundLayerTag = 1,
-    PauseLayerTag = 2,
-    ControlLayerTag = 3,
-    GameLayerTag = 4
-};
- 
 -(id) init
 {
 	// always call "super" init
@@ -65,8 +58,6 @@ enum {
 -(NSString*) getCurrentBackgroundTMX {
     return @"bg.tmx";
 }
-
-
 
 -(void) dealloc 
 {

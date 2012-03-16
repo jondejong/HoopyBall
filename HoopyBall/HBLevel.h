@@ -10,9 +10,19 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 
-@protocol HBLevel <NSObject>
+@interface HBLevel : CCScene {
+    
+}
 
 -(CGSize) getCurrentLevelSize;
 -(NSString*) getCurrentBackgroundTMX;
 
-@end
+@end 
+
+@interface Level1Scene : HBLevel {} @end
+@interface Level2Scene : HBLevel {} @end
+
+
+
+
+

@@ -59,12 +59,15 @@
 		// Default font size will be 28 points.
 		[CCMenuItemFont setFontSize:28];
 
-		CCMenuItem *start = [CCMenuItemFont itemWithString:@"Start" block:^(id sender) {
+		CCMenuItem *level1 = [CCMenuItemFont itemWithString:@"Level 1" block:^(id sender) {
             [[GameManager sharedInstance] handleStartLevel:1];
-		}
-									   ];
-	        
-        CCMenu *menu = [CCMenu menuWithItems:start, nil];
+		}];
+	    
+        CCMenuItem *level2 = [CCMenuItemFont itemWithString:@"Level 2" block:^(id sender) {
+            [[GameManager sharedInstance] handleStartLevel:2];
+		}];
+        
+        CCMenu *menu = [CCMenu menuWithItems:level1, level2, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];
 		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];

@@ -10,7 +10,6 @@
 #import "StartScene.h"
 #import "ControlLayer.h"
 #import "Constants.h"
-#import "Level1Scene.h"
 #import "GameLayer.h"
 #import "GamePlayRootNode.h"
 #import "PauseLayer.h"
@@ -19,9 +18,8 @@
 @implementation GameManager {
     
     @private
-    
     CCScene * rootNode;
-    Level1Scene * levelScene;
+    HBLevel * levelScene;
     GameLayer * gameLayer;
     ControlLayer * controlLayer;
     
@@ -53,12 +51,14 @@ GameManager * sharedInstance;
 
 -(void) handlePause {
     [gameLayer pauseSchedulerAndActions];
+    [gameLayer setIsTouchEnabled:false];
     [rootNode addChild:[PauseLayer layer] z:0 tag:PauseLayerTag];
     }
 
 -(void) handleUnpause {
     [rootNode removeChildByTag:PauseLayerTag cleanup:true]; 
     [controlLayer handleUnpause];
+    [gameLayer setIsTouchEnabled: true];
     [gameLayer resumeSchedulerAndActions];
 }
 
@@ -72,9 +72,20 @@ GameManager * sharedInstance;
     
     //The Level must be defined before the game layer, the game layer
     //is dependent upon values from the level
-    levelScene = [Level1Scene node];
-    gameLayer = [GameLayer node];
+    switch (level) {
+        case 1:
+            levelScene = [Level1Scene node];
+            break;
+            
+        case 2:
+            levelScene = [Level2Scene node];
+            break;
+            
+        default:
+            break;
+    }
 
+    gameLayer = [GameLayer node];
     [gameLayer addChild:[CCTMXTiledMap tiledMapWithTMXFile:[levelScene getCurrentBackgroundTMX]] z:-1];
     
     controlLayer = [ControlLayer node];
@@ -83,9 +94,8 @@ GameManager * sharedInstance;
     [rootNode addChild: gameLayer z:0];
     [rootNode addChild:controlLayer z:0];
     
+    [[CCDirector sharedDirector] replaceScene:rootNode];
     
-        [[CCDirector sharedDirector] replaceScene:rootNode];
-        
 }
 
 -(CGSize) getCurrentLevelSize {
