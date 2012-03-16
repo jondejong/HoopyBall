@@ -14,10 +14,10 @@
 #define USE_LARGE_WORLD 1
 #define USE_GREEN_GUY 0
 
-#define START_VELOCITY_X 2.0f
+#define START_VELOCITY_X 4.0f
 #define START_VELOCITY_Y 0.0f
 
-#define WALL_RESTITUTION 1.1f
+#define WALL_RESTITUTION 1.07f
 
 #define SHOW_FRAMERATE 0
 
