@@ -20,7 +20,13 @@
 }
 
 +(int) multiplier {
-    return [self screenSize].width < 1100 ? 1 : 2;
+    return  [self isRetina]? 2 : 1;
 }
+
++(bool) isRetina {
+    return[self screenSize].width > 1100;
+}
+
+
 
 @end

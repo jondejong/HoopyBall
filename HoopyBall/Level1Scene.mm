@@ -56,7 +56,7 @@ float width = 0.0;
 }
 
 -(NSString*) getBackgroundTMX {
-    return[ScreenSize multiplier] == 2 ? @"bg-hd.tmx" : @"bg.tmx";
+    return [ScreenSize isRetina] ? @"bg-hd.tmx" : @"bg.tmx";
 }
 
 -(void) dealloc 

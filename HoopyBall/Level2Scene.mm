@@ -22,7 +22,7 @@ CGSize size;
 }
 
 -(CGSize) getLevelSize { return size; }
--(NSString*) getBackgroundTMX { return[ScreenSize multiplier] == 2 ? @"bg2-hd.tmx" : @"bg2.tmx";}
+-(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"bg2-hd.tmx" : @"bg2.tmx";}
 -(CGPoint) getStartPoint {return ccp(0.0f, 256.0f); }
 
 @end

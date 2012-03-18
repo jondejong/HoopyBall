@@ -32,7 +32,7 @@
 		label.position =  ccp(size.width/2, size.height/2);
         
 //        CCSprite *fader = [CCSprite spriteWithFile:@"fader.png"];
-        NSString* fader = [ScreenSize multiplier] == 2 ? @"fader-hd.tmx" : @"fader.tmx";
+        NSString* fader = [ScreenSize isRetina] ? @"fader-hd.tmx" : @"fader.tmx";
         [self addChild:[CCTMXTiledMap tiledMapWithTMXFile:fader] z:0];
 //        fader.anchorPoint = ccp(0,0);
 //        fader.position = ccp(0,0);

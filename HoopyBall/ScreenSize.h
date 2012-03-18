@@ -21,5 +21,6 @@
 +(CGSize) screenSize;
 +(CGFloat) ptmRatio;
 +(int) multiplier;
++(bool) isRetina;
 
 @end
