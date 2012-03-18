@@ -34,8 +34,8 @@ float width = 0.0;
 
         
 #if USE_LARGE_WORLD
-        height = 2048;
-        width = 4096;
+        height = 2048 * [ScreenSize multiplier];
+        width = 4096 * [ScreenSize multiplier];
 //        height = 1000;
 //        width = 1400;
 #else
@@ -56,7 +56,7 @@ float width = 0.0;
 }
 
 -(NSString*) getBackgroundTMX {
-    return @"bg.tmx";
+    return[ScreenSize multiplier] == 2 ? @"bg-hd.tmx" : @"bg.tmx";
 }
 
 -(void) dealloc 

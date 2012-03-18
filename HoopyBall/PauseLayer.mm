@@ -8,6 +8,7 @@
 
 #import "PauseLayer.h"
 #import "GameManager.h"
+#import "Constants.h"
 
 @implementation PauseLayer
 
@@ -30,10 +31,12 @@
         
 		label.position =  ccp(size.width/2, size.height/2);
         
-        CCSprite *fader = [CCSprite spriteWithFile:@"fader.png"];
-        fader.anchorPoint = ccp(0,0);
-        fader.position = ccp(0,0);
-        [self addChild: fader];
+//        CCSprite *fader = [CCSprite spriteWithFile:@"fader.png"];
+        NSString* fader = [ScreenSize multiplier] == 2 ? @"fader-hd.tmx" : @"fader.tmx";
+        [self addChild:[CCTMXTiledMap tiledMapWithTMXFile:fader] z:0];
+//        fader.anchorPoint = ccp(0,0);
+//        fader.position = ccp(0,0);
+//        [self addChild: fader];
         
 		// add the label as a child to this Layer
 		[self addChild: label];

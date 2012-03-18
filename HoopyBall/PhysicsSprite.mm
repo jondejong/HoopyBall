@@ -12,6 +12,7 @@
 // Needed PTM_RATIO
 //#import "BoxLayer.h"
 #import "Constants.h"
+#import "ScreenSize.h"
 
 #pragma mark - PhysicsSprite
 @implementation PhysicsSprite

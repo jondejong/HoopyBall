@@ -70,7 +70,7 @@ bool ballCreated = false;
         spriteTexture_ = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
 #else
-		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"red_ball_sm.png" capacity:1];
+		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"red_ball.png" capacity:1];
         spriteTexture_ = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
 #endif

@@ -5,11 +5,13 @@
 //  Created by Jonathan DeJong on 2/25/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+#import <Foundation/Foundation.h>
+#import "ScreenSize.h"
 
 #ifndef HoopyBall_Constants_h
 #define HoopyBall_Constants_h
 
-#define PTM_RATIO 64
+#define PTM_RATIO [ScreenSize ptmRatio]
 
 #define USE_LARGE_WORLD 1
 #define USE_GREEN_GUY 0

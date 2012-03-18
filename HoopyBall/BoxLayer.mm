@@ -110,7 +110,7 @@ enum {
 	
 	world->SetContinuousPhysics(true);
 	
-	m_debugDraw = new GLESDebugDraw( PTM_RATIO );
+        m_debugDraw = new GLESDebugDraw( PTM_RATIO );
 	world->SetDebugDraw(m_debugDraw);
 	
 	uint32 flags = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "HBLevel.h"
+#import "Constants.h"
 
 @implementation Level2Scene
 
@@ -14,14 +15,14 @@ CGSize size;
 
 -(id) init {
     if(self = [super init]) {
-        size.height = 4096;
-        size.width = 2048;
+        size.height = 4096 * [ScreenSize multiplier];
+        size.width = 2048 * [ScreenSize multiplier];
     }
     return self;
 }
 
 -(CGSize) getLevelSize { return size; }
--(NSString*) getBackgroundTMX { return @"bg2.tmx"; }
+-(NSString*) getBackgroundTMX { return[ScreenSize multiplier] == 2 ? @"bg2-hd.tmx" : @"bg2.tmx";}
 -(CGPoint) getStartPoint {return ccp(0.0f, 256.0f); }
 
 @end
