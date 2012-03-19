@@ -18,14 +18,14 @@ void WallContactListener::EndContact(b2Contact* contact)
     NSObject* userDataB = (NSObject*)contact->GetFixtureB()->GetUserData();
     
     if(userDataA != nil) {
-        if([userDataA isKindOfClass:[WallCollisionHandler class]]) {
-            [(WallCollisionHandler*)userDataA handleCollision];
+        if([userDataA isKindOfClass:[HBUserData class]]) {
+            [(HBUserData*)userDataA handleCollision];
         }
     }
     
     if(userDataB != nil) {
-        if([userDataB isKindOfClass:[WallCollisionHandler class]]) {
-            [(WallCollisionHandler*)userDataB handleCollision];
+        if([userDataB isKindOfClass:[HBUserData class]]) {
+            [(HBUserData*)userDataB handleCollision];
         }
     }
 }

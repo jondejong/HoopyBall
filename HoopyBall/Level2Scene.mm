@@ -25,4 +25,8 @@ CGSize size;
 -(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"bg2-hd.tmx" : @"bg2.tmx";}
 -(CGPoint) getStartPoint {return ccp(0.0f, 256.0f); }
 
+-(CGPoint) getEndPoint {
+    return ccp(10 * PTM_RATIO, 12 *PTM_RATIO);
+}
+
 @end

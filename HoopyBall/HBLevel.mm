@@ -23,4 +23,8 @@
     CGPoint p = ccp(0.0f, PTM_RATIO);
     return p;
 }
+
+-(CGPoint) getEndPoint {
+    return ccp([ScreenSize screenSize].width, [ScreenSize screenSize].height);
+}
 @end

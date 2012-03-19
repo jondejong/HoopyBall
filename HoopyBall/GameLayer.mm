@@ -24,7 +24,8 @@
 enum {
 	kTagParentNode = 1,
     kBlockParentNode = 2,
-    kBallSprite = 3
+    kBallSprite = 3,
+    kEndSprite = 4
 };
 
 
@@ -35,6 +36,7 @@ bool ballCreated = false;
     CGPoint startLocation;
     CCTexture2D *blockTexture_;
 	CCTexture2D *spriteTexture_;	// weak ref
+    CCTexture2D *starTexture_;
     b2Body* ballBody;
 	b2World* world;					// strong ref
 	GLESDebugDraw *m_debugDraw;		// strong ref
@@ -60,9 +62,6 @@ bool ballCreated = false;
 		self.isTouchEnabled = YES;
 		self.isAccelerometerEnabled = YES;
 
-        // init physics
-		[self initPhysics];
-		
 		//Set up sprite
 #if USE_GREEN_GUY
         [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"hoopy-ball-shapes.plist"];
@@ -74,8 +73,17 @@ bool ballCreated = false;
         spriteTexture_ = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
 #endif
-	
-//        [self addChild:[CCTMXTiledMap tiledMapWithTMXFile:@"bg.tmx"] z:-1];
+        
+        // Add the end point
+        CCSpriteBatchNode *star = [CCSpriteBatchNode batchNodeWithFile: 
+                                   [ScreenSize isRetina] ? @"star-hd.png" : @"star.png"
+                                                              capacity:1 ];
+        
+        starTexture_ = [star texture];
+        [self addChild:star z:0 tag:kEndSprite];
+        // init physics
+		[self initPhysics];
+        
 		[self scheduleUpdate];
 	}
 	return self;
@@ -102,7 +110,9 @@ bool ballCreated = false;
     world->SetContactListener(contactListener);
 	
 	uint32 flags = 0;
+#if DEBUG_DRAW_OUTLINE 
 	flags += b2Draw::e_shapeBit;
+#endif
 	//		flags += b2Draw::e_jointBit;
 	//		flags += b2Draw::e_aabbBit;
 	//		flags += b2Draw::e_pairBit;
@@ -142,6 +152,27 @@ bool ballCreated = false;
 	// right
 	groundBox.Set(b2Vec2(width/PTM_RATIO,height/PTM_RATIO), b2Vec2(width/PTM_RATIO,0));
 	groundBody->CreateFixture(&groundBox,0);
+    
+    [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"star.plist"];
+    
+    b2BodyDef starBodyDef;
+    starBodyDef.type = b2_staticBody;
+    starBodyDef.position.Set([[GameManager sharedInstance] getCurrentLevelEndPoint].x/PTM_RATIO, 
+                          [[GameManager sharedInstance] getCurrentLevelEndPoint].y/PTM_RATIO);
+    
+    b2Body* starBody = world->CreateBody(&starBodyDef);
+    
+    GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
+    [shapeCache addFixturesToBody:starBody forShapeName:
+    [ScreenSize isRetina] ? @"star-hd" : @"star"];
+    
+    PhysicsSprite *starSprite = [PhysicsSprite spriteWithTexture:starTexture_ ];
+//    starSprite.position = [[GameManager sharedInstance] getCurrentLevelEndPoint];
+    starSprite.position = ccp(1.0, 1.0);
+    starSprite.anchorPoint = [shapeCache anchorPointForShape:[ScreenSize isRetina] ? @"star-hd" : @"star"];
+    [starSprite setPhysicsBody:starBody];
+    CCNode *parent = [self getChildByTag:kEndSprite];
+    [parent addChild:starSprite];
 }
 
 -(void) draw
@@ -389,6 +420,9 @@ bool ballCreated = false;
 	
 	delete m_debugDraw;
 	m_debugDraw = NULL;
+    
+    starTexture_ = nil;
+    spriteTexture_ = nil;
 	
 	[super dealloc];
 }

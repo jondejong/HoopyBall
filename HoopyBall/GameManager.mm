@@ -109,6 +109,10 @@ GameManager * sharedInstance;
 -(CGPoint) getCurrentLevelStartPoint {
     return [levelScene getStartPoint];
 }
+
+-(CGPoint) getCurrentLevelEndPoint {
+    return [levelScene getEndPoint];
+}
                     
 - (void)dealloc
 {

@@ -11,6 +11,8 @@
 #ifndef HoopyBall_Constants_h
 #define HoopyBall_Constants_h
 
+#define DEBUG_DRAW_OUTLINE 1
+
 #define PTM_RATIO [ScreenSize ptmRatio]
 
 #define USE_LARGE_WORLD 1

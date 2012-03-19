@@ -9,14 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Box2D.h"
+#import "HBUserData.h"
 
-@interface WallCollisionHandler :CCNode {
+@interface WallCollisionHandler : HBUserData {
     
 }
 
 //-(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body andSprite: (CCSprite*)_sprite;
 -(id) initWithWorld:(b2World*) _world andBody:(b2Body*)_body;
-
--(void) handleCollision;
 
 @end

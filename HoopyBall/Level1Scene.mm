@@ -59,6 +59,10 @@ float width = 0.0;
     return [ScreenSize isRetina] ? @"bg-hd.tmx" : @"bg.tmx";
 }
 
+-(CGPoint) getEndPoint {
+    return ccp(6 * PTM_RATIO, 6 *PTM_RATIO);
+}
+
 -(void) dealloc 
 {
     [super dealloc];    

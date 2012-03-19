@@ -21,6 +21,8 @@
 -(void) handleUnpause;
 -(void) handleEndLevel;
 -(void) handleStartLevel: (int) level;
+
+-(CGPoint) getCurrentLevelEndPoint;
 -(CGSize) getCurrentLevelSize;
 -(CGPoint) getCurrentLevelStartPoint;
 
