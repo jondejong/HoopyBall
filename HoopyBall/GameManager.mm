@@ -14,6 +14,7 @@
 #import "GamePlayRootNode.h"
 #import "PauseLayer.h"
 #import "HBLevel.h"
+#import "WinLevelLayer.h"
 
 @implementation GameManager {
     
@@ -29,7 +30,8 @@ enum {
     GameLayerTag,
     LevelSceneTag,
     PauseLayerTag,
-    ControlLayerTag
+    ControlLayerTag,
+    WinLevelLayerTag
 };
 
 GameManager * sharedInstance;
@@ -53,7 +55,7 @@ GameManager * sharedInstance;
     [gameLayer pauseSchedulerAndActions];
     [gameLayer setIsTouchEnabled:false];
     [rootNode addChild:[PauseLayer layer] z:0 tag:PauseLayerTag];
-    }
+}
 
 -(void) handleUnpause {
     [rootNode removeChildByTag:PauseLayerTag cleanup:true]; 
@@ -91,19 +93,25 @@ GameManager * sharedInstance;
     controlLayer = [ControlLayer node];
     
     [rootNode addChild:levelScene z:0];
-    [rootNode addChild: gameLayer z:0];
+    [rootNode addChild:gameLayer z:0];
     [rootNode addChild:controlLayer z:0];
     
     [[CCDirector sharedDirector] replaceScene:rootNode];
     
 }
 
+-(void) handleWinLevel {
+    [gameLayer setIsTouchEnabled: false];
+    [gameLayer pauseSchedulerAndActions];
+    [rootNode addChild:[WinLevelLayer layer] z:0 tag:WinLevelLayerTag];
+}
+
 -(CGSize) getCurrentLevelSize {
     return [levelScene getLevelSize];
 }
 
--(void)markBodyForDeletion: (b2Body*) body {
-    [gameLayer markBodyForDeletion:body];
+-(void)markBodyForDeletion : (b2Body*)body {
+    [gameLayer markBodyForDeletion :body];
 }
 
 -(CGPoint) getCurrentLevelStartPoint {

@@ -9,11 +9,10 @@
 // Import the interfaces
 #import "GameLayer.h"
 #import "Constants.h"
-#import "WallContactListener.h"
 
-// Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
-#import "WallCollisionHandler.h"
+#import "HBUserData.h"
+#import "HBContactListener.h"
 
 #import "PhysicsSprite.h"
 #import "GameManager.h"
@@ -40,8 +39,7 @@ bool ballCreated = false;
     b2Body* ballBody;
 	b2World* world;					// strong ref
 	GLESDebugDraw *m_debugDraw;		// strong ref
-    WallContactListener* contactListener;
-    
+    HBContactListener* contactListener;
 
     CCArray* bodiesToDelete;
     float xOffset;
@@ -106,7 +104,7 @@ bool ballCreated = false;
 	m_debugDraw = new GLESDebugDraw( PTM_RATIO );
 	world->SetDebugDraw(m_debugDraw);
     
-    contactListener = new WallContactListener();
+    contactListener = new HBContactListener();
     world->SetContactListener(contactListener);
 	
 	uint32 flags = 0;
@@ -160,6 +158,11 @@ bool ballCreated = false;
     starBodyDef.position.Set([[GameManager sharedInstance] getCurrentLevelEndPoint].x/PTM_RATIO, 
                           [[GameManager sharedInstance] getCurrentLevelEndPoint].y/PTM_RATIO);
     
+    HBUserData* starData = [StarUserData node];
+    [self addChild:starData];
+    starBodyDef.userData = starData;
+    
+    
     b2Body* starBody = world->CreateBody(&starBodyDef);
     
     GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
@@ -203,6 +206,10 @@ bool ballCreated = false;
     wallDef.type = b2_staticBody;
     wallDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
     
+    HBUserData* data = [WallUserData node];
+    [self addChild:data];
+    wallDef.userData = data;
+    
     b2Body *body = world->CreateBody(&wallDef);
     b2PolygonShape wallShape;
 //    wallShape.SetAsBox(.5f, .5f);
@@ -212,11 +219,6 @@ bool ballCreated = false;
     wallFixture.friction = 0.0f;
     wallFixture.density = 1.0;
     wallFixture.restitution = WALL_RESTITUTION;
-    
-//    WallCollisionHandler* handler = [[WallCollisionHandler alloc] initWithWorld:world andBody:body andSprite: sprite];
-    WallCollisionHandler* handler = [[WallCollisionHandler alloc] initWithWorld:world andBody:body];
-    [self addChild:handler];
-    wallFixture.userData = handler;
     
     body->CreateFixture(&wallFixture);
         
@@ -241,7 +243,13 @@ bool ballCreated = false;
     bodyDef.position.Set(lp.x/PTM_RATIO, lp.y/PTM_RATIO);
     bodyDef.linearVelocity.Set(START_VELOCITY_X, START_VELOCITY_Y);
     bodyDef.bullet = true;
+    
+    HBUserData* data = [BallUserData node];
+    [self addChild:data];
+    bodyDef.userData = data;
+    
     ballBody = world->CreateBody(&bodyDef);
+    
 	
     // Define another box shape for our dynamic body.
     b2CircleShape ballShape;
@@ -383,7 +391,7 @@ bool ballCreated = false;
 }
 
 //-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {
--(void) markBodyForDeletion: (b2Body*)body{
+-(void) markBodyForDeletion : (b2Body*) body {
     [bodiesToDelete addObject:[[DeletableBody alloc] initWithBody:body]];
 }
 

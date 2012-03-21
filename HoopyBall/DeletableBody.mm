@@ -13,7 +13,6 @@
 
     @private
     b2Body* body;
-//    b2World* world;
 //    CCSprite * sprite;
 }
 
@@ -22,7 +21,6 @@
 -(id) initWithBody: (b2Body*)_body {
     if(self = [super init]) {
         body = _body;
-//        world = _world;
 //        sprite = _sprite;
     }
     return self;
@@ -41,7 +39,6 @@
 - (void)dealloc
 {
     body = nil;
-//    world = nil;
     [super dealloc];
 }
 

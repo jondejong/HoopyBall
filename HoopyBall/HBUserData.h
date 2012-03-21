@@ -8,11 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Box2D.h"
 
 @interface HBUserData : CCNode {
     
 }
 
--(void) handleCollision;
+#ifndef HB_USER_DATA_H
+#define HB_USER_DATA_H
+
+#define WALL_NODE_TYPE 1
+#define BALL_NODE_TYPE 2
+#define STAR_NODE_TYPE 3
+
+#endif
+
+-(void) handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody;
+-(int) nodeType;
 
 @end
+
+@interface WallUserData : HBUserData {} @end
+@interface BallUserData : HBUserData {} @end
+@interface StarUserData : HBUserData {} @end
