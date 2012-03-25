@@ -23,12 +23,17 @@
 -(void) handleStartLevel: (int) level;
 
 -(void) handleWinLevel;
+-(void) handeLoseLevel;
 
 -(CGPoint) getCurrentLevelEndPoint;
 -(CGSize) getCurrentLevelSize;
 -(CGPoint) getCurrentLevelStartPoint;
 
--(void)markBodyForDeletion : (b2Body*)body ;
+-(CGPoint) getCurrentLevelBadGuyPoint;
+-(float) getCurrentLevelBadGuyXSpeed;
+-(float) getCurrentLevelBadGuyYSpeed;
+-(int) getCurrentLevelBadGuyFrequency;
 
+-(void) markBodyForDeletion : (b2Body*)body;
 
 @end

@@ -24,7 +24,8 @@ enum {
 	kTagParentNode = 1,
     kBlockParentNode = 2,
     kBallSprite = 3,
-    kEndSprite = 4
+    kEndSprite = 4,
+    kBadGuySpriteTag = 5
 };
 
 
@@ -36,6 +37,7 @@ bool ballCreated = false;
     CCTexture2D *blockTexture_;
 	CCTexture2D *spriteTexture_;	// weak ref
     CCTexture2D *starTexture_;
+    CCTexture2D *badGuyTexture;
     b2Body* ballBody;
 	b2World* world;					// strong ref
 	GLESDebugDraw *m_debugDraw;		// strong ref
@@ -71,6 +73,10 @@ bool ballCreated = false;
         spriteTexture_ = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
 #endif
+        
+        CCSpriteBatchNode *badGuy = [CCSpriteBatchNode batchNodeWithFile:@"black-ball.png" capacity:25];
+        badGuyTexture = [badGuy texture];
+        [self addChild:badGuy z:0 tag:kBadGuySpriteTag];
         
         // Add the end point
         CCSpriteBatchNode *star = [CCSpriteBatchNode batchNodeWithFile: 
@@ -275,6 +281,47 @@ bool ballCreated = false;
 
 }
 
+-(void) addBadGuy {
+    CCLOG(@"BOOM!");
+    
+    CCNode *badGuy = [self getChildByTag:kBadGuySpriteTag];
+	
+    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:badGuyTexture ];						
+    [badGuy addChild:sprite];
+	
+    CGPoint lp = [[GameManager sharedInstance] getCurrentLevelBadGuyPoint];
+    sprite.position = lp; 
+	
+    // Define the dynamic body.
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.gravityScale = 0.0f;
+    bodyDef.position.Set(lp.x/PTM_RATIO, lp.y/PTM_RATIO);
+    bodyDef.linearVelocity.Set([[GameManager sharedInstance] getCurrentLevelBadGuyXSpeed], [[GameManager sharedInstance] getCurrentLevelBadGuyYSpeed]);
+    bodyDef.bullet = true;
+    
+    HBUserData* data = [BadGuyUserData node];
+    [self addChild:data];
+    bodyDef.userData = data;
+    
+    b2Body* badGuyBody = world->CreateBody(&bodyDef);
+    
+	
+    // Define another box shape for our dynamic body.
+    b2CircleShape ballShape;
+    ballShape.m_radius = .432f;
+    
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &ballShape;	
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.0f;
+    fixtureDef.restitution = 1.0f;
+    badGuyBody->CreateFixture(&fixtureDef);
+    
+    [sprite setPhysicsBody:badGuyBody];
+    
+}
+
 -(void) update: (ccTime) dt
 {
 	//It is recommended that a fixed time step is used with Box2D for stability
@@ -292,7 +339,16 @@ bool ballCreated = false;
     
     if(ballCreated) {
         b2Vec2 pos  = ballBody->GetPosition();
+        
+        int freq = [[GameManager sharedInstance] getCurrentLevelBadGuyFrequency];
+        int rand = arc4random() % freq;
 
+//        CCLOG(@"Freq %d -- Rand %d", freq, rand);
+        
+        if(rand == 1) {
+            [self addBadGuy];
+        }
+        
 //        CCLOG(@"POSITION: %f, %f", x, y);
         [self updateBGPosition: ccp(pos.x * PTM_RATIO, pos.y * PTM_RATIO )];
     }
@@ -431,6 +487,7 @@ bool ballCreated = false;
     
     starTexture_ = nil;
     spriteTexture_ = nil;
+    badGuyTexture = nil;
 	
 	[super dealloc];
 }

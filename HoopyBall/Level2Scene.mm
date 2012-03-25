@@ -29,4 +29,13 @@ CGSize size;
     return ccp(10 * PTM_RATIO, 12 *PTM_RATIO);
 }
 
+-(CGPoint) getBadGuyStartPoint {
+    return ccp(PTM_RATIO, PTM_RATIO);
+}
+
+-(int) getBadGuyFrequency {return 300;}
+
+-(float) getBadGuyXSpeed {return 3;}
+-(float) getBadGuyYSpeed {return 4;}
+
 @end

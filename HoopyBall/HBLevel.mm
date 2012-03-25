@@ -27,4 +27,14 @@
 -(CGPoint) getEndPoint {
     return ccp([ScreenSize screenSize].width, [ScreenSize screenSize].height);
 }
+
+-(CGPoint) getBadGuyStartPoint {
+    return ccp(-1000, -1000);
+}
+
+-(float) getBadGuyXSpeed {return 0;}
+-(float) getBadGuyYSpeed {return 0;}
+
+-(int) getBadGuyFrequency {return 10000;}
+
 @end

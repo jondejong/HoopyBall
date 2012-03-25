@@ -63,6 +63,14 @@ float width = 0.0;
     return ccp(6 * PTM_RATIO, 6 *PTM_RATIO);
 }
 
+-(CGPoint) getBadGuyStartPoint {
+    return ccp(PTM_RATIO, PTM_RATIO);
+}
+-(float) getBadGuyXSpeed {return 8;}
+-(float) getBadGuyYSpeed {return 1;}
+
+-(int) getBadGuyFrequency {return 500;}
+
 -(void) dealloc 
 {
     [super dealloc];    

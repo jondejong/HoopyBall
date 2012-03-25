@@ -218,6 +218,10 @@
 		C2A1A41D14F9A9F500B61269 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A1A41C14F9A9F500B61269 /* GameLayer.mm */; };
 		C2A393E8151179F10071198F /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A393E7151179F10071198F /* GameManager.mm */; };
 		C2C6985E1509A87900C58976 /* GamePlayRootNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */; };
+		C2E9FB3B151E732900906B40 /* black-ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB39151E732900906B40 /* black-ball.png */; };
+		C2E9FB3C151E732900906B40 /* black-ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB3A151E732900906B40 /* black-ball@2x.png */; };
+		C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */; };
+		C2E9FB44151F865200906B40 /* LoseLevelLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB43151F865200906B40 /* LoseLevelLayer.mm */; };
 		C2ED1F8914F72B11005BA172 /* red_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C2ED1F8814F72B11005BA172 /* red_ball.png */; };
 		C2ED1F9114F73720005BA172 /* Level1Scene.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2ED1F9014F73720005BA172 /* Level1Scene.mm */; };
 		C2ED860E14F2F4A600834972 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2ED860D14F2F4A600834972 /* Default.png */; };
@@ -620,6 +624,11 @@
 		C2A393E7151179F10071198F /* GameManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameManager.mm; sourceTree = "<group>"; };
 		C2C6985C1509A87900C58976 /* GamePlayRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayRootNode.h; sourceTree = "<group>"; };
 		C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GamePlayRootNode.mm; sourceTree = "<group>"; };
+		C2E9FB39151E732900906B40 /* black-ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball.png"; path = "Resources/black-ball.png"; sourceTree = "<group>"; };
+		C2E9FB3A151E732900906B40 /* black-ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball@2x.png"; path = "Resources/black-ball@2x.png"; sourceTree = "<group>"; };
+		C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BadGuyUserData.mm; sourceTree = "<group>"; };
+		C2E9FB42151F865200906B40 /* LoseLevelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoseLevelLayer.h; sourceTree = "<group>"; };
+		C2E9FB43151F865200906B40 /* LoseLevelLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoseLevelLayer.mm; sourceTree = "<group>"; };
 		C2ED1F8814F72B11005BA172 /* red_ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_ball.png; path = Resources/red_ball.png; sourceTree = "<group>"; };
 		C2ED1F9014F73720005BA172 /* Level1Scene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level1Scene.mm; sourceTree = "<group>"; };
 		C2ED860D14F2F4A600834972 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -863,10 +872,6 @@
 				C2A1A41C14F9A9F500B61269 /* GameLayer.mm */,
 				C2A1A41714F9A31A00B61269 /* ControlLayer.h */,
 				C2A1A41814F9A31A00B61269 /* ControlLayer.mm */,
-				C2FDBCA214F4A1AF00F9B5CA /* PauseLayer.h */,
-				C2FDBCA314F4A1AF00F9B5CA /* PauseLayer.mm */,
-				C28D9EF215196856002F7FF6 /* WinLevelLayer.h */,
-				C28D9EF315196856002F7FF6 /* WinLevelLayer.mm */,
 				C240804C14F2A42200BB1C4A /* AppDelegate.h */,
 				C240804D14F2A42200BB1C4A /* AppDelegate.mm */,
 				C240804F14F2A42200BB1C4A /* StartScene.h */,
@@ -875,6 +880,7 @@
 				C248F5A0150C4FCB00524245 /* GB2ShapeCache.mm */,
 				C2A1A4BD14F9EB7E00B61269 /* GLES-Render.h */,
 				C2A1A4BE14F9EB7E00B61269 /* GLES-Render.mm */,
+				C2E9FB41151F860600906B40 /* DisplayLayers */,
 				C28D9EEB15194EE9002F7FF6 /* NodeUserData */,
 				C27D7D7B15165E2C00044163 /* Utils */,
 				C2F09B241512D7E60071726C /* Levels */,
@@ -889,6 +895,8 @@
 		C2407EDC14F2A42000BB1C4A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2E9FB39151E732900906B40 /* black-ball.png */,
+				C2E9FB3A151E732900906B40 /* black-ball@2x.png */,
 				C22CCB6C1516BDC500B0C4C3 /* star.png */,
 				C22CCB781516C95700B0C4C3 /* star-hd.png */,
 				C22CCB761516C94900B0C4C3 /* star.plist */,
@@ -1283,8 +1291,22 @@
 				C22CCB741516BF8500B0C4C3 /* HBUserData.mm */,
 				C28D9EED15194F31002F7FF6 /* BallUserData.mm */,
 				C28D9EF015196051002F7FF6 /* StarUserData.mm */,
+				C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */,
 			);
 			name = NodeUserData;
+			sourceTree = "<group>";
+		};
+		C2E9FB41151F860600906B40 /* DisplayLayers */ = {
+			isa = PBXGroup;
+			children = (
+				C2FDBCA214F4A1AF00F9B5CA /* PauseLayer.h */,
+				C2FDBCA314F4A1AF00F9B5CA /* PauseLayer.mm */,
+				C28D9EF215196856002F7FF6 /* WinLevelLayer.h */,
+				C28D9EF315196856002F7FF6 /* WinLevelLayer.mm */,
+				C2E9FB42151F865200906B40 /* LoseLevelLayer.h */,
+				C2E9FB43151F865200906B40 /* LoseLevelLayer.mm */,
+			);
+			name = DisplayLayers;
 			sourceTree = "<group>";
 		};
 		C2F09B241512D7E60071726C /* Levels */ = {
@@ -1396,6 +1418,8 @@
 				C22CCB6E1516BDC500B0C4C3 /* star.png in Resources */,
 				C22CCB771516C94900B0C4C3 /* star.plist in Resources */,
 				C22CCB791516C95700B0C4C3 /* star-hd.png in Resources */,
+				C2E9FB3B151E732900906B40 /* black-ball.png in Resources */,
+				C2E9FB3C151E732900906B40 /* black-ball@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1568,6 +1592,8 @@
 				C28D9EEE15194F31002F7FF6 /* BallUserData.mm in Sources */,
 				C28D9EF115196051002F7FF6 /* StarUserData.mm in Sources */,
 				C28D9EF415196856002F7FF6 /* WinLevelLayer.mm in Sources */,
+				C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */,
+				C2E9FB44151F865200906B40 /* LoseLevelLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #import "PauseLayer.h"
 #import "HBLevel.h"
 #import "WinLevelLayer.h"
+#import "LoseLevelLayer.h"
 
 @implementation GameManager {
     
@@ -31,7 +32,8 @@ enum {
     LevelSceneTag,
     PauseLayerTag,
     ControlLayerTag,
-    WinLevelLayerTag
+    WinLevelLayerTag,
+    LoseLevelLayerTag
 };
 
 GameManager * sharedInstance;
@@ -106,6 +108,12 @@ GameManager * sharedInstance;
     [rootNode addChild:[WinLevelLayer layer] z:0 tag:WinLevelLayerTag];
 }
 
+-(void) handeLoseLevel {
+    [gameLayer setIsTouchEnabled: false];
+    [gameLayer pauseSchedulerAndActions];
+    [rootNode addChild:[LoseLevelLayer layer] z:0 tag:LoseLevelLayerTag];
+}
+
 -(CGSize) getCurrentLevelSize {
     return [levelScene getLevelSize];
 }
@@ -120,6 +128,19 @@ GameManager * sharedInstance;
 
 -(CGPoint) getCurrentLevelEndPoint {
     return [levelScene getEndPoint];
+}
+
+-(CGPoint) getCurrentLevelBadGuyPoint{
+    return [levelScene getBadGuyStartPoint];
+}
+-(float) getCurrentLevelBadGuyXSpeed {
+    return [levelScene getBadGuyXSpeed];
+}
+-(float) getCurrentLevelBadGuyYSpeed {
+    return [levelScene getBadGuyYSpeed];
+}
+-(int)getCurrentLevelBadGuyFrequency {
+    return [levelScene getBadGuyFrequency];
 }
                     
 - (void)dealloc

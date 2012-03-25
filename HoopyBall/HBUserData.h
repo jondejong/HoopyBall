@@ -20,6 +20,7 @@
 #define WALL_NODE_TYPE 1
 #define BALL_NODE_TYPE 2
 #define STAR_NODE_TYPE 3
+#define BAD_GUY_NODE_TYPE 4
 
 #endif
 
@@ -31,3 +32,4 @@
 @interface WallUserData : HBUserData {} @end
 @interface BallUserData : HBUserData {} @end
 @interface StarUserData : HBUserData {} @end
+@interface BadGuyUserData : HBUserData {} @end

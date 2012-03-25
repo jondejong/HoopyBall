@@ -30,4 +30,6 @@
 -(void) updateBGPosition: (CGPoint)position;
 -(void) doUpdateBGPosition: (CGPoint) postition;
 
+-(void) addBadGuy;
+
 @end

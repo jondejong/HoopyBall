@@ -18,6 +18,10 @@
 -(NSString*) getBackgroundTMX;
 -(CGPoint) getStartPoint;
 -(CGPoint) getEndPoint;
+-(CGPoint) getBadGuyStartPoint;
+-(float) getBadGuyXSpeed;
+-(float) getBadGuyYSpeed;
+-(int) getBadGuyFrequency;
 
 @end 
 
