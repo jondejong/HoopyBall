@@ -32,4 +32,6 @@
 
 -(void) addBadGuy;
 
+-(void)addStaticBody: (b2FixtureDef*)fixture with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite;
+
 @end

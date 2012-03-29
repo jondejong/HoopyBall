@@ -71,6 +71,17 @@ float width = 0.0;
 
 -(int) getBadGuyFrequency {return 500;}
 
+-(void) createObstacles {
+    /*ZEBUG*/
+//    CCSprite* sprite = [CCSprite spriteWithTexture:texture];
+//    sprite.position = ccp(PTM_RATIO, PTM_RATIO);
+//    
+//    CCNode *bparent = [layer getChildByTag:textureParentTag];
+//    [bparent addChild:sprite];
+//    
+    
+}
+
 -(void) dealloc 
 {
     [super dealloc];    

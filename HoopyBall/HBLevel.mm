@@ -37,4 +37,6 @@
 
 -(int) getBadGuyFrequency {return 10000;}
 
+-(void) createObstacles{}
+
 @end

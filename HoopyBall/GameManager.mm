@@ -94,9 +94,11 @@ GameManager * sharedInstance;
     
     controlLayer = [ControlLayer node];
     
-    [rootNode addChild:levelScene z:0];
     [rootNode addChild:gameLayer z:0];
+    [rootNode addChild:levelScene z:0];
     [rootNode addChild:controlLayer z:0];
+    
+    [levelScene createObstacles];
     
     [[CCDirector sharedDirector] replaceScene:rootNode];
     
@@ -141,6 +143,10 @@ GameManager * sharedInstance;
 }
 -(int)getCurrentLevelBadGuyFrequency {
     return [levelScene getBadGuyFrequency];
+}
+
+-(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
+    [gameLayer addStaticBody: fixture with: body andWith: sprite];
 }
                     
 - (void)dealloc

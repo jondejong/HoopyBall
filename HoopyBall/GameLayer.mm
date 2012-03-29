@@ -25,7 +25,8 @@ enum {
     kBlockParentNode = 2,
     kBallSprite = 3,
     kEndSprite = 4,
-    kBadGuySpriteTag = 5
+    kBadGuySpriteTag = 5,
+    kBrickTexture = 6
 };
 
 
@@ -38,6 +39,7 @@ bool ballCreated = false;
 	CCTexture2D *spriteTexture_;	// weak ref
     CCTexture2D *starTexture_;
     CCTexture2D *badGuyTexture;
+    
     b2Body* ballBody;
 	b2World* world;					// strong ref
 	GLESDebugDraw *m_debugDraw;		// strong ref
@@ -51,7 +53,7 @@ bool ballCreated = false;
 -(id) init
 {
 	if( (self=[super init])) {
-         bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
+        bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
         xOffset = 0.0f;
         yOffset = 0.0f;
         ballCreated = false;
@@ -85,6 +87,7 @@ bool ballCreated = false;
         
         starTexture_ = [star texture];
         [self addChild:star z:0 tag:kEndSprite];
+        
         // init physics
 		[self initPhysics];
         
@@ -177,11 +180,14 @@ bool ballCreated = false;
     
     PhysicsSprite *starSprite = [PhysicsSprite spriteWithTexture:starTexture_ ];
 //    starSprite.position = [[GameManager sharedInstance] getCurrentLevelEndPoint];
-    starSprite.position = ccp(1.0, 1.0);
+//    starSprite.position = ccp(1.0, 1.0);
     starSprite.anchorPoint = [shapeCache anchorPointForShape:[ScreenSize isRetina] ? @"star-hd" : @"star"];
     [starSprite setPhysicsBody:starBody];
     CCNode *parent = [self getChildByTag:kEndSprite];
     [parent addChild:starSprite];
+    
+    
+  
 }
 
 -(void) draw
@@ -222,7 +228,7 @@ bool ballCreated = false;
     wallShape.SetAsBox(l/2.0f, .25f, b2Vec2(0.0f, 0.0f), a);
     b2FixtureDef wallFixture;
     wallFixture.shape = &wallShape;
-    wallFixture.friction = 0.0f;
+    wallFixture.friction = OBJECT_FRICTION;
     wallFixture.density = 1.0;
     wallFixture.restitution = WALL_RESTITUTION;
     
@@ -282,8 +288,6 @@ bool ballCreated = false;
 }
 
 -(void) addBadGuy {
-    CCLOG(@"BOOM!");
-    
     CCNode *badGuy = [self getChildByTag:kBadGuySpriteTag];
 	
     PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:badGuyTexture ];						
@@ -343,8 +347,6 @@ bool ballCreated = false;
         int freq = [[GameManager sharedInstance] getCurrentLevelBadGuyFrequency];
         int rand = arc4random() % freq;
 
-//        CCLOG(@"Freq %d -- Rand %d", freq, rand);
-        
         if(rand == 1) {
             [self addBadGuy];
         }
@@ -464,6 +466,11 @@ bool ballCreated = false;
     bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
 }
 
+-(void)addStaticBody: (b2FixtureDef*)fixture with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite{
+    b2Body* body = world->CreateBody(bodyDef);
+    body->CreateFixture(fixture);
+    [self addChild:sprite];
+}
 
 -(void) initStartLocation {
     startLocation.x = -1;
@@ -488,7 +495,7 @@ bool ballCreated = false;
     starTexture_ = nil;
     spriteTexture_ = nil;
     badGuyTexture = nil;
-	
+    
 	[super dealloc];
 }
 

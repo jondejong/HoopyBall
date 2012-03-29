@@ -22,6 +22,7 @@
 -(float) getBadGuyXSpeed;
 -(float) getBadGuyYSpeed;
 -(int) getBadGuyFrequency;
+-(void) createObstacles;
 
 @end 
 

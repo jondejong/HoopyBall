@@ -222,6 +222,8 @@
 		C2E9FB3C151E732900906B40 /* black-ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB3A151E732900906B40 /* black-ball@2x.png */; };
 		C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */; };
 		C2E9FB44151F865200906B40 /* LoseLevelLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB43151F865200906B40 /* LoseLevelLayer.mm */; };
+		C2E9FB491520023600906B40 /* brick-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB481520023600906B40 /* brick-1.png */; };
+		C2E9FB4B1520096800906B40 /* brick-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB4A1520096800906B40 /* brick-1@2x.png */; };
 		C2ED1F8914F72B11005BA172 /* red_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C2ED1F8814F72B11005BA172 /* red_ball.png */; };
 		C2ED1F9114F73720005BA172 /* Level1Scene.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2ED1F9014F73720005BA172 /* Level1Scene.mm */; };
 		C2ED860E14F2F4A600834972 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2ED860D14F2F4A600834972 /* Default.png */; };
@@ -629,6 +631,8 @@
 		C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BadGuyUserData.mm; sourceTree = "<group>"; };
 		C2E9FB42151F865200906B40 /* LoseLevelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoseLevelLayer.h; sourceTree = "<group>"; };
 		C2E9FB43151F865200906B40 /* LoseLevelLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoseLevelLayer.mm; sourceTree = "<group>"; };
+		C2E9FB481520023600906B40 /* brick-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brick-1.png"; path = "Resources/brick-1.png"; sourceTree = "<group>"; };
+		C2E9FB4A1520096800906B40 /* brick-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brick-1@2x.png"; path = "Resources/brick-1@2x.png"; sourceTree = "<group>"; };
 		C2ED1F8814F72B11005BA172 /* red_ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_ball.png; path = Resources/red_ball.png; sourceTree = "<group>"; };
 		C2ED1F9014F73720005BA172 /* Level1Scene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level1Scene.mm; sourceTree = "<group>"; };
 		C2ED860D14F2F4A600834972 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -895,6 +899,8 @@
 		C2407EDC14F2A42000BB1C4A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2E9FB481520023600906B40 /* brick-1.png */,
+				C2E9FB4A1520096800906B40 /* brick-1@2x.png */,
 				C2E9FB39151E732900906B40 /* black-ball.png */,
 				C2E9FB3A151E732900906B40 /* black-ball@2x.png */,
 				C22CCB6C1516BDC500B0C4C3 /* star.png */,
@@ -1420,6 +1426,8 @@
 				C22CCB791516C95700B0C4C3 /* star-hd.png in Resources */,
 				C2E9FB3B151E732900906B40 /* black-ball.png in Resources */,
 				C2E9FB3C151E732900906B40 /* black-ball@2x.png in Resources */,
+				C2E9FB491520023600906B40 /* brick-1.png in Resources */,
+				C2E9FB4B1520096800906B40 /* brick-1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
