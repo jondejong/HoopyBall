@@ -107,12 +107,14 @@ GameManager * sharedInstance;
 -(void) handleWinLevel {
     [gameLayer setIsTouchEnabled: false];
     [gameLayer pauseSchedulerAndActions];
+    [controlLayer deactivate];
     [rootNode addChild:[WinLevelLayer layer] z:0 tag:WinLevelLayerTag];
 }
 
 -(void) handeLoseLevel {
     [gameLayer setIsTouchEnabled: false];
     [gameLayer pauseSchedulerAndActions];
+    [controlLayer deactivate];
     [rootNode addChild:[LoseLevelLayer layer] z:0 tag:LoseLevelLayerTag];
 }
 
@@ -148,7 +150,11 @@ GameManager * sharedInstance;
 -(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
     [gameLayer addStaticBody: fixture with: body andWith: sprite];
 }
-                    
+   
+-(void) removeSpriteFromGame: (CCSprite*) sprite {
+    [gameLayer removeChild:sprite cleanup:true];
+}
+
 - (void)dealloc
 {
     sharedInstance = nil;

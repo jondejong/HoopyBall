@@ -66,7 +66,7 @@ float width = 0.0;
 -(CGPoint) getBadGuyStartPoint {
     return ccp(PTM_RATIO, PTM_RATIO);
 }
--(float) getBadGuyXSpeed {return 8;}
+-(float) getBadGuyXSpeed {return 4;}
 -(float) getBadGuyYSpeed {return 1;}
 
 -(int) getBadGuyFrequency {return 500;}

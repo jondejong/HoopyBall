@@ -11,7 +11,7 @@
 #ifndef HoopyBall_Constants_h
 #define HoopyBall_Constants_h
 
-#define DEBUG_DRAW_OUTLINE 1
+#define DEBUG_DRAW_OUTLINE 0
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 
@@ -28,5 +28,7 @@
 #define CAMERA_FOLLOW_BALL 0
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
+
+#define HB_PI 3.1415927
 
 #endif

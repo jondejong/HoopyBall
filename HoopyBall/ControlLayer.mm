@@ -53,4 +53,8 @@ CCMenuItemSprite *pauseButton;
     [pauseButton setIsEnabled:true];
 }
 
+-(void) deactivate {
+    [pauseButton setIsEnabled:false];
+}
+
 @end

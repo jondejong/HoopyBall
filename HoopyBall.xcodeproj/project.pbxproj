@@ -218,6 +218,8 @@
 		C2A1A41D14F9A9F500B61269 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A1A41C14F9A9F500B61269 /* GameLayer.mm */; };
 		C2A393E8151179F10071198F /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2A393E7151179F10071198F /* GameManager.mm */; };
 		C2C6985E1509A87900C58976 /* GamePlayRootNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */; };
+		C2E3A558152669F900E8A77C /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E3A556152669F900E8A77C /* wall.png */; };
+		C2E3A559152669F900E8A77C /* wall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E3A557152669F900E8A77C /* wall@2x.png */; };
 		C2E9FB3B151E732900906B40 /* black-ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB39151E732900906B40 /* black-ball.png */; };
 		C2E9FB3C151E732900906B40 /* black-ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB3A151E732900906B40 /* black-ball@2x.png */; };
 		C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */; };
@@ -626,6 +628,8 @@
 		C2A393E7151179F10071198F /* GameManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameManager.mm; sourceTree = "<group>"; };
 		C2C6985C1509A87900C58976 /* GamePlayRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayRootNode.h; sourceTree = "<group>"; };
 		C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GamePlayRootNode.mm; sourceTree = "<group>"; };
+		C2E3A556152669F900E8A77C /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/wall.png; sourceTree = "<group>"; };
+		C2E3A557152669F900E8A77C /* wall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wall@2x.png"; path = "Resources/wall@2x.png"; sourceTree = "<group>"; };
 		C2E9FB39151E732900906B40 /* black-ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball.png"; path = "Resources/black-ball.png"; sourceTree = "<group>"; };
 		C2E9FB3A151E732900906B40 /* black-ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball@2x.png"; path = "Resources/black-ball@2x.png"; sourceTree = "<group>"; };
 		C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BadGuyUserData.mm; sourceTree = "<group>"; };
@@ -905,6 +909,8 @@
 				C2E9FB3A151E732900906B40 /* black-ball@2x.png */,
 				C22CCB6C1516BDC500B0C4C3 /* star.png */,
 				C22CCB781516C95700B0C4C3 /* star-hd.png */,
+				C2E3A556152669F900E8A77C /* wall.png */,
+				C2E3A557152669F900E8A77C /* wall@2x.png */,
 				C22CCB761516C94900B0C4C3 /* star.plist */,
 				C22CCB681516A11100B0C4C3 /* pause.png */,
 				C22CCB691516A11100B0C4C3 /* pause@2x.png */,
@@ -1428,6 +1434,8 @@
 				C2E9FB3C151E732900906B40 /* black-ball@2x.png in Resources */,
 				C2E9FB491520023600906B40 /* brick-1.png in Resources */,
 				C2E9FB4B1520096800906B40 /* brick-1@2x.png in Resources */,
+				C2E3A558152669F900E8A77C /* wall.png in Resources */,
+				C2E3A559152669F900E8A77C /* wall@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

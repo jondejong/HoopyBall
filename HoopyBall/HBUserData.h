@@ -29,7 +29,11 @@
 
 @end
 
-@interface WallUserData : HBUserData {} @end
+@interface WallUserData : HBUserData {}
+-(NSArray *) sprites;
+-(void) setSprites:(NSArray*)sprites;
+@end
+
 @interface BallUserData : HBUserData {} @end
 @interface StarUserData : HBUserData {} @end
 @interface BadGuyUserData : HBUserData {} @end

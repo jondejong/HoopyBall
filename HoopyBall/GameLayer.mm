@@ -26,7 +26,8 @@ enum {
     kBallSprite = 3,
     kEndSprite = 4,
     kBadGuySpriteTag = 5,
-    kBrickTexture = 6
+    kBrickTexture = 6,
+    kWallTexture = 7
 };
 
 
@@ -39,6 +40,7 @@ bool ballCreated = false;
 	CCTexture2D *spriteTexture_;	// weak ref
     CCTexture2D *starTexture_;
     CCTexture2D *badGuyTexture;
+    CCTexture2D *wallTexture;
     
     b2Body* ballBody;
 	b2World* world;					// strong ref
@@ -84,6 +86,10 @@ bool ballCreated = false;
         CCSpriteBatchNode *star = [CCSpriteBatchNode batchNodeWithFile: 
                                    [ScreenSize isRetina] ? @"star-hd.png" : @"star.png"
                                                               capacity:1 ];
+        
+        CCSpriteBatchNode *wall = [CCSpriteBatchNode batchNodeWithFile:@"wall.png" capacity: 200];
+        wallTexture = [wall texture];
+        [self addChild:wall z:0 tag:kWallTexture];
         
         starTexture_ = [star texture];
         [self addChild:star z:0 tag:kEndSprite];
@@ -209,22 +215,68 @@ bool ballCreated = false;
 }
 
 -(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a{
-//    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:blockTexture_];
-//    CCNode *parent = [self getChildByTag: kBlockParentNode];
-//    [parent addChild: sprite];
-//    sprite.position = ccp(p.x, p.y);
+
+    // Wall length needs to be redefined to align with the sprite.
+    // Round it up to the neares multiple of 1/2 the PTM Ratio
+    int sCount = 0;
+    float fSCount = l / .5f;
+    sCount = (int) fSCount;
+    float rm = fSCount - sCount;
+    if(rm >= .5) {
+        sCount = sCount++;
+    } 
+    if(sCount % 2 != 1) {
+        sCount--;
+    }
+       
+    l = .5 * sCount;  
+    
+    CCLOG(@"New l: %f with sCount: %d", l, sCount);
+    
+    //Create the sprites, and put them in the right places:
+//    NSArray* sprites = [NSArray array]
+    NSMutableArray *sprites = [NSMutableArray array];
+    float startX = p.x;
+    float startY = p.y;
+    
+    
+// Basic trig to find the new position:    
+//    x2 = x1 + d*cos A
+//    y2 = y1 + d*sin A
+    
+    int spritesPerSide = (sCount - 1) / 2;
+    
+    startX = startX + (spritesPerSide * .5 * PTM_RATIO) * cos(a);
+    startY = startY + (spritesPerSide * .5 * PTM_RATIO) * sin(a);
+
+    CGPoint spritePoint = ccp(startX, startY);
+
+    for(int i=0; i<sCount; i++) {
+        CCSprite* sprite = [CCSprite spriteWithTexture:wallTexture];
+        sprite.position = ccp(spritePoint.x, spritePoint.y);
+        sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(a);
+        [self addChild:sprite];
+        [sprite retain];
+        [sprites addObject:sprite];
+        
+        startX = startX - (.5 * PTM_RATIO) * cos(a);
+        startY = startY - (.5 * PTM_RATIO) * sin(a);
+        spritePoint = ccp(startX, startY);  
+
+    }
     
     b2BodyDef wallDef;
     wallDef.type = b2_staticBody;
     wallDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
     
-    HBUserData* data = [WallUserData node];
+    WallUserData* data = [WallUserData node];
+    [data setSprites:sprites];
+    
     [self addChild:data];
     wallDef.userData = data;
     
     b2Body *body = world->CreateBody(&wallDef);
     b2PolygonShape wallShape;
-//    wallShape.SetAsBox(.5f, .5f);
     wallShape.SetAsBox(l/2.0f, .25f, b2Vec2(0.0f, 0.0f), a);
     b2FixtureDef wallFixture;
     wallFixture.shape = &wallShape;
@@ -233,8 +285,7 @@ bool ballCreated = false;
     wallFixture.restitution = WALL_RESTITUTION;
     
     body->CreateFixture(&wallFixture);
-        
-//    [sprite setPhysicsBody:body];
+
 }
 
 -(void) addBall
