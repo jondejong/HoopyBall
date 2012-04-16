@@ -220,6 +220,9 @@
 		C2C6985E1509A87900C58976 /* GamePlayRootNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */; };
 		C2E3A558152669F900E8A77C /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E3A556152669F900E8A77C /* wall.png */; };
 		C2E3A559152669F900E8A77C /* wall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E3A557152669F900E8A77C /* wall@2x.png */; };
+		C2E85207153B447400A20BAA /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E85205153B447400A20BAA /* smiley.png */; };
+		C2E85208153B447400A20BAA /* smiley@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E85206153B447400A20BAA /* smiley@2x.png */; };
+		C2E8520C153B46EC00A20BAA /* CoinUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E8520B153B46EC00A20BAA /* CoinUserData.mm */; };
 		C2E9FB3B151E732900906B40 /* black-ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB39151E732900906B40 /* black-ball.png */; };
 		C2E9FB3C151E732900906B40 /* black-ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB3A151E732900906B40 /* black-ball@2x.png */; };
 		C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */; };
@@ -630,6 +633,9 @@
 		C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GamePlayRootNode.mm; sourceTree = "<group>"; };
 		C2E3A556152669F900E8A77C /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Resources/wall.png; sourceTree = "<group>"; };
 		C2E3A557152669F900E8A77C /* wall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wall@2x.png"; path = "Resources/wall@2x.png"; sourceTree = "<group>"; };
+		C2E85205153B447400A20BAA /* smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smiley.png; path = Resources/smiley.png; sourceTree = "<group>"; };
+		C2E85206153B447400A20BAA /* smiley@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "smiley@2x.png"; path = "Resources/smiley@2x.png"; sourceTree = "<group>"; };
+		C2E8520B153B46EC00A20BAA /* CoinUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoinUserData.mm; sourceTree = "<group>"; };
 		C2E9FB39151E732900906B40 /* black-ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball.png"; path = "Resources/black-ball.png"; sourceTree = "<group>"; };
 		C2E9FB3A151E732900906B40 /* black-ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball@2x.png"; path = "Resources/black-ball@2x.png"; sourceTree = "<group>"; };
 		C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BadGuyUserData.mm; sourceTree = "<group>"; };
@@ -903,6 +909,8 @@
 		C2407EDC14F2A42000BB1C4A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2E85205153B447400A20BAA /* smiley.png */,
+				C2E85206153B447400A20BAA /* smiley@2x.png */,
 				C2E9FB481520023600906B40 /* brick-1.png */,
 				C2E9FB4A1520096800906B40 /* brick-1@2x.png */,
 				C2E9FB39151E732900906B40 /* black-ball.png */,
@@ -1304,6 +1312,7 @@
 				C28D9EED15194F31002F7FF6 /* BallUserData.mm */,
 				C28D9EF015196051002F7FF6 /* StarUserData.mm */,
 				C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */,
+				C2E8520B153B46EC00A20BAA /* CoinUserData.mm */,
 			);
 			name = NodeUserData;
 			sourceTree = "<group>";
@@ -1436,6 +1445,8 @@
 				C2E9FB4B1520096800906B40 /* brick-1@2x.png in Resources */,
 				C2E3A558152669F900E8A77C /* wall.png in Resources */,
 				C2E3A559152669F900E8A77C /* wall@2x.png in Resources */,
+				C2E85207153B447400A20BAA /* smiley.png in Resources */,
+				C2E85208153B447400A20BAA /* smiley@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1610,6 +1621,7 @@
 				C28D9EF415196856002F7FF6 /* WinLevelLayer.mm in Sources */,
 				C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */,
 				C2E9FB44151F865200906B40 /* LoseLevelLayer.mm in Sources */,
+				C2E8520C153B46EC00A20BAA /* CoinUserData.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

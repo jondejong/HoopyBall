@@ -37,6 +37,7 @@
 -(void) markBodyForDeletion : (b2Body*)body;
 
 -(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite;
+-(void) addTarget: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite;
 
 -(void) removeSpriteFromGame: (CCSprite*) sprite;
 

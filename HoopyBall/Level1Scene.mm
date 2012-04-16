@@ -7,18 +7,19 @@
 //
 
 #import "HBLevel.h"
-
-#import "PauseLayer.h"
-#import "ControlLayer.h"
-#import "GameLayer.h"
-#import "BoxLayer.h"
-#import "Support/ccCArray.h"
-#import "DeletableBody.h"
+#import "GameManager.h"
 #import "Constants.h"
 #import "GB2ShapeCache.h"
+#import "HBUserData.h"
+
 
 @implementation Level1Scene {
-    
+    @private
+    CCTexture2D* coinTexture;
+
+    enum {
+        kCoinParentTag = 1
+    };
 
 }
 
@@ -42,7 +43,9 @@ float width = 0.0;
         height = [[CCDirector sharedDirector] winSize].height;
         width = [[CCDirector sharedDirector] winSize].width;
 #endif
-        
+        CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
+        coinTexture = [coin texture];
+        [self addChild:coin z:0 tag: kCoinParentTag];
         
     }
     return self;
@@ -64,22 +67,51 @@ float width = 0.0;
 }
 
 -(CGPoint) getBadGuyStartPoint {
-    return ccp(PTM_RATIO, PTM_RATIO);
+    return ccp(12 * PTM_RATIO, PTM_RATIO);
 }
--(float) getBadGuyXSpeed {return 4;}
+-(float) getBadGuyXSpeed {return -4;}
 -(float) getBadGuyYSpeed {return 1;}
 
 -(int) getBadGuyFrequency {return 500;}
 
--(void) createObstacles {
-    /*ZEBUG*/
-//    CCSprite* sprite = [CCSprite spriteWithTexture:texture];
-//    sprite.position = ccp(PTM_RATIO, PTM_RATIO);
-//    
-//    CCNode *bparent = [layer getChildByTag:textureParentTag];
-//    [bparent addChild:sprite];
-//    
+-(void) createObstacles {    
+}
+
+-(void) createTargets {
+  
+    for(int i=3; i<6;i++) {
+        [self addCoinAt:ccp(i,i)];
+    }
     
+    for(int i=10; i<13;i++) {
+        [self addCoinAt:ccp(i,i-7)];
+    }
+}
+
+-(void) addCoinAt: (CGPoint) p {
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.gravityScale = 0.0f;
+    bodyDef.position.Set(p.x, p.y);
+    
+    CoinUserData* data = [CoinUserData node];
+    [self addChild:data];
+    bodyDef.userData = data;
+    
+    b2CircleShape coinShape;
+    coinShape.m_radius = .5f;
+    b2FixtureDef coinFixture;
+    coinFixture.shape = &coinShape;
+    coinFixture.density = 0.0f;
+    coinFixture.friction = 0.0f;
+    coinFixture.restitution = 0.0;
+    coinFixture.isSensor = true;
+    
+    CCSprite *sprite = [CCSprite spriteWithTexture:coinTexture];	
+    sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
+    [data setSprite:sprite];
+    
+    [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
 }
 
 -(void) dealloc 

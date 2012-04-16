@@ -19,18 +19,11 @@ void HBContactListener::EndContact(b2Contact* contact)
     NSObject* dataObjectA = (NSObject*)bodyA->GetUserData();
     NSObject* dataObjectB = (NSObject*)bodyB->GetUserData();
     
-            HBUserData* userDataA = (HBUserData*) dataObjectA;
-           HBUserData* userDataB = (HBUserData*) dataObjectB;
-
+    HBUserData* userDataA = (HBUserData*) dataObjectA;
+    HBUserData* userDataB = (HBUserData*) dataObjectB;
     
-//    if(dataObjectA != nil && [dataObjectA isKindOfClass:[HBUserData class]] &&
-//       dataObjectB != nil && [dataObjectB isKindOfClass:[HBUserData class]]) {
-    
-//        HBUserData* userDataA = (HBUserData*) dataObjectA;
-//        HBUserData* userDataB = (HBUserData*) dataObjectB;
+    [userDataA handleCollisionBetween:bodyA with:userDataB];
+    [userDataB handleCollisionBetween:bodyB with:userDataA];
 
-        [userDataA handleCollisionBetween:bodyA with:userDataB];
-        [userDataB handleCollisionBetween:bodyB with:userDataA];
 
-//       }
 }

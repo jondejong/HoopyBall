@@ -29,6 +29,6 @@
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
 
-#define HB_PI 3.1415927
+#define DRAW_ENEMIES 1
 
 #endif

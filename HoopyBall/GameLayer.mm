@@ -27,7 +27,8 @@ enum {
     kEndSprite = 4,
     kBadGuySpriteTag = 5,
     kBrickTexture = 6,
-    kWallTexture = 7
+    kWallTexture = 7,
+    kCoinTexture = 8
 };
 
 
@@ -41,6 +42,7 @@ bool ballCreated = false;
     CCTexture2D *starTexture_;
     CCTexture2D *badGuyTexture;
     CCTexture2D *wallTexture;
+    CCTexture2D *coinTexture;
     
     b2Body* ballBody;
 	b2World* world;					// strong ref
@@ -177,7 +179,6 @@ bool ballCreated = false;
     [self addChild:starData];
     starBodyDef.userData = starData;
     
-    
     b2Body* starBody = world->CreateBody(&starBodyDef);
     
     GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
@@ -192,8 +193,6 @@ bool ballCreated = false;
     CCNode *parent = [self getChildByTag:kEndSprite];
     [parent addChild:starSprite];
     
-    
-  
 }
 
 -(void) draw
@@ -331,6 +330,7 @@ bool ballCreated = false;
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.0f;
     fixtureDef.restitution = 1.0f;
+    
     ballBody->CreateFixture(&fixtureDef);	
 #endif
     
@@ -395,12 +395,14 @@ bool ballCreated = false;
     if(ballCreated) {
         b2Vec2 pos  = ballBody->GetPosition();
         
+#if DRAW_ENEMIES
         int freq = [[GameManager sharedInstance] getCurrentLevelBadGuyFrequency];
         int rand = arc4random() % freq;
 
         if(rand == 1) {
             [self addBadGuy];
         }
+#endif
         
 //        CCLOG(@"POSITION: %f, %f", x, y);
         [self updateBGPosition: ccp(pos.x * PTM_RATIO, pos.y * PTM_RATIO )];
@@ -435,8 +437,6 @@ bool ballCreated = false;
             
             float newX = midPointX + xOffset;
             float newY = midPointY - yOffset;
-            
-//            CGPoint center = ccp(newX/PTM_RATIO, newY/PTM_RATIO);
             
             CGPoint center = ccp(newX, newY);
             center = [[CCDirector sharedDirector] convertToGL: center];
@@ -546,6 +546,8 @@ bool ballCreated = false;
     starTexture_ = nil;
     spriteTexture_ = nil;
     badGuyTexture = nil;
+    coinTexture = nil;
+    wallTexture = nil;
     
 	[super dealloc];
 }

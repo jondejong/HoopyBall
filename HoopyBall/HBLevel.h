@@ -23,6 +23,7 @@
 -(float) getBadGuyYSpeed;
 -(int) getBadGuyFrequency;
 -(void) createObstacles;
+-(void) createTargets;
 
 @end 
 

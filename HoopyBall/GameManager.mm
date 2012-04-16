@@ -99,6 +99,7 @@ GameManager * sharedInstance;
     [rootNode addChild:controlLayer z:0];
     
     [levelScene createObstacles];
+    [levelScene createTargets];
     
     [[CCDirector sharedDirector] replaceScene:rootNode];
     
@@ -150,6 +151,11 @@ GameManager * sharedInstance;
 -(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
     [gameLayer addStaticBody: fixture with: body andWith: sprite];
 }
+
+-(void) addTarget: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
+    [gameLayer addStaticBody:fixture with:body andWith:sprite];
+}
+
    
 -(void) removeSpriteFromGame: (CCSprite*) sprite {
     [gameLayer removeChild:sprite cleanup:true];
