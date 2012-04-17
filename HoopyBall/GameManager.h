@@ -40,5 +40,6 @@
 -(void) addTarget: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite;
 
 -(void) removeSpriteFromGame: (CCSprite*) sprite;
+-(void) addToScore: (int) scoreAddition;
 
 @end

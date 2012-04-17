@@ -16,6 +16,7 @@
 #import "HBLevel.h"
 #import "WinLevelLayer.h"
 #import "LoseLevelLayer.h"
+#import "ScoreLayer.h"
 
 @implementation GameManager {
     
@@ -24,6 +25,7 @@
     HBLevel * levelScene;
     GameLayer * gameLayer;
     ControlLayer * controlLayer;
+    ScoreLayer * scoreLayer;
     
 }
 
@@ -33,7 +35,8 @@ enum {
     PauseLayerTag,
     ControlLayerTag,
     WinLevelLayerTag,
-    LoseLevelLayerTag
+    LoseLevelLayerTag,
+    ScoreLayerTag
 };
 
 GameManager * sharedInstance;
@@ -94,9 +97,12 @@ GameManager * sharedInstance;
     
     controlLayer = [ControlLayer node];
     
+    scoreLayer = [ScoreLayer node];
+    
     [rootNode addChild:gameLayer z:0];
     [rootNode addChild:levelScene z:0];
     [rootNode addChild:controlLayer z:0];
+    [rootNode addChild:scoreLayer z:0];
     
     [levelScene createObstacles];
     [levelScene createTargets];
@@ -161,6 +167,10 @@ GameManager * sharedInstance;
     [gameLayer removeChild:sprite cleanup:true];
 }
 
+-(void) addToScore: (int) scoreAddition {
+    [scoreLayer addToScore:scoreAddition];
+}
+
 - (void)dealloc
 {
     sharedInstance = nil;
@@ -168,6 +178,7 @@ GameManager * sharedInstance;
     gameLayer = nil;
     controlLayer = nil;
     levelScene = nil;
+    scoreLayer = nil;
     [super dealloc];
 }
 
