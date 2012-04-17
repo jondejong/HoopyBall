@@ -24,7 +24,7 @@
 -(id) init {
     if(self = [super init]) {
         scoreText = [CCLabelBMFont labelWithString:@"Score: 0" fntFile:@"score.fnt"];
-        
+        score = 0;
         // ask director the the window size
         CGSize size = [[CCDirector sharedDirector] winSize];
         
