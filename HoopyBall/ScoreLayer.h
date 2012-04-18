@@ -13,5 +13,5 @@
     
 }
 -(void) addToScore: (int) scoreAddition;
-
+-(int) getScore;
 @end

@@ -115,7 +115,9 @@ GameManager * sharedInstance;
     [gameLayer setIsTouchEnabled: false];
     [gameLayer pauseSchedulerAndActions];
     [controlLayer deactivate];
-    [rootNode addChild:[WinLevelLayer layer] z:0 tag:WinLevelLayerTag];
+    WinLevelLayer* winLayer = [WinLevelLayer layer];
+    [rootNode addChild:winLayer z:0 tag:WinLevelLayerTag];
+    [winLayer displayScore: [scoreLayer getScore]];
 }
 
 -(void) handeLoseLevel {

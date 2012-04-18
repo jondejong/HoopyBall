@@ -15,5 +15,6 @@
 
 +(WinLevelLayer *) layer;
 -(void) handleEndLevel;
+-(void) displayScore: (int) score;
 
 @end

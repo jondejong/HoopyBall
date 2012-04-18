@@ -40,6 +40,10 @@
     [scoreText setString:[NSString stringWithFormat:@"Score: %i", score]];
 }
 
+-(int) getScore {
+    return score;
+}
+
 - (void)dealloc
 {
     scoreText = nil;

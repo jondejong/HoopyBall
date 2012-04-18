@@ -25,7 +25,7 @@
 		// ask director the the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
         
-		label.position =  ccp(size.width/2, size.height/2);
+		label.position =  ccp(size.width/2, size.height - (size.height/3));
         
         //        CCSprite *fader = [CCSprite spriteWithFile:@"fader.png"];
         NSString* fader = [ScreenSize isRetina] ? @"fader-hd.tmx" : @"fader.tmx";
@@ -45,7 +45,7 @@
         CCMenu *menu = [CCMenu menuWithItems:endGame, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];
-		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
+		[menu setPosition:ccp( size.width/2, size.height/2) ];
 		[self addChild:menu];
     }
     return self;
@@ -53,6 +53,13 @@
 
 -(void) handleEndLevel {
     [[GameManager sharedInstance] handleEndLevel];
+}
+
+-(void) displayScore: (int) score {
+    CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Score: %d", score] fontName:@"Marker Felt" fontSize:48];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    label.position =  ccp(size.width/2, size.height - ((2*size.height)/5));
+    [self addChild: label];
 }
 
 @end

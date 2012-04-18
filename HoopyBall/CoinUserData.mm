@@ -14,8 +14,6 @@
 @private CCSprite* _sprite;
 }
 
-
-
 -(void) handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody {
     if(BALL_NODE_TYPE == [otherBody nodeType]) {
         [[GameManager sharedInstance] addToScore: 10];
