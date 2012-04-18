@@ -80,12 +80,25 @@ float width = 0.0;
 -(void) createTargets {
   
     for(int i=3; i<6;i++) {
-        [self addCoinAt:ccp(i,i)];
+        [self addCoinAt:ccp(i,i + 7)];
+        [self addCoinAt:ccp(i+20,i + 7)];
     }
     
-    for(int i=10; i<13;i++) {
-        [self addCoinAt:ccp(i,i-7)];
+    for(int i=11; i<14;i++) {
+        [self addCoinAt:ccp(i,i-1)];
+        [self addCoinAt:ccp(i+20, i-1)];
     }
+    
+    for(int i=3; i<6;i++) {
+        [self addCoinAt:ccp(i, i+14)];
+        [self addCoinAt:ccp(i+20, i+14)];
+    }
+    
+    for(int i=11; i<14;i++) {
+        [self addCoinAt:ccp(i,i+6)];
+        [self addCoinAt:ccp(i+20, i+6)];
+    }
+    
 }
 
 -(void) addCoinAt: (CGPoint) p {
