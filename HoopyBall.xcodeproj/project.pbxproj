@@ -204,7 +204,7 @@
 		C274BD4614FAD92E00C7AFA7 /* HBContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = C274BD4514FAD92E00C7AFA7 /* HBContactListener.mm */; };
 		C274BD4914FAE2DC00C7AFA7 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = C274BD4814FAE2DC00C7AFA7 /* block.png */; };
 		C274BD4C14FB058E00C7AFA7 /* WallUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C274BD4B14FB058E00C7AFA7 /* WallUserData.mm */; };
-		C27D7D7E15165E5000044163 /* ScreenSize.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D7D7D15165E5000044163 /* ScreenSize.m */; };
+		C27D7D7E15165E5000044163 /* ScreenSize.mm in Sources */ = {isa = PBXBuildFile; fileRef = C27D7D7D15165E5000044163 /* ScreenSize.mm */; };
 		C27D7D8115166CE100044163 /* bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = C27D7D7F15166CE100044163 /* bg2.png */; };
 		C27D7D8215166CE100044163 /* bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27D7D8015166CE100044163 /* bg2@2x.png */; };
 		C27D7D8515166DA200044163 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C27D7D8315166DA200044163 /* bg.png */; };
@@ -614,7 +614,7 @@
 		C274BD4814FAE2DC00C7AFA7 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block.png; path = Resources/block.png; sourceTree = "<group>"; };
 		C274BD4B14FB058E00C7AFA7 /* WallUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WallUserData.mm; sourceTree = "<group>"; };
 		C27D7D7C15165E5000044163 /* ScreenSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenSize.h; sourceTree = "<group>"; };
-		C27D7D7D15165E5000044163 /* ScreenSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenSize.m; sourceTree = "<group>"; };
+		C27D7D7D15165E5000044163 /* ScreenSize.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScreenSize.mm; sourceTree = "<group>"; };
 		C27D7D7F15166CE100044163 /* bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg2.png; path = Resources/bg2.png; sourceTree = "<group>"; };
 		C27D7D8015166CE100044163 /* bg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg2@2x.png"; path = "Resources/bg2@2x.png"; sourceTree = "<group>"; };
 		C27D7D8315166DA200044163 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = Resources/bg.png; sourceTree = "<group>"; };
@@ -1313,7 +1313,7 @@
 			isa = PBXGroup;
 			children = (
 				C27D7D7C15165E5000044163 /* ScreenSize.h */,
-				C27D7D7D15165E5000044163 /* ScreenSize.m */,
+				C27D7D7D15165E5000044163 /* ScreenSize.mm */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1635,7 +1635,7 @@
 				C2A393E8151179F10071198F /* GameManager.mm in Sources */,
 				C2F09B1F1512D6A60071726C /* HBLevel.mm in Sources */,
 				C2F09B231512D7BC0071726C /* Level2Scene.mm in Sources */,
-				C27D7D7E15165E5000044163 /* ScreenSize.m in Sources */,
+				C27D7D7E15165E5000044163 /* ScreenSize.mm in Sources */,
 				C22CCB751516BF8500B0C4C3 /* HBUserData.mm in Sources */,
 				C28D9EEE15194F31002F7FF6 /* BallUserData.mm in Sources */,
 				C28D9EF115196051002F7FF6 /* StarUserData.mm in Sources */,

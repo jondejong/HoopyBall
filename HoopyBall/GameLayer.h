@@ -15,6 +15,16 @@
     
 }
 
+#ifndef GAME_LAYER_H
+#define GAME_LAYER_H
+
+#define WALL_Z 10
+#define OBSTACLE_Z 20
+#define BALL_Z 20
+
+#endif
+
+
 //-(float) getXOffset;
 //-(float) getYOffset;
 

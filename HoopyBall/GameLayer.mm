@@ -91,10 +91,10 @@ bool ballCreated = false;
         
         CCSpriteBatchNode *wall = [CCSpriteBatchNode batchNodeWithFile:@"wall.png" capacity: 200];
         wallTexture = [wall texture];
-        [self addChild:wall z:0 tag:kWallTexture];
+        [self addChild:wall z:WALL_Z tag:kWallTexture];
         
         starTexture_ = [star texture];
-        [self addChild:star z:0 tag:kEndSprite];
+        [self addChild:star z:BALL_Z tag:kEndSprite];
         
         // init physics
 		[self initPhysics];
@@ -254,7 +254,7 @@ bool ballCreated = false;
         CCSprite* sprite = [CCSprite spriteWithTexture:wallTexture];
         sprite.position = ccp(spritePoint.x, spritePoint.y);
         sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(a);
-        [self addChild:sprite];
+        [self addChild:sprite z:WALL_Z];
         [sprite retain];
         [sprites addObject:sprite];
         
@@ -293,7 +293,7 @@ bool ballCreated = false;
     CCNode *parent = [self getChildByTag:kTagParentNode];
 	
     PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture_ ];						
-    [parent addChild:sprite];
+    [parent addChild:sprite z:BALL_Z];
 	
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelStartPoint];
     sprite.position = lp; 
@@ -520,7 +520,7 @@ bool ballCreated = false;
 -(void)addStaticBody: (b2FixtureDef*)fixture with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite{
     b2Body* body = world->CreateBody(bodyDef);
     body->CreateFixture(fixture);
-    [self addChild:sprite];
+    [self addChild:sprite z:OBSTACLE_Z];
 }
 
 -(void) initStartLocation {
