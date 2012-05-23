@@ -15,7 +15,6 @@
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 
-#define USE_LARGE_WORLD 1
 #define USE_GREEN_GUY 0
 
 #define START_VELOCITY_X 4.0f
@@ -23,7 +22,7 @@
 
 #define WALL_RESTITUTION 1.07f
 
-#define SHOW_FRAMERATE 1
+#define SHOW_FRAMERATE 0
 
 #define CAMERA_FOLLOW_BALL 0
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f

@@ -186,8 +186,6 @@ bool ballCreated = false;
     [ScreenSize isRetina] ? @"star-hd" : @"star"];
     
     PhysicsSprite *starSprite = [PhysicsSprite spriteWithTexture:starTexture_ ];
-//    starSprite.position = [[GameManager sharedInstance] getCurrentLevelEndPoint];
-//    starSprite.position = ccp(1.0, 1.0);
     starSprite.anchorPoint = [shapeCache anchorPointForShape:[ScreenSize isRetina] ? @"star-hd" : @"star"];
     [starSprite setPhysicsBody:starBody];
     CCNode *parent = [self getChildByTag:kEndSprite];
@@ -521,6 +519,17 @@ bool ballCreated = false;
     b2Body* body = world->CreateBody(bodyDef);
     body->CreateFixture(fixture);
     [self addChild:sprite z:OBSTACLE_Z];
+}
+
+-(void) addCachedStaticBody: (NSString*)fixtureShapeName with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite {
+    b2Body* body = world->CreateBody(bodyDef);
+    [[GB2ShapeCache sharedShapeCache] addFixturesToBody:body forShapeName:fixtureShapeName];
+    [self addChild:sprite z:OBSTACLE_Z];
+}
+
+-(void) addCachedStaticBody: (NSString*)fixtureShapeName with: (b2BodyDef*)bodyDef {
+    b2Body* body = world->CreateBody(bodyDef);
+    [[GB2ShapeCache sharedShapeCache] addFixturesToBody:body forShapeName:fixtureShapeName];
 }
 
 -(void) initStartLocation {

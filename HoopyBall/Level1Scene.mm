@@ -11,20 +11,24 @@
 #import "Constants.h"
 #import "GB2ShapeCache.h"
 #import "HBUserData.h"
-
+#import "PhysicsSprite.h"
 
 @implementation Level1Scene {
     @private
     CCTexture2D* coinTexture;
+    CCTexture2D* borderTexture;
 
     enum {
-        kCoinParentTag = 1
+        kCoinParentTag = 1,
+        kBorderParentNode = 2
     };
 
 }
 
-float height = 0.0;
-float width = 0.0;
+float height = 768.0;
+float width = 1024.0;
+
+float defaultBorderTileSize = 2.0 * PTM_RATIO;
 
 
 -(id) init
@@ -33,23 +37,23 @@ float width = 0.0;
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init])) {
 
-        
-#if USE_LARGE_WORLD
-        height = 2048 * [ScreenSize multiplier];
-        width = 4096 * [ScreenSize multiplier];
-//        height = 1000;
-//        width = 1400;
-#else
-        height = [[CCDirector sharedDirector] winSize].height;
-        width = [[CCDirector sharedDirector] winSize].width;
-#endif
+        height *= [ScreenSize multiplier];
+        width *= [ScreenSize multiplier];
+
         CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
         coinTexture = [coin texture];
         [self addChild:coin z:0 tag: kCoinParentTag];
         
+        [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"border1_shapes.plist"];
+        
     }
     return self;
 } 
+
+-(CGPoint) getStartPoint {
+    CGPoint p = ccp(4.0 * PTM_RATIO, 4.0 * PTM_RATIO);
+    return p;
+}
 
 -(CGSize) getLevelSize {
     CGSize s;
@@ -59,46 +63,63 @@ float width = 0.0;
 }
 
 -(NSString*) getBackgroundTMX {
-    return [ScreenSize isRetina] ? @"bg-hd.tmx" : @"bg.tmx";
+    return [ScreenSize isRetina] ? @"level1_bg-hd.tmx" : @"level1_bg.tmx";
 }
 
 -(CGPoint) getEndPoint {
-    return ccp(6 * PTM_RATIO, 6 *PTM_RATIO);
+    return ccp(9 * PTM_RATIO, 5 * PTM_RATIO);
 }
 
 -(CGPoint) getBadGuyStartPoint {
-    return ccp(12 * PTM_RATIO, PTM_RATIO);
+    return ccp(12 * PTM_RATIO, 2 * PTM_RATIO);
 }
 -(float) getBadGuyXSpeed {return -4;}
 -(float) getBadGuyYSpeed {return 1;}
 
 -(int) getBadGuyFrequency {return 500;}
 
--(void) createObstacles {    
+-(void) createObstacles {   
+    
+    // Bottom
+    [self addBorder:@"Level1_13" at: ccp(0.0f, 0.0f)];
+    [self addBorder:@"Level1_14" at: ccp(2* defaultBorderTileSize, 0.0f)];
+    [self addBorder:@"Level1_15" at: ccp(4* defaultBorderTileSize, 0.0f)];
+    [self addBorder:@"Level1_10" at: ccp(2* defaultBorderTileSize, defaultBorderTileSize)];
+    [self addBorder:@"Level1_11" at: ccp(4* defaultBorderTileSize, defaultBorderTileSize)];
+    
+    //Left
+    [self addBorder:@"Level1_09" at: ccp(0.0f, defaultBorderTileSize)];
+    [self addBorder:@"Level1_07" at: ccp(0.0f, 2 * defaultBorderTileSize)];
+    [self addBorder:@"Level1_05" at: ccp(0.0f, 3 * defaultBorderTileSize)];
+    [self addBorder:@"Level1_03" at: ccp(0.0f, 4 * defaultBorderTileSize)];
+    
+    //Top
+    [self addBorder:@"Level1_01" at: ccp(0.0f, 5 * defaultBorderTileSize)];
+    [self addBorder:@"Level1_02" at: ccp(4 * defaultBorderTileSize, 5 * defaultBorderTileSize)];
+    
+    //Right
+    [self addBorder:@"Level1_04" at: ccp(4 * defaultBorderTileSize, 4 * defaultBorderTileSize)];
+    [self addBorder:@"Level1_06" at: ccp(4 * defaultBorderTileSize, 3 * defaultBorderTileSize)];
+    [self addBorder:@"Level1_08" at: ccp(4 * defaultBorderTileSize, 2 * defaultBorderTileSize)];
+    [self addBorder:@"Level1_12" at: ccp(6 * defaultBorderTileSize, defaultBorderTileSize)];
+}
+
+-(void) addBorder: (NSString*) name at: (CGPoint) p {
+    
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
+
+    [[GameManager sharedInstance] addCachedObstacle:name with:&bodyDef ];
+    
 }
 
 -(void) createTargets {
   
-    for(int i=3; i<6;i++) {
-        [self addCoinAt:ccp(i,i + 7)];
-        [self addCoinAt:ccp(i+20,i + 7)];
+    for(int i=4; i<14; i+=2) {
+        [self addCoinAt:ccp(i, 9.5f)];
     }
-    
-    for(int i=11; i<14;i++) {
-        [self addCoinAt:ccp(i,i-1)];
-        [self addCoinAt:ccp(i+20, i-1)];
-    }
-    
-    for(int i=3; i<6;i++) {
-        [self addCoinAt:ccp(i, i+14)];
-        [self addCoinAt:ccp(i+20, i+14)];
-    }
-    
-    for(int i=11; i<14;i++) {
-        [self addCoinAt:ccp(i,i+6)];
-        [self addCoinAt:ccp(i+20, i+6)];
-    }
-    
+
 }
 
 -(void) addCoinAt: (CGPoint) p {

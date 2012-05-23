@@ -81,7 +81,6 @@ enum {
     fixture.density = 1.0;
     fixture.restitution = 1.0;
     
-    
     CCSprite *sprite = [CCSprite spriteWithTexture:brickTexture_ ];	
     sprite.position = p;
     

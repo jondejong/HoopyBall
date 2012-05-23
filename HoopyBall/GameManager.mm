@@ -160,10 +160,17 @@ GameManager * sharedInstance;
     [gameLayer addStaticBody: fixture with: body andWith: sprite];
 }
 
+-(void) addCachedObstacle: (NSString*)fixtureShapeName with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
+    [gameLayer addCachedStaticBody: fixtureShapeName with: body andWith: sprite];
+}
+
+-(void) addCachedObstacle: (NSString*)fixtureShapeName with: (b2BodyDef*)body {
+    [gameLayer addCachedStaticBody: fixtureShapeName with: body];   
+}
+
 -(void) addTarget: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
     [gameLayer addStaticBody:fixture with:body andWith:sprite];
 }
-
    
 -(void) removeSpriteFromGame: (CCSprite*) sprite {
     [gameLayer removeChild:sprite cleanup:true];
