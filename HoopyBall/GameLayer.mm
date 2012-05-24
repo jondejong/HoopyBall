@@ -184,11 +184,10 @@ bool ballCreated = false;
     b2Body* starBody = world->CreateBody(&starBodyDef);
     
     GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
-    [shapeCache addFixturesToBody:starBody forShapeName:
-    [ScreenSize isRetina] ? @"star-hd" : @"star"];
+    [shapeCache addFixturesToBody:starBody forShapeName: @"star"];
     
     PhysicsSprite *starSprite = [PhysicsSprite spriteWithTexture:starTexture_ ];
-    starSprite.anchorPoint = [shapeCache anchorPointForShape:[ScreenSize isRetina] ? @"star-hd" : @"star"];
+    starSprite.anchorPoint = [shapeCache anchorPointForShape:@"star"];
     [starSprite setPhysicsBody:starBody];
     CCNode *parent = [self getChildByTag:kEndSprite];
     [parent addChild:starSprite];

@@ -82,11 +82,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "305"
-         endingLineNumber = "305"
+         startingLineNumber = "295"
+         endingLineNumber = "295"
          landmarkName = "-addBall"
          landmarkType = "5">
       </FileBreakpoint>
@@ -199,11 +199,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "410"
-         endingLineNumber = "410"
+         startingLineNumber = "400"
+         endingLineNumber = "400"
          landmarkName = "@implementation GameLayer"
          landmarkType = "3">
       </FileBreakpoint>
@@ -212,12 +212,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
-         landmarkName = "-addNewWall:withLength:andAndle:"
+         startingLineNumber = "206"
+         endingLineNumber = "206"
+         landmarkName = "-draw"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -238,11 +238,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521101.508007"
+         timestampString = "359579003.594798"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
+         startingLineNumber = "144"
+         endingLineNumber = "144"
          landmarkName = "-initPhysics"
          landmarkType = "5">
       </FileBreakpoint>
@@ -303,11 +303,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521101.508007"
+         timestampString = "359579003.594798"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148"
+         startingLineNumber = "140"
+         endingLineNumber = "140"
          landmarkName = "-initPhysics"
          landmarkType = "5">
       </FileBreakpoint>
@@ -316,11 +316,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359522703.146674"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "429"
-         endingLineNumber = "429"
+         startingLineNumber = "419"
+         endingLineNumber = "419"
          landmarkName = "-ccTouchesEnded:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -329,11 +329,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359522703.146674"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "432"
-         endingLineNumber = "432"
+         startingLineNumber = "422"
+         endingLineNumber = "422"
          landmarkName = "-ccTouchesEnded:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -446,11 +446,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "450"
-         endingLineNumber = "450"
+         startingLineNumber = "440"
+         endingLineNumber = "440"
          landmarkName = "-updateBGPosition:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -459,12 +459,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "493"
-         endingLineNumber = "493"
-         landmarkName = "-cleanupDeletableItems"
+         startingLineNumber = "483"
+         endingLineNumber = "483"
+         landmarkName = "-updateBGPosition:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -472,12 +472,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "494"
-         endingLineNumber = "494"
-         landmarkName = "-cleanupDeletableItems"
+         startingLineNumber = "484"
+         endingLineNumber = "484"
+         landmarkName = "-updateBGPosition:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -485,12 +485,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "488"
-         endingLineNumber = "488"
-         landmarkName = "-markBodyForDeletion:"
+         startingLineNumber = "478"
+         endingLineNumber = "478"
+         landmarkName = "-updateBGPosition:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -576,7 +576,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "452"
+         endingLineNumber = "452"
+         landmarkName = "-updateBGPosition:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "HoopyBall/GameLayer.mm"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "462"
@@ -589,24 +602,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579003.594798"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "472"
-         endingLineNumber = "472"
-         landmarkName = "-updateBGPosition:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521101.508007"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "155"
-         endingLineNumber = "155"
+         startingLineNumber = "147"
+         endingLineNumber = "147"
          landmarkName = "-initPhysics"
          landmarkType = "5">
       </FileBreakpoint>
@@ -615,11 +615,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "276"
-         endingLineNumber = "276"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
          landmarkName = "-addNewWall:withLength:andAndle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -628,11 +628,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "271"
-         endingLineNumber = "271"
+         startingLineNumber = "261"
+         endingLineNumber = "261"
          landmarkName = "-addNewWall:withLength:andAndle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -641,11 +641,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "301"
-         endingLineNumber = "301"
+         startingLineNumber = "291"
+         endingLineNumber = "291"
          landmarkName = "-addBall"
          landmarkType = "5">
       </FileBreakpoint>
@@ -654,11 +654,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521101.508007"
+         timestampString = "359579003.594798"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
+         startingLineNumber = "167"
+         endingLineNumber = "167"
          landmarkName = "-initPhysics"
          landmarkType = "5">
       </FileBreakpoint>
@@ -693,11 +693,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579003.594798"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "96"
-         endingLineNumber = "96"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -706,11 +706,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521101.508007"
+         timestampString = "359579003.594798"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "190"
-         endingLineNumber = "190"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "-initPhysics"
          landmarkType = "5">
       </FileBreakpoint>
@@ -758,12 +758,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "333"
-         endingLineNumber = "333"
-         landmarkName = "-addBadGuy"
+         startingLineNumber = "323"
+         endingLineNumber = "323"
+         landmarkName = "-addBall"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -849,11 +849,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "366"
-         endingLineNumber = "366"
+         startingLineNumber = "356"
+         endingLineNumber = "356"
          landmarkName = "-addBadGuy"
          landmarkType = "5">
       </FileBreakpoint>
@@ -862,12 +862,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "224"
-         endingLineNumber = "224"
-         landmarkName = "-addNewWall:withLength:andAndle:"
+         startingLineNumber = "214"
+         endingLineNumber = "214"
+         landmarkName = "@implementation GameLayer"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "HoopyBall/GameLayer.mm"
+         timestampString = "359579499.232182"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "213"
+         endingLineNumber = "213"
+         landmarkName = "-draw"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -875,25 +888,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "223"
-         endingLineNumber = "223"
-         landmarkName = "-addNewWall:withLength:andAndle:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "221"
-         endingLineNumber = "221"
-         landmarkName = "-addNewWall:withLength:andAndle:"
+         startingLineNumber = "211"
+         endingLineNumber = "211"
+         landmarkName = "-draw"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -914,11 +914,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "252"
-         endingLineNumber = "252"
+         startingLineNumber = "242"
+         endingLineNumber = "242"
          landmarkName = "-addNewWall:withLength:andAndle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -927,11 +927,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521855.463615"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "388"
-         endingLineNumber = "388"
+         startingLineNumber = "378"
+         endingLineNumber = "378"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -992,12 +992,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "512"
-         endingLineNumber = "512"
-         landmarkName = "-addCachedStaticBody:with:andWith:"
+         startingLineNumber = "502"
+         endingLineNumber = "502"
+         landmarkName = "-cleanupDeletableItems"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1044,11 +1044,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359521635.026183"
+         timestampString = "359579003.594798"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "189"
-         endingLineNumber = "189"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
          landmarkName = "-initPhysics"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1057,11 +1057,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "447"
-         endingLineNumber = "447"
+         startingLineNumber = "437"
+         endingLineNumber = "437"
+         landmarkName = "-ccTouchesEnded:withEvent:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "HoopyBall/GameLayer.mm"
+         timestampString = "359579499.232182"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "442"
+         endingLineNumber = "442"
          landmarkName = "-updateBGPosition:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1070,24 +1083,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569343.772412"
+         timestampString = "359579499.232182"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "452"
-         endingLineNumber = "452"
-         landmarkName = "-updateBGPosition:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "HoopyBall/GameLayer.mm"
-         timestampString = "359569232.6971"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "398"
-         endingLineNumber = "398"
+         startingLineNumber = "388"
+         endingLineNumber = "388"
          landmarkName = "-update:"
          landmarkType = "5">
       </FileBreakpoint>
