@@ -16,6 +16,7 @@
 
 -(CGSize) getLevelSize;
 -(NSString*) getBackgroundTMX;
+-(NSString*) getObsTMX;
 -(CGPoint) getStartPoint;
 -(CGPoint) getEndPoint;
 -(CGPoint) getBadGuyStartPoint;

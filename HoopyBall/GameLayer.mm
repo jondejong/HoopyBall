@@ -439,12 +439,7 @@ bool ballCreated = false;
 }
 
 -(void)updateBGPosition: (CGPoint)position {
-#if USE_LARGE_WORLD
-    [self doUpdateBGPosition:position];
-#endif
-}
 
--(void) doUpdateBGPosition: (CGPoint) position{
 #if CAMERA_FOLLOW_BALL
     xOffset = position.x - [[CCDirector sharedDirector] winSize].width / 2.0f;
     yOffset = position.y - [[CCDirector sharedDirector] winSize].height / 2.0f;

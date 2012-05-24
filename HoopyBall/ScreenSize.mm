@@ -12,11 +12,14 @@
 
 +(CGSize) screenSize {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    return screenRect.size;
+    CGSize size;
+    size.width = screenRect.size.width * [self multiplier];
+    size.height = screenRect.size.height * [self multiplier];
+    return size;
 }
 
 +(CGFloat) ptmRatio {
-    return 64.0 * [self multiplier];
+    return 64.0;
 }
 
 +(int) multiplier {
@@ -24,7 +27,7 @@
 }
 
 +(bool) isRetina {
-    return[self screenSize].width > 1100;
+    return [UIScreen mainScreen].scale > 1;
 }
 
 

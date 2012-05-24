@@ -69,6 +69,10 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
     return [ScreenSize isRetina] ? @"level1_bg-hd.tmx" : @"level1_bg.tmx";
 }
 
+-(NSString*) getObsTMX {
+    return [ScreenSize isRetina] ? @"level1_obs-hd.tmx" : @"level1_obs.tmx";
+}
+
 -(CGPoint) getEndPoint {
     return ccp(9 * PTM_RATIO, 5 * PTM_RATIO);
 }

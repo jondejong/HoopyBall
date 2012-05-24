@@ -19,6 +19,10 @@
     return @"";
 }
 
+-(NSString*) getObsTMX {
+    return @"";
+}
+
 -(CGPoint) getStartPoint {
     CGPoint p = ccp(0.0f, PTM_RATIO);
     return p;

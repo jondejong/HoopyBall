@@ -25,9 +25,6 @@
 #endif
 
 
-//-(float) getXOffset;
-//-(float) getYOffset;
-
 -(void) markBodyForDeletion:(b2Body*)body;
 -(void) cleanupDeletableItems;
 
@@ -38,7 +35,6 @@
 -(float) vec2rad : (b2Vec2) v;
 
 -(void) updateBGPosition: (CGPoint)position;
--(void) doUpdateBGPosition: (CGPoint) postition;
 
 -(void) addBadGuy;
 

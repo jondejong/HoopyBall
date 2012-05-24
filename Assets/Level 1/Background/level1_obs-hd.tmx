@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="8" height="6" tilewidth="256" tileheight="256">
+ <tileset firstgid="1" name="level1_obs-hd" tilewidth="256" tileheight="256">
+  <image source="level1_obs-hd.png" width="1024" height="2048"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="8" height="6">
+  <data encoding="base64" compression="zlib">
+   eJx9yksOgCAUQ9GHoCh+EQE10f0v0ztw4ASbnEHT7iKSceNEwoaAFZeUcyD+7B5LYZsxYXz7gB7u8+nQwqJBDQONCgoPzJQBmw==
+  </data>
+ </layer>
+</map>
