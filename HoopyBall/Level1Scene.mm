@@ -74,10 +74,10 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
 }
 
 -(CGPoint) getBadGuyStartPoint {
-    return ccp(12 * PTM_RATIO, 2 * PTM_RATIO);
+    return ccp(3.5 * PTM_RATIO, .5 * PTM_RATIO);
 }
--(float) getBadGuyXSpeed {return -4;}
--(float) getBadGuyYSpeed {return 1;}
+-(float) getBadGuyXSpeed {return 0;}
+-(float) getBadGuyYSpeed {return 3;}
 
 -(int) getBadGuyFrequency {return 500;}
 

@@ -95,7 +95,10 @@ bool ballCreated = false;
         
         [self addBall];
         
-//		[self scheduleUpdate];
+#if START_WITH_BAD_GUY
+        [self addBadGuy];
+#endif
+        
 	}
 	return self;
 }
