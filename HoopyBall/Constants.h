@@ -15,8 +15,6 @@
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 
-#define USE_GREEN_GUY 0
-
 #define START_VELOCITY_X 4.0f
 #define START_VELOCITY_Y 0.0f
 

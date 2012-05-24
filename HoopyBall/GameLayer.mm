@@ -99,7 +99,9 @@ bool ballCreated = false;
         // init physics
 		[self initPhysics];
         
-		[self scheduleUpdate];
+        [self addBall];
+        
+//		[self scheduleUpdate];
 	}
 	return self;
 }
@@ -292,7 +294,7 @@ bool ballCreated = false;
 	
     PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture_ ];						
     [parent addChild:sprite z:BALL_Z];
-	
+//	
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelStartPoint];
     sprite.position = lp; 
 	
@@ -310,19 +312,11 @@ bool ballCreated = false;
     
     ballBody = world->CreateBody(&bodyDef);
     
-	
     // Define another box shape for our dynamic body.
     b2CircleShape ballShape;
     ballShape.m_radius = .432f;
 	
     // Define the dynamic body fixture.
-
-    
-#if USE_GREEN_GUY
-    GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
-    [shapeCache addFixturesToBody:ballBody forShapeName:@"hb_guy"];
-    sprite.anchorPoint = [shapeCache anchorPointForShape:@"hb_guy"];
-#else
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &ballShape;	
     fixtureDef.density = 1.0f;
@@ -330,7 +324,6 @@ bool ballCreated = false;
     fixtureDef.restitution = 1.0f;
     
     ballBody->CreateFixture(&fixtureDef);	
-#endif
     
     [sprite setPhysicsBody:ballBody];
 
@@ -358,7 +351,6 @@ bool ballCreated = false;
     bodyDef.userData = data;
     
     b2Body* badGuyBody = world->CreateBody(&bodyDef);
-    
 	
     // Define another box shape for our dynamic body.
     b2CircleShape ballShape;
@@ -419,8 +411,8 @@ bool ballCreated = false;
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for(UITouch *touch in touches) {
         if(!ballCreated) {
-//        if(0){
-            [self addBall];
+            [self scheduleUpdate];
+            [[GameManager sharedInstance] handleLevelPlayStarted];
             ballCreated = true;
         } else if(startLocation.x >= 0 && startLocation.y >= 0) {
             CGPoint endLocation = [touch locationInView: [touch view]];

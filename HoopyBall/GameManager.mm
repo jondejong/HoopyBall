@@ -17,6 +17,7 @@
 #import "WinLevelLayer.h"
 #import "LoseLevelLayer.h"
 #import "ScoreLayer.h"
+#import "StartLevelLayer.h"
 
 @implementation GameManager {
     
@@ -36,7 +37,8 @@ enum {
     ControlLayerTag,
     WinLevelLayerTag,
     LoseLevelLayerTag,
-    ScoreLayerTag
+    ScoreLayerTag,
+    StartLevelTag
 };
 
 GameManager * sharedInstance;
@@ -104,6 +106,8 @@ GameManager * sharedInstance;
     [rootNode addChild:controlLayer z:0];
     [rootNode addChild:scoreLayer z:0];
     
+    [rootNode addChild: [StartLevelLayer layer] z:0 tag:StartLevelTag];
+    
     [levelScene createObstacles];
     [levelScene createTargets];
     
@@ -120,11 +124,15 @@ GameManager * sharedInstance;
     [winLayer displayScore: [scoreLayer getScore]];
 }
 
--(void) handeLoseLevel {
+-(void) handleLoseLevel {
     [gameLayer setIsTouchEnabled: false];
     [gameLayer pauseSchedulerAndActions];
     [controlLayer deactivate];
     [rootNode addChild:[LoseLevelLayer layer] z:0 tag:LoseLevelLayerTag];
+}
+
+-(void) handleLevelPlayStarted {
+    [rootNode removeChildByTag:StartLevelTag cleanup:true];
 }
 
 -(CGSize) getCurrentLevelSize {

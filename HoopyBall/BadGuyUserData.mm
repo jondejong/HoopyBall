@@ -14,7 +14,7 @@
 -(void) handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody{
 
     if([otherBody nodeType] == BALL_NODE_TYPE) {
-        [[GameManager sharedInstance] handeLoseLevel];
+        [[GameManager sharedInstance] handleLoseLevel];
     }
     
 }

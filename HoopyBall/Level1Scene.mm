@@ -28,6 +28,9 @@
 float height = 768.0;
 float width = 1024.0;
 
+float startX = 0.6f;
+float startY = 3.55f;
+
 float defaultBorderTileSize = 2.0 * PTM_RATIO;
 
 
@@ -51,7 +54,7 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
 } 
 
 -(CGPoint) getStartPoint {
-    CGPoint p = ccp(4.0 * PTM_RATIO, 4.0 * PTM_RATIO);
+    CGPoint p = ccp(startX * PTM_RATIO, startY * PTM_RATIO);
     return p;
 }
 

@@ -23,7 +23,9 @@
 -(void) handleStartLevel: (int) level;
 
 -(void) handleWinLevel;
--(void) handeLoseLevel;
+-(void) handleLoseLevel;
+
+-(void) handleLevelPlayStarted;
 
 -(CGPoint) getCurrentLevelEndPoint;
 -(CGSize) getCurrentLevelSize;
