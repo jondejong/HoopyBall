@@ -55,7 +55,6 @@
 		C203AA9E14F9EC6800B6914C /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C203AA6A14F9EC6800B6914C /* b2WheelJoint.cpp */; };
 		C203AA9F14F9EC6800B6914C /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = C203AA6D14F9EC6800B6914C /* GLES-Render.mm */; };
 		C203AAA014F9EC6800B6914C /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C203AA6F14F9EC6800B6914C /* b2Rope.cpp */; };
-		C203AAA714F9F1E700B6914C /* BoxLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C203AAA614F9F1E700B6914C /* BoxLayer.mm */; };
 		C203AAAA14F9F29000B6914C /* PhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = C203AAA914F9F29000B6914C /* PhysicsSprite.mm */; };
 		C22CCB6315169E3500B0C4C3 /* fader.png in Resources */ = {isa = PBXBuildFile; fileRef = C22CCB6215169E3500B0C4C3 /* fader.png */; };
 		C22CCB6515169F7E00B0C4C3 /* fader.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C22CCB6415169F7E00B0C4C3 /* fader.tmx */; };
@@ -339,8 +338,6 @@
 		C203AA6D14F9EC6800B6914C /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		C203AA6F14F9EC6800B6914C /* b2Rope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Rope.cpp; sourceTree = "<group>"; };
 		C203AA7014F9EC6800B6914C /* b2Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2Rope.h; sourceTree = "<group>"; };
-		C203AAA514F9F1D400B6914C /* BoxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxLayer.h; sourceTree = "<group>"; };
-		C203AAA614F9F1E700B6914C /* BoxLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BoxLayer.mm; sourceTree = "<group>"; };
 		C203AAA814F9F27000B6914C /* PhysicsSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
 		C203AAA914F9F29000B6914C /* PhysicsSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsSprite.mm; sourceTree = "<group>"; };
 		C22CCB6215169E3500B0C4C3 /* fader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fader.png; path = Resources/fader.png; sourceTree = "<group>"; };
@@ -890,8 +887,6 @@
 				C274BD4514FAD92E00C7AFA7 /* HBContactListener.mm */,
 				C203AAA814F9F27000B6914C /* PhysicsSprite.h */,
 				C203AAA914F9F29000B6914C /* PhysicsSprite.mm */,
-				C203AAA514F9F1D400B6914C /* BoxLayer.h */,
-				C203AAA614F9F1E700B6914C /* BoxLayer.mm */,
 				C2A1A41B14F9A9F500B61269 /* GameLayer.h */,
 				C2A1A41C14F9A9F500B61269 /* GameLayer.mm */,
 				C2A1A41714F9A31A00B61269 /* ControlLayer.h */,
@@ -1622,7 +1617,6 @@
 				C203AA9E14F9EC6800B6914C /* b2WheelJoint.cpp in Sources */,
 				C203AA9F14F9EC6800B6914C /* GLES-Render.mm in Sources */,
 				C203AAA014F9EC6800B6914C /* b2Rope.cpp in Sources */,
-				C203AAA714F9F1E700B6914C /* BoxLayer.mm in Sources */,
 				C203AAAA14F9F29000B6914C /* PhysicsSprite.mm in Sources */,
 				C274BD4614FAD92E00C7AFA7 /* HBContactListener.mm in Sources */,
 				C274BD4C14FB058E00C7AFA7 /* WallUserData.mm in Sources */,

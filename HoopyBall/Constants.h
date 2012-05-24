@@ -25,7 +25,11 @@
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
 
-#define DRAW_ENEMIES 0
+// Usefull to turn this off when working out issues
+#define DRAW_ENEMIES 1
+
+// Usefull to turn this on when trying to place the bad guy in a new level
+#define START_WITH_BAD_GUY 1
 
 // Layering
 #define WALL_Z -4
