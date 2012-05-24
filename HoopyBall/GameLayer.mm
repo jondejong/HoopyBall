@@ -69,16 +69,10 @@ bool ballCreated = false;
 		self.isAccelerometerEnabled = YES;
 
 		//Set up sprite
-#if USE_GREEN_GUY
-        [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"hoopy-ball-shapes.plist"];
-		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"hb_guy.png" capacity:1];
-        spriteTexture_ = [parent texture];
-        [self addChild:parent z:0 tag:kTagParentNode];
-#else
+
 		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"red_ball.png" capacity:1];
         spriteTexture_ = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
-#endif
         
         CCSpriteBatchNode *badGuy = [CCSpriteBatchNode batchNodeWithFile:@"black-ball.png" capacity:25];
         badGuyTexture = [badGuy texture];
@@ -439,13 +433,6 @@ bool ballCreated = false;
 
 -(void)updateBGPosition: (CGPoint)position {
 
-#if CAMERA_FOLLOW_BALL
-    xOffset = position.x - [[CCDirector sharedDirector] winSize].width / 2.0f;
-    yOffset = position.y - [[CCDirector sharedDirector] winSize].height / 2.0f;
-    
-    [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
-    [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]]; 
-#else
     // Grab some values to work wtih
     CGSize windowSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameManager sharedInstance] getCurrentLevelSize]; 
@@ -472,15 +459,14 @@ bool ballCreated = false;
     if( (position.y < (cameraY + yThresholdOffset)) && cameraY > 0) {
         float yMove = cameraY + yThresholdOffset - position.y;
         yOffset -= yMove;
-    } else if( (position.y > ((cameraY + windowSize.height) - yThresholdOffset)) && (cameraY + windowSize.height) <= levelSize.height){
+    } else if( (position.y > ((cameraY + windowSize.height) - yThresholdOffset)) && (cameraY + windowSize.height) < levelSize.height){
         float yMove = yThresholdOffset - (cameraY + windowSize.height - position.y);
         yOffset += yMove;
     }
     
     [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
     [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]];
-    
-#endif
+
 }
 
 //-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {

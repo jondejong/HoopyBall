@@ -22,11 +22,10 @@
 
 #define SHOW_FRAMERATE 0
 
-#define CAMERA_FOLLOW_BALL 0
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
 
-#define DRAW_ENEMIES 1
+#define DRAW_ENEMIES 0
 
 // Layering
 #define WALL_Z -4

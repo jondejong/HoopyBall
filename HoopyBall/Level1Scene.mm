@@ -39,10 +39,6 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init])) {
-
-        height *= [ScreenSize multiplier];
-        width *= [ScreenSize multiplier];
-
         CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
         coinTexture = [coin texture];
         [self addChild:coin z:0 tag: kCoinParentTag];
