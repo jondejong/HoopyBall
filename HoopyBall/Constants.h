@@ -11,10 +11,9 @@
 #ifndef HoopyBall_Constants_h
 #define HoopyBall_Constants_h
 
-#define DEBUG_DRAW_OUTLINE 1
+#define DEBUG_DRAW_OUTLINE 0
 
 #define PTM_RATIO [ScreenSize ptmRatio]
-//#define PTM_RATIO 64
 
 #define START_VELOCITY_X 4.0f
 #define START_VELOCITY_Y 0.0f
@@ -27,6 +26,12 @@
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
 
-#define DRAW_ENEMIES 0
+#define DRAW_ENEMIES 1
+
+// Layering
+#define WALL_Z -4
+#define OBSTACLE_Z -2
+#define BALL_Z -2
+#define BACKGROUNG_Z -10
 
 #endif
