@@ -29,7 +29,7 @@
 #define OBJECT_FRICTION 0.5f
 
 // Usefull to turn this off when working out issues
-#define DRAW_ENEMIES 0
+#define DRAW_ENEMIES 1
 
 // Usefull to turn this on when trying to place the bad guy in a new level
 #define START_WITH_BAD_GUY 0
