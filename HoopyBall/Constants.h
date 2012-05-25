@@ -22,11 +22,14 @@
 
 #define SHOW_FRAMERATE 0
 
+// Usefull to see outside the ground box when debugging levels
+#define CAMERA_FOLLOW_BALL 0
+
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
 
 // Usefull to turn this off when working out issues
-#define DRAW_ENEMIES 1
+#define DRAW_ENEMIES 0
 
 // Usefull to turn this on when trying to place the bad guy in a new level
 #define START_WITH_BAD_GUY 0

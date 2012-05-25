@@ -20,7 +20,7 @@
 }
 
 -(NSString*) getObsTMX {
-    return @"";
+    return nil;
 }
 
 -(CGPoint) getStartPoint {

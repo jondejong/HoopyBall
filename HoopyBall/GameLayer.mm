@@ -171,8 +171,8 @@ bool ballCreated = false;
     
     b2BodyDef starBodyDef;
     starBodyDef.type = b2_staticBody;
-    starBodyDef.position.Set([[GameManager sharedInstance] getCurrentLevelEndPoint].x/PTM_RATIO, 
-                          [[GameManager sharedInstance] getCurrentLevelEndPoint].y/PTM_RATIO);
+    starBodyDef.position.Set([[GameManager sharedInstance] getCurrentLevelEndPoint].x, 
+                          [[GameManager sharedInstance] getCurrentLevelEndPoint].y);
     
     HBUserData* starData = [StarUserData node];
     [self addChild:starData];
@@ -290,15 +290,15 @@ bool ballCreated = false;
 	
     PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture_ ];						
     [parent addChild:sprite z:BALL_Z];
-//	
+
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelStartPoint];
-    sprite.position = lp; 
+    sprite.position = ccp(lp.x*PTM_RATIO, lp.y*PTM_RATIO); 
 	
     // Define the dynamic body.
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(lp.x/PTM_RATIO, lp.y/PTM_RATIO);
+    bodyDef.position.Set(lp.x, lp.y);
     bodyDef.linearVelocity.Set(START_VELOCITY_X, START_VELOCITY_Y);
     bodyDef.bullet = true;
     
@@ -310,7 +310,7 @@ bool ballCreated = false;
     
     // Define another box shape for our dynamic body.
     b2CircleShape ballShape;
-    ballShape.m_radius = .432f;
+    ballShape.m_radius = .5f;
 	
     // Define the dynamic body fixture.
     b2FixtureDef fixtureDef;
@@ -332,13 +332,13 @@ bool ballCreated = false;
     [badGuy addChild:sprite];
 	
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelBadGuyPoint];
-    sprite.position = lp; 
+    sprite.position = ccp(lp.x * PTM_RATIO, lp.y * PTM_RATIO); 
 	
     // Define the dynamic body.
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(lp.x/PTM_RATIO, lp.y/PTM_RATIO);
+    bodyDef.position.Set(lp.x, lp.y);
     bodyDef.linearVelocity.Set([[GameManager sharedInstance] getCurrentLevelBadGuyXSpeed], [[GameManager sharedInstance] getCurrentLevelBadGuyYSpeed]);
     bodyDef.bullet = true;
     
@@ -350,7 +350,7 @@ bool ballCreated = false;
 	
     // Define another box shape for our dynamic body.
     b2CircleShape ballShape;
-    ballShape.m_radius = .432f;
+    ballShape.m_radius = .5f;
     
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &ballShape;	
@@ -435,6 +435,15 @@ bool ballCreated = false;
 }
 
 -(void)updateBGPosition: (CGPoint)position {
+    
+#if CAMERA_FOLLOW_BALL
+    xOffset = position.x - [[CCDirector sharedDirector] winSize].width / 2.0f;
+    yOffset = position.y - [[CCDirector sharedDirector] winSize].height / 2.0f;
+    
+    [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
+    [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]]; 
+#else
+
 
     // Grab some values to work wtih
     CGSize windowSize = [[CCDirector sharedDirector] winSize];
@@ -469,7 +478,7 @@ bool ballCreated = false;
     
     [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
     [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]];
-
+#endif
 }
 
 //-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {

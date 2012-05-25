@@ -96,7 +96,11 @@ GameManager * sharedInstance;
 
     gameLayer = [GameLayer node];
     [gameLayer addChild:[CCTMXTiledMap tiledMapWithTMXFile:[levelScene getBackgroundTMX]] z:BACKGROUNG_Z];
-    [gameLayer addChild:[CCTMXTiledMap tiledMapWithTMXFile:[levelScene getObsTMX]] z:OBSTACLE_Z];
+    
+    NSString * obsTmx = [levelScene getObsTMX];
+    if(obsTmx){
+        [gameLayer addChild:[CCTMXTiledMap tiledMapWithTMXFile:obsTmx] z:OBSTACLE_Z];
+    }
     
     controlLayer = [ControlLayer node];
     

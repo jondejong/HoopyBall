@@ -50,7 +50,7 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
 } 
 
 -(CGPoint) getStartPoint {
-    CGPoint p = ccp(startX * PTM_RATIO, startY * PTM_RATIO);
+    CGPoint p = ccp(startX, startY);
     return p;
 }
 
@@ -70,11 +70,11 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
 }
 
 -(CGPoint) getEndPoint {
-    return ccp(9 * PTM_RATIO, 5 * PTM_RATIO);
+    return ccp(9, 5);
 }
 
 -(CGPoint) getBadGuyStartPoint {
-    return ccp(3.5 * PTM_RATIO, .5 * PTM_RATIO);
+    return ccp(3.5, .5);
 }
 -(float) getBadGuyXSpeed {return 0;}
 -(float) getBadGuyYSpeed {return 3;}
