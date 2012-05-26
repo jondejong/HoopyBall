@@ -67,7 +67,12 @@
             [[GameManager sharedInstance] handleStartLevel:2];
 		}];
         
-        CCMenu *menu = [CCMenu menuWithItems:level1, level2, nil];
+        CCMenuItem *level3 = [CCMenuItemFont itemWithString:@"Level 3" block:^(id sender) {
+            [[GameManager sharedInstance] handleStartLevel:3];
+		}];
+        
+        
+        CCMenu *menu = [CCMenu menuWithItems:level1, level2, level3, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];
 		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];

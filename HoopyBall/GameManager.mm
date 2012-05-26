@@ -89,6 +89,10 @@ GameManager * sharedInstance;
         case 2:
             levelScene = [Level2Scene node];
             break;
+        
+        case 3:
+            levelScene = [Level3Scene node];
+            break;
             
         default:
             break;
