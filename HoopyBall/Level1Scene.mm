@@ -15,11 +15,9 @@
 
 @implementation Level1Scene {
     @private
-    CCTexture2D* coinTexture;
     CCTexture2D* borderTexture;
 
     enum {
-        kCoinParentTag = 1,
         kBorderParentNode = 2
     };
 
@@ -39,12 +37,7 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init])) {
-        CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
-        coinTexture = [coin texture];
-        [self addChild:coin z:0 tag: kCoinParentTag];
-        
         [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"border1_shapes.plist"];
-        
     }
     return self;
 } 
@@ -123,32 +116,6 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
         [self addCoinAt:ccp(i, 9.5f)];
     }
 
-}
-
--(void) addCoinAt: (CGPoint) p {
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(p.x, p.y);
-    
-    CoinUserData* data = [CoinUserData node];
-    [self addChild:data];
-    bodyDef.userData = data;
-    
-    b2CircleShape coinShape;
-    coinShape.m_radius = .5f;
-    b2FixtureDef coinFixture;
-    coinFixture.shape = &coinShape;
-    coinFixture.density = 0.0f;
-    coinFixture.friction = 0.0f;
-    coinFixture.restitution = 0.0;
-    coinFixture.isSensor = true;
-    
-    CCSprite *sprite = [CCSprite spriteWithTexture:coinTexture];	
-    sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
-    [data setSprite:sprite];
-    
-    [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
 }
 
 -(void) dealloc 

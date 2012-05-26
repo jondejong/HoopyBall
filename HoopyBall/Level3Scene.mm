@@ -12,21 +12,21 @@
 #import "GameManager.h"
 #import "GB2ShapeCache.h"
 
-@implementation Level2Scene {
-
+@implementation Level3Scene {
+    
 @private
-CGSize size;
-CCTexture2D* brickTexture_;
-CCTexture2D* obs1Texture_;
-CCTexture2D* coinTexture_;
-
-float brickSideLen;
-
-enum {
-	kBrickParentTag = 1,
-    kObs1ParentTag = 2,
-    kCoinParentTag = 3
-};
+    CGSize size;
+    CCTexture2D* brickTexture_;
+    CCTexture2D* obs1Texture_;
+    CCTexture2D* coinTexture_;
+    
+    float brickSideLen;
+    
+    enum {
+        kBrickParentTag = 1,
+        kObs1ParentTag = 2,
+        kCoinParentTag = 3
+    };
 }
 
 -(id) init {
@@ -84,7 +84,7 @@ enum {
     for(int i = 2; i < 25;  i++){
         [self addBrickAt: ccp(0.0f, i*brickSideLen)];
     }
-        
+    
     //bottom
     [self addBrickAt:ccp(brickSideLen, 0.0f)];
     [self addBrickAt:ccp(2 * brickSideLen, 0.0f)];
@@ -216,7 +216,7 @@ enum {
     sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
     
     [[GameManager sharedInstance] addObstacle:&fixture with:&bodyDef andWith: sprite];
-
+    
 }
 
 - (void)dealloc

@@ -25,11 +25,13 @@
 -(int) getBadGuyFrequency;
 -(void) createObstacles;
 -(void) createTargets;
+-(void) addCoinAt: (CGPoint) p;
 
 @end 
 
 @interface Level1Scene : HBLevel {} @end
 @interface Level2Scene : HBLevel {} @end
+@interface Level3Scene : HBLevel {} @end
 
 
 
