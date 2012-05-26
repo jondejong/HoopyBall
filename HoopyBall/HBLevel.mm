@@ -93,4 +93,10 @@
     [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
 }
 
+- (void)dealloc
+{
+    coinTexture =  nil;
+    [super dealloc];
+}
+
 @end

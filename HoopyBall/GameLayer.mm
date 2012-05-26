@@ -403,7 +403,6 @@ bool ballCreated = false;
     
 }
 
-
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for(UITouch *touch in touches) {
         if(!ballCreated) {
@@ -443,7 +442,6 @@ bool ballCreated = false;
     [self.camera setCenterX:xOffset centerY:yOffset centerZ:0];
     [self.camera setEyeX:xOffset eyeY:yOffset eyeZ:[CCCamera getZEye]]; 
 #else
-
 
     // Grab some values to work wtih
     CGSize windowSize = [[CCDirector sharedDirector] winSize];

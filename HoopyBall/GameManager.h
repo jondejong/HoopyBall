@@ -48,5 +48,4 @@
 -(void) removeSpriteFromGame: (CCSprite*) sprite;
 -(void) addToScore: (int) scoreAddition;
 
-
 @end

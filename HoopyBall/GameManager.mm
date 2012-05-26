@@ -116,6 +116,8 @@ GameManager * sharedInstance;
     [levelScene createObstacles];
     [levelScene createTargets];
     
+    [controlLayer deactivate];
+    
     [[CCDirector sharedDirector] replaceScene:rootNode];
     
 }
@@ -138,6 +140,7 @@ GameManager * sharedInstance;
 
 -(void) handleLevelPlayStarted {
     [rootNode removeChildByTag:StartLevelTag cleanup:true];
+    [controlLayer handleUnpause];
 }
 
 -(CGSize) getCurrentLevelSize {
@@ -165,7 +168,7 @@ GameManager * sharedInstance;
 -(float) getCurrentLevelBadGuyYSpeed {
     return [levelScene getBadGuyYSpeed];
 }
--(int)getCurrentLevelBadGuyFrequency {
+-(int) getCurrentLevelBadGuyFrequency {
     return [levelScene getBadGuyFrequency];
 }
 
