@@ -18,58 +18,57 @@
     CGSize size;
     CCTexture2D* brickTexture_;
     CCTexture2D* obs1Texture_;
-    CCTexture2D* coinTexture_;
+    CCTexture2D* obs2Texture_;
     
     float brickSideLen;
     
     enum {
         kBrickParentTag = 1,
         kObs1ParentTag = 2,
-        kCoinParentTag = 3
+        kObs2ParentTag = 3
     };
 }
 
 -(id) init {
     if(self = [super init]) {
         brickSideLen = 2;
-        size.width = 3840;
-        size.height = 3200;
-        
-        // Smiley coing dude:
-        CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
-        coinTexture_ = [coin texture];
-        [self addChild:coin z:0 tag: kCoinParentTag];
+        size.width = 1024;
+        size.height = 6400;
         
         //Cache obstacle textures
         
-        CCSpriteBatchNode *brick = [CCSpriteBatchNode batchNodeWithFile:@"l2_base_brick.png" capacity:100];
+        CCSpriteBatchNode *brick = [CCSpriteBatchNode batchNodeWithFile:@"level3_base_brick.png" capacity:100];
         brickTexture_ = [brick texture];
         [self addChild:brick z:0 tag: kBrickParentTag];
         
-        CCSpriteBatchNode *obs1 = [CCSpriteBatchNode batchNodeWithFile:@"l2_obs_1_base.png" capacity:100];
+        CCSpriteBatchNode *obs1 = [CCSpriteBatchNode batchNodeWithFile:@"l3_obs1.png" capacity:10];
         obs1Texture_ = [obs1 texture];
         [self addChild:obs1 z:0 tag: kObs1ParentTag];
         
+        CCSpriteBatchNode *obs2 = [CCSpriteBatchNode batchNodeWithFile:@"l3_obs2.png" capacity:10];
+        obs2Texture_ = [obs2 texture];
+        [self addChild:obs2 z:0 tag: kObs2ParentTag];
+        
         // Add Obstacle Shapes to cache
-        [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"l2_obs_shapes.plist"];
+        [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"l3_obs_shapes.plist"];
     }
     return self;
 }
 
 -(CGSize) getLevelSize { return size; }
--(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level2_bg-hd.tmx" : @"level2_bg.tmx";}
+-(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"l3_bg-hd.tmx" : @"l3_bg.tmx";}
 
 -(CGPoint) getStartPoint {return ccp(.5, 3); }
 
 -(CGPoint) getEndPoint {
-    return ccp(20, 20);
+    return ccp(10, 45);
 }
 
 -(CGPoint) getBadGuyStartPoint {
-    return ccp(7, .5);
+    return ccp(13, .5);
 }
 
--(int) getBadGuyFrequency {return 300;}
+-(int) getBadGuyFrequency {return 700;}
 
 -(float) getBadGuyXSpeed {
     return  0;
@@ -81,115 +80,97 @@
     [self addBrickAt:ccp(0.0f, 0.0f)];
     
     //left wall
-    for(int i = 2; i < 25;  i++){
+    for(int i = 2; i < 50;  i++){
         [self addBrickAt: ccp(0.0f, i*brickSideLen)];
     }
     
     //bottom
-    [self addBrickAt:ccp(brickSideLen, 0.0f)];
-    [self addBrickAt:ccp(2 * brickSideLen, 0.0f)];
-    
-    for(int i=4; i<30; i++) {
+    for(int i=0; i<6; i++) {
         [self addBrickAt:ccp(i * brickSideLen, 0.0f)];
     }
     
+    [self addBrickAt:ccp(7.0f * brickSideLen, 0.0f)];
+    
     //top
-    for(int i=1; i<30; i++) {
-        [self addBrickAt:ccp(i * brickSideLen, 24*brickSideLen)];
+    for(int i=1; i<8; i++) {
+        [self addBrickAt:ccp(i * brickSideLen, 49*brickSideLen)];
     }
     
     //right
-    for(int i=1; i<29; i++) {
-        [self addBrickAt:ccp(29 * brickSideLen, i*brickSideLen)];
+    for(int i=1; i<50; i++) {
+        [self addBrickAt:ccp(7 * brickSideLen, i*brickSideLen)];
     }
     
-    [self addObs1At: ccp(5,5)];
-    [self addObs1At: ccp(5, 15)];
-    [self addObs1At: ccp(5, 25)];
-    [self addObs1At: ccp(5, 35)];
+    [self addObs1At: ccp(3,2)];
+    [self addObs1At: ccp(2,10)];
+    [self addObs2At: ccp(4,20)];
+
+    [self addObs1At: ccp(2,30)];
+    [self addObs2At: ccp(4,40)];
     
-    [self addObs1At: ccp(15, 5)];
-    [self addObs1At: ccp(15, 15)];
-    [self addObs1At: ccp(15, 25)];
-    [self addObs1At: ccp(15, 35)];
-    
-    [self addObs1At: ccp(25, 5)];
-    [self addObs1At: ccp(25, 15)];
-    [self addObs1At: ccp(25, 25)];
-    [self addObs1At: ccp(25, 35)];
-    
-    [self addObs1At: ccp(35, 5)];
-    [self addObs1At: ccp(35, 15)];
-    [self addObs1At: ccp(35, 25)];
-    [self addObs1At: ccp(35, 35)];
+    [self addObs1At: ccp(2,50)];
+    [self addObs2At: ccp(4,60)];
     
 }
 
 -(void) createTargets {
     
-    for(int i=9; i<46; i+=2) {
-        [self addCoinAt:ccp(4, i)];
-    }
+    [self addCoinAt:ccp(2.5f, 12.0f)];
+    [self addCoinAt:ccp(3.0f, 13.0f)];
+    [self addCoinAt:ccp(3.5f, 14.0f)];
     
-    for(int i=9; i<46; i+=2) {
-        [self addCoinAt:ccp(50, i)];
+    [self addCoinAt:ccp(2.5f, 32.0f)];
+    [self addCoinAt:ccp(3.0f, 33.0f)];
+    [self addCoinAt:ccp(3.5f, 34.0f)];
+    
+    [self addCoinAt:ccp(12.5f, 22.0f)];
+    [self addCoinAt:ccp(12.0f, 23.0f)];
+    [self addCoinAt:ccp(11.5f, 24.0f)];
+    
+    [self addCoinAt:ccp(12.5f, 42.0f)];
+    [self addCoinAt:ccp(12.0f, 43.0f)];
+    [self addCoinAt:ccp(11.5f, 44.0f)];
+    
+    [self addCoinAt:ccp(2.5f, 52.0f)];
+    [self addCoinAt:ccp(3.0f, 53.0f)];
+    [self addCoinAt:ccp(3.5f, 54.0f)];
+    
+    [self addCoinAt:ccp(12.5f, 62.0f)];
+    [self addCoinAt:ccp(12.0f, 63.0f)];
+    [self addCoinAt:ccp(11.5f, 64.0f)];
+    
+    // Top blob
+    for(int i=3; i<15; i+=2) {
+        for(int j=70; j<97; j+=2){
+            [self addCoinAt:ccp(i, j)];
+        }
     }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 45)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 43)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 41)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 39)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 37)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 35)];
-    }
+
     
 }
 
--(void) addCoinAt: (CGPoint) p {
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(p.x, p.y);
-    
-    CoinUserData* data = [CoinUserData node];
-    [self addChild:data];
-    bodyDef.userData = data;
-    
-    b2CircleShape coinShape;
-    coinShape.m_radius = .5f;
-    b2FixtureDef coinFixture;
-    coinFixture.shape = &coinShape;
-    coinFixture.density = 0.0f;
-    coinFixture.friction = 0.0f;
-    coinFixture.restitution = 0.0;
-    coinFixture.isSensor = true;
-    
-    CCSprite *sprite = [CCSprite spriteWithTexture:coinTexture_];	
-    sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
-    [data setSprite:sprite];
-    
-    [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
-}
 
 -(void) addObs1At: (CGPoint) p {
     CCSprite * sprite = [CCSprite spriteWithTexture:obs1Texture_ ];
     sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
-    sprite.anchorPoint = [[GB2ShapeCache sharedShapeCache] anchorPointForShape:@"l2_obs_1_base"];
+    sprite.anchorPoint = [[GB2ShapeCache sharedShapeCache] anchorPointForShape:@"l3_obs1"];
     
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
     bodyDef.position.Set(p.x, p.y);
-    [[GameManager sharedInstance] addCachedObstacle:@"l2_obs_1_base" with:&bodyDef andWith:sprite];
+    [[GameManager sharedInstance] addCachedObstacle:@"l3_obs1" with:&bodyDef andWith:sprite];
+    
+}
+
+-(void) addObs2At: (CGPoint) p {
+    CCSprite * sprite = [CCSprite spriteWithTexture:obs2Texture_ ];
+    sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
+    sprite.anchorPoint = [[GB2ShapeCache sharedShapeCache] anchorPointForShape:@"l3_obs2"];
+    
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.position.Set(p.x, p.y);
+    [[GameManager sharedInstance] addCachedObstacle:@"l3_obs2" with:&bodyDef andWith:sprite];
     
 }
 
@@ -221,9 +202,9 @@
 
 - (void)dealloc
 {
-    coinTexture_ = nil;
     brickTexture_ = nil;
     obs1Texture_ = nil;
+    obs2Texture_ = nil;
     [super dealloc];
 }
 @end

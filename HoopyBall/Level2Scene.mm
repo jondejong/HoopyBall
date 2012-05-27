@@ -24,8 +24,7 @@ float brickSideLen;
 
 enum {
 	kBrickParentTag = 1,
-    kObs1ParentTag = 2,
-    kCoinParentTag = 3
+    kObs1ParentTag = 2
 };
 }
 
@@ -35,10 +34,6 @@ enum {
         size.width = 3840;
         size.height = 3200;
         
-        // Smiley coing dude:
-        CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
-        coinTexture_ = [coin texture];
-        [self addChild:coin z:0 tag: kCoinParentTag];
         
         //Cache obstacle textures
         
@@ -153,32 +148,6 @@ enum {
         [self addCoinAt:ccp(i, 35)];
     }
     
-}
-
--(void) addCoinAt: (CGPoint) p {
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(p.x, p.y);
-    
-    CoinUserData* data = [CoinUserData node];
-    [self addChild:data];
-    bodyDef.userData = data;
-    
-    b2CircleShape coinShape;
-    coinShape.m_radius = .5f;
-    b2FixtureDef coinFixture;
-    coinFixture.shape = &coinShape;
-    coinFixture.density = 0.0f;
-    coinFixture.friction = 0.0f;
-    coinFixture.restitution = 0.0;
-    coinFixture.isSensor = true;
-    
-    CCSprite *sprite = [CCSprite spriteWithTexture:coinTexture_];	
-    sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
-    [data setSprite:sprite];
-    
-    [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
 }
 
 -(void) addObs1At: (CGPoint) p {
