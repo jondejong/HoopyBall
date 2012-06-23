@@ -11,9 +11,9 @@
 #import "Box2D.h"
 #import "GLES-Render.h"
 
-@interface GameLayer : CCLayer{
-    
-}
+@interface GameLayer : CCLayer
+
+@property(nonatomic, retain) CCArray* bodiesToDelete;
 
 -(void) markBodyForDeletion:(b2Body*)body;
 -(void) cleanupDeletableItems;
