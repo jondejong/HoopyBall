@@ -35,7 +35,8 @@ enum {
 bool ballCreated = false;
 
 @implementation GameLayer {
-    @private
+
+@private
     CGPoint startLocation;
     CCTexture2D *blockTexture_;
 	CCTexture2D *spriteTexture_;	// weak ref
@@ -49,10 +50,12 @@ bool ballCreated = false;
 	GLESDebugDraw *m_debugDraw;		// strong ref
     HBContactListener* contactListener;
 
-    CCArray* bodiesToDelete;
+    
     float xOffset;
     float yOffset;
 }
+
+@synthesize bodiesToDelete;
 
 -(id) init
 {
@@ -481,7 +484,8 @@ bool ballCreated = false;
 
 //-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {
 -(void) markBodyForDeletion : (b2Body*) body {
-    [bodiesToDelete addObject:[[DeletableBody alloc] initWithBody:body]];
+    DeletableBody* db = [[[DeletableBody alloc] initWithBody:body]autorelease];
+    [bodiesToDelete addObject:db];
 }
 
 -(void) cleanupDeletableItems {

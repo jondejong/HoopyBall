@@ -26,6 +26,7 @@
         [[GameManager sharedInstance] markBodyForDeletion: thisBody];
         for(CCSprite * sprite in _sprites) {
             [[GameManager sharedInstance] removeSpriteFromGame:sprite];
+//            [sprite release];
         }
     }
 }
@@ -44,11 +45,10 @@
 }
 
 - (void)dealloc{
-    
-    for(int i = 0; i<[_sprites count]; i++) {
-        [[_sprites objectAtIndex:i] release];
+    for(CCSprite * sprite in _sprites) { 
+        if(sprite)
+            [sprite release];
     }
-    
     [_sprites release];
     [super dealloc];
 }
