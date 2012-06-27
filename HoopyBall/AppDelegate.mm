@@ -16,6 +16,7 @@
 @implementation AppController
 
 @synthesize window=window_, navController=navController_, director=director_;
+@synthesize gameManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -85,8 +86,8 @@
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
-    [[[GameManager alloc] init] startGame];
-    
+    self.gameManager = [[GameManager alloc] init];
+    [self.gameManager startGame];
     
 	return YES;
 }
@@ -146,6 +147,9 @@
 {
 	[window_ release];
 	[navController_ release];
+    
+    [gameManager release];
+    gameManager = nil;
 
 	[super dealloc];
 }

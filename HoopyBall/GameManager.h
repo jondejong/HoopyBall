@@ -9,10 +9,26 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Box2D.h"
+#import "ControlLayer.h"
+#import "Constants.h"
+#import "GameLayer.h"
+#import "GamePlayRootNode.h"
+#import "PauseLayer.h"
+#import "HBLevel.h"
+#import "WinLevelLayer.h"
+#import "LoseLevelLayer.h"
+#import "ScoreLayer.h"
+#import "StartLevelLayer.h"
 
 @interface GameManager : NSObject{
     
 }
+
+@property (nonatomic, retain) CCScene * rootNode;
+@property (nonatomic, retain) HBLevel * levelScene;
+@property (nonatomic, retain) GameLayer * gameLayer;
+@property (nonatomic, retain) ControlLayer * controlLayer;
+@property (nonatomic, retain) ScoreLayer * scoreLayer;
 
 +(GameManager*) sharedInstance;
 

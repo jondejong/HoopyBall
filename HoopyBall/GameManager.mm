@@ -21,14 +21,14 @@
 
 @implementation GameManager {
     
-    @private
-    CCScene * rootNode;
-    HBLevel * levelScene;
-    GameLayer * gameLayer;
-    ControlLayer * controlLayer;
-    ScoreLayer * scoreLayer;
-    
 }
+
+
+@synthesize rootNode;
+@synthesize levelScene;
+@synthesize gameLayer;
+@synthesize controlLayer;
+@synthesize scoreLayer;
 
 enum {
     GameLayerTag,
@@ -76,29 +76,29 @@ GameManager * sharedInstance;
 }
 
 -(void) handleStartLevel: (int) level {
-   
+    
     rootNode = [GamePlayRootNode scene];
     
     //The Level must be defined before the game layer, the game layer
     //is dependent upon values from the level
     switch (level) {
         case 1:
-            levelScene = [Level1Scene node];
+            self.levelScene = [Level1Scene node];
             break;
             
         case 2:
-            levelScene = [Level2Scene node];
+            self.levelScene = [Level2Scene node];
             break;
-        
+            
         case 3:
-            levelScene = [Level3Scene node];
+            self.levelScene = [Level3Scene node];
             break;
             
         default:
             break;
     }
-
-    gameLayer = [GameLayer node];
+    
+    self.gameLayer = [GameLayer node];
     [gameLayer addChild:[CCTMXTiledMap tiledMapWithTMXFile:[levelScene getBackgroundTMX]] z:BACKGROUNG_Z];
     
     NSString * obsTmx = [levelScene getObsTMX];
@@ -191,7 +191,7 @@ GameManager * sharedInstance;
 -(void) addTarget: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
     [gameLayer addStaticBody:fixture with:body andWith:sprite];
 }
-   
+
 -(void) removeSpriteFromGame: (CCSprite*) sprite {
     [gameLayer removeChild:sprite cleanup:true];
 }
@@ -202,6 +202,12 @@ GameManager * sharedInstance;
 
 - (void)dealloc
 {
+    [rootNode release];
+    [levelScene release];
+    [gameLayer release];
+    [controlLayer release];
+    [scoreLayer release];
+    
     sharedInstance = nil;
     rootNode = nil;
     gameLayer = nil;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import "GameManager.h"
 
 @interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
@@ -20,5 +21,6 @@
 @property (nonatomic, retain) UIWindow *window;
 @property (readonly) UINavigationController *navController;
 @property (readonly) CCDirectorIOS *director;
+@property (nonatomic, retain) GameManager* gameManager;
 
 @end

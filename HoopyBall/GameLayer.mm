@@ -254,7 +254,6 @@ bool ballCreated = false;
         sprite.position = ccp(spritePoint.x, spritePoint.y);
         sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(a);
         [self addChild:sprite z:WALL_Z];
-        [sprite retain];
         [sprites addObject:sprite];
         
         startX = startX - (.5 * PTM_RATIO) * cos(a);
@@ -497,8 +496,7 @@ bool ballCreated = false;
         //        CCSprite* sprite = [db sprite];
         //        [sprite removeFromParentAndCleanup:true];
     }
-    [bodiesToDelete dealloc];
-    bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
+    self.bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
 }
 
 -(void)addStaticBody: (b2FixtureDef*)fixture with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite{
@@ -538,11 +536,15 @@ bool ballCreated = false;
 	delete m_debugDraw;
 	m_debugDraw = NULL;
     
+    [bodiesToDelete release];
+    bodiesToDelete = nil;
+    
     starTexture_ = nil;
     spriteTexture_ = nil;
     badGuyTexture = nil;
     coinTexture = nil;
     wallTexture = nil;
+    
     
 	[super dealloc];
 }
