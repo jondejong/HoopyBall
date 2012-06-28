@@ -6,9 +6,10 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HoopyBall.h"
+
 #import "WinLevelLayer.h"
 #import "ScreenSize.h"
-#import "GameManager.h"
 
 
 @implementation WinLevelLayer

@@ -7,11 +7,9 @@
 //
 
 #import "cocos2d.h"
-#import "Constants.h"
-
+#import "HoopyBall.h"
 #import "AppDelegate.h"
 
-#import "GameManager.h"
 
 @implementation AppController
 
@@ -86,8 +84,8 @@
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
-    self.gameManager = [[GameManager alloc] init];
-    [self.gameManager startGame];
+    self.gameManager = [[[GameManager alloc] init] autorelease];
+    [gameManager startGame];
     
 	return YES;
 }

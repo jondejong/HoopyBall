@@ -8,8 +8,7 @@
 
 
 // Import the interfaces
-#import "StartScene.h"
-#import "GameManager.h"
+#import "HoopyBall.h"
 
 
 // Needed to obtain the Navigation Controller

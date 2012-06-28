@@ -6,12 +6,7 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "GameManager.h"
-#import "StartScene.h"
-#import "ControlLayer.h"
-#import "Constants.h"
-#import "GameLayer.h"
-#import "GamePlayRootNode.h"
+#import "HoopyBall.h"
 #import "PauseLayer.h"
 #import "HBLevel.h"
 #import "WinLevelLayer.h"

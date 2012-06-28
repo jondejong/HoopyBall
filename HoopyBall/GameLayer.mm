@@ -1,24 +1,19 @@
 //
-//  HelloWorldLayer.mm
-//  Box2dHW
-//
+//  GameLayer.mm
 //  Created by Jonathan DeJong on 2/20/12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
 // Import the interfaces
-#import "GameLayer.h"
-#import "Constants.h"
+#import "HoopyBall.h"
 
+#import "ScreenSize.h"
 #import "AppDelegate.h"
 #import "HBUserData.h"
 #import "HBContactListener.h"
-
+#import "GLES-Render.h"
 #import "PhysicsSprite.h"
-#import "GameManager.h"
-#import "GamePlayRootNode.h"
 #import "GB2ShapeCache.h"
-#import "DeletableBody.h"
 
 enum {
 	kTagParentNode = 1,
@@ -60,7 +55,7 @@ bool ballCreated = false;
 -(id) init
 {
 	if( (self=[super init])) {
-        bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
+        self.bodiesToDelete = [NSMutableArray array];
         xOffset = 0.0f;
         yOffset = 0.0f;
         ballCreated = false;
@@ -496,7 +491,7 @@ bool ballCreated = false;
         //        CCSprite* sprite = [db sprite];
         //        [sprite removeFromParentAndCleanup:true];
     }
-    self.bodiesToDelete = [[CCArray alloc] initWithCapacity:50];
+    self.bodiesToDelete = [NSMutableArray array];
 }
 
 -(void)addStaticBody: (b2FixtureDef*)fixture with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite{

@@ -7,8 +7,8 @@
 //
 
 #import "PauseLayer.h"
-#import "GameManager.h"
-#import "Constants.h"
+#import "HoopyBall.h"
+#import "ScreenSize.h"
 
 @implementation PauseLayer
 

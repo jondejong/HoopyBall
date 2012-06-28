@@ -6,9 +6,7 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "GamePlayRootNode.h"
-#import "ControlLayer.h"
-#import "GameLayer.h"
+#import "HoopyBall.h"
 #import "PauseLayer.h"
 
 @implementation GamePlayRootNode {

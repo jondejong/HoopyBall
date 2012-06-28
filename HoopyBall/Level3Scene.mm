@@ -5,11 +5,10 @@
 //  Created by Jonathan DeJong on 3/15/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+#import "HoopyBall.h"
 
 #import "HBLevel.h"
-#import "Constants.h"
 #import "HBUserData.h"
-#import "GameManager.h"
 #import "GB2ShapeCache.h"
 
 @implementation Level3Scene {

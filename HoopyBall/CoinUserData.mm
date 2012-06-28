@@ -5,10 +5,10 @@
 //  Created by Jonathan DeJong on 4/15/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
+#import "HoopyBall.h"
 
 #import "cocos2d.h"
 #import "HBUserData.h"
-#import "GameManager.h"
 
 @implementation CoinUserData {
 @private CCSprite* _sprite;

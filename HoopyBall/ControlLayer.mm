@@ -6,8 +6,7 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ControlLayer.h"
-#import "GameManager.h"
+#import "HoopyBall.h"
 
 CCMenuItemSprite *pauseButton;
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HoopyBall.h"
+
 #import "HBLevel.h"
-#import "Constants.h"
-#import "GameManager.h"
 #import "HBUserData.h"
 
 @implementation HBLevel {

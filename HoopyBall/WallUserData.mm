@@ -6,9 +6,7 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-
-#import "GamePlayRootNode.h"
-#import "GameManager.h"
+#import "HoopyBall.h"
 #import "HBUserData.h"
 #import "cocos2d.h"
 

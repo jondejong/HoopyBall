@@ -7,11 +7,11 @@
 //
 
 #import "HBLevel.h"
-#import "GameManager.h"
-#import "Constants.h"
+#import "HoopyBall.h"
 #import "GB2ShapeCache.h"
 #import "HBUserData.h"
 #import "PhysicsSprite.h"
+#import "ScreenSize.h"
 
 @implementation Level1Scene {
     @private

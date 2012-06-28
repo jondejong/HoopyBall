@@ -9,9 +9,7 @@
 
 #import "PhysicsSprite.h"
 
-// Needed PTM_RATIO
-//#import "BoxLayer.h"
-#import "Constants.h"
+#import "HoopyBall.h"
 #import "ScreenSize.h"
 
 #pragma mark - PhysicsSprite

@@ -5,9 +5,8 @@
 //  Created by Jonathan DeJong on 3/25/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
-
+#import "HoopyBall.h"
 #import "HBUserData.h"
-#import "GameManager.h"
 
 @implementation BadGuyUserData
 

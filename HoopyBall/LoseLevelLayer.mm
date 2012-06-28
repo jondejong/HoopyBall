@@ -6,9 +6,10 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HoopyBall.h"
+
 #import "LoseLevelLayer.h"
 #import "ScreenSize.h"
-#import "GameManager.h"
 
 @implementation LoseLevelLayer
 

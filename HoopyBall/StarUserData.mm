@@ -6,8 +6,9 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HoopyBall.h"
+
 #import "HBUserData.h"
-#import "GameManager.h"
 
 @implementation StarUserData
 

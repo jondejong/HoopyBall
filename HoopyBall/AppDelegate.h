@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
-#import "GameManager.h"
+#import "HoopyBall.h"
 
 @interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
