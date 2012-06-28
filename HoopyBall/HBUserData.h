@@ -31,8 +31,7 @@
 @end
 
 @interface WallUserData : HBUserData {}
--(NSArray *) sprites;
--(void) setSprites:(NSArray*)sprites;
+@property (nonatomic, retain) NSArray* sprites;
 @end
 
 @interface BallUserData : HBUserData {} @end

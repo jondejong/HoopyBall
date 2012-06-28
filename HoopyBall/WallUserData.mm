@@ -13,20 +13,16 @@
 #import "cocos2d.h"
 
 @implementation WallUserData {
-
-    @private
-    NSArray* _sprites;
 }
     
-
+@synthesize sprites;
 
 -(void)handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody {
     
     if(otherBody.nodeType == BALL_NODE_TYPE) {
         [[GameManager sharedInstance] markBodyForDeletion: thisBody];
-        for(CCSprite * sprite in _sprites) {
+        for(CCSprite * sprite in sprites) {
             [[GameManager sharedInstance] removeSpriteFromGame:sprite];
-//            [sprite release];
         }
     }
 }
@@ -35,24 +31,10 @@
     return WALL_NODE_TYPE;
 }
 
--(NSArray *) sprites {
-    return _sprites;
-}
-
--(void) setSprites: (NSArray *) sprites {
-    _sprites = sprites;
-    [_sprites retain];
-}
-
 - (void)dealloc{
-    for(CCSprite * sprite in _sprites) { 
-        if(sprite)
-            [sprite release];
-    }
-    [_sprites release];
+    [sprites release];
+    sprites = nil;
     [super dealloc];
 }
-
-
 
 @end
