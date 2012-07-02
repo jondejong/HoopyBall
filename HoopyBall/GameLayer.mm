@@ -33,12 +33,6 @@ bool ballCreated = false;
 
 @private
     CGPoint startLocation;
-    CCTexture2D *blockTexture_;
-	CCTexture2D *spriteTexture_;	// weak ref
-    CCTexture2D *starTexture_;
-    CCTexture2D *badGuyTexture;
-    CCTexture2D *wallTexture;
-    CCTexture2D *coinTexture;
     
     b2Body* ballBody;
 	b2World* world;					// strong ref
@@ -51,6 +45,12 @@ bool ballCreated = false;
 }
 
 @synthesize bodiesToDelete;
+@synthesize blockTexture;
+@synthesize spriteTexture;
+@synthesize starTexture;
+@synthesize badGuyTexture;
+@synthesize wallTexture;
+@synthesize coinTexture;
 
 -(id) init
 {
@@ -69,11 +69,11 @@ bool ballCreated = false;
 		//Set up sprite
 
 		CCSpriteBatchNode *parent = [CCSpriteBatchNode batchNodeWithFile:@"red_ball.png" capacity:1];
-        spriteTexture_ = [parent texture];
+        self.spriteTexture = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
         
         CCSpriteBatchNode *badGuy = [CCSpriteBatchNode batchNodeWithFile:@"black-ball.png" capacity:25];
-        badGuyTexture = [badGuy texture];
+        self.badGuyTexture = [badGuy texture];
         [self addChild:badGuy z:0 tag:kBadGuySpriteTag];
         
         // Add the end point
@@ -82,10 +82,10 @@ bool ballCreated = false;
                                                               capacity:1 ];
         
         CCSpriteBatchNode *wall = [CCSpriteBatchNode batchNodeWithFile:@"wall.png" capacity: 200];
-        wallTexture = [wall texture];
+        self.wallTexture = [wall texture];
         [self addChild:wall z:WALL_Z tag:kWallTexture];
         
-        starTexture_ = [star texture];
+        self.starTexture = [star texture];
         [self addChild:star z:BALL_Z tag:kEndSprite];
         
         // init physics
@@ -181,7 +181,7 @@ bool ballCreated = false;
     GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
     [shapeCache addFixturesToBody:starBody forShapeName: @"star"];
     
-    PhysicsSprite *starSprite = [PhysicsSprite spriteWithTexture:starTexture_ ];
+    PhysicsSprite *starSprite = [PhysicsSprite spriteWithTexture:starTexture];
     starSprite.anchorPoint = [shapeCache anchorPointForShape:@"star"];
     [starSprite setPhysicsBody:starBody];
     CCNode *parent = [self getChildByTag:kEndSprite];
@@ -285,7 +285,7 @@ bool ballCreated = false;
 //    CCLOG(@"Add ball %0.2f x %02.f",p.x,p.y);
     CCNode *parent = [self getChildByTag:kTagParentNode];
 	
-    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture_ ];						
+    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture];						
     [parent addChild:sprite z:BALL_Z];
 
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelStartPoint];
@@ -533,12 +533,20 @@ bool ballCreated = false;
     
     [bodiesToDelete release];
     bodiesToDelete = nil;
+
+    [blockTexture release];
+    [spriteTexture release];
+    [starTexture release];
+    [badGuyTexture release];
+    [wallTexture release];
+    [coinTexture release];
     
-    starTexture_ = nil;
-    spriteTexture_ = nil;
+    blockTexture = nil;
+    spriteTexture = nil;
+    starTexture = nil;
     badGuyTexture = nil;
-    coinTexture = nil;
     wallTexture = nil;
+    coinTexture = nil;
     
     
 	[super dealloc];

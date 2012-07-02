@@ -72,6 +72,12 @@
 @interface GameLayer : CCLayer
 
 @property(nonatomic, retain) NSMutableArray* bodiesToDelete;
+@property(nonatomic, retain) CCTexture2D *blockTexture;
+@property(nonatomic, retain) CCTexture2D *spriteTexture;
+@property(nonatomic, retain) CCTexture2D *starTexture;
+@property(nonatomic, retain) CCTexture2D *badGuyTexture;
+@property(nonatomic, retain) CCTexture2D *wallTexture;
+@property(nonatomic, retain) CCTexture2D *coinTexture;
 
 -(void) markBodyForDeletion:(b2Body*)body;
 -(void) cleanupDeletableItems;
