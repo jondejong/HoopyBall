@@ -49,6 +49,8 @@
 @property (nonatomic) b2Body *body;
 -(id) initWithBody: (b2Body*)_body;
 -(b2Body*) body;
+-(bool) isAlreadyDeleted;
+-(void) deleted;
 @end // DeletableBody
 
 @interface StartScene : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>

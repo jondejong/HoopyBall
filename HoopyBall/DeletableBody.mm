@@ -12,12 +12,13 @@
 @implementation DeletableBody {
     @private    
     b2Body* body;
+    bool alreadyDeleted;
 }
 
 -(id) initWithBody: (b2Body*)_body {
     if(self = [super init]) {
         body = _body;
-        //        sprite = _sprite;
+        alreadyDeleted = false;
     }
     return self;
 }
@@ -28,6 +29,14 @@
 
 -(void) setBody: (b2Body*) _body{
     body = _body;
+}
+
+-(bool) isAlreadyDeleted {
+    return false;
+}
+
+-(void) deleted {
+    alreadyDeleted = true;
 }
 
 - (void)dealloc

@@ -17,7 +17,7 @@
 
 -(void)handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody {
     
-    if(otherBody.nodeType == BALL_NODE_TYPE) {
+    if(otherBody.nodeType == BALL_NODE_TYPE || otherBody.nodeType == BAD_GUY_NODE_TYPE) {
         [[GameManager sharedInstance] markBodyForDeletion: thisBody];
         for(CCSprite * sprite in sprites) {
             [[GameManager sharedInstance] removeSpriteFromGame:sprite];

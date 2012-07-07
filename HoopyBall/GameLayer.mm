@@ -483,10 +483,11 @@ bool ballCreated = false;
     
     for(int i=0; i < [bodiesToDelete count]; i++) {
         DeletableBody* db = [bodiesToDelete objectAtIndex:i];
-        b2Body* body = [db body];
-        world->DestroyBody(body);
-        //        CCSprite* sprite = [db sprite];
-        //        [sprite removeFromParentAndCleanup:true];
+        if(![db isAlreadyDeleted]) {
+            b2Body* body = [db body];
+            world->DestroyBody(body);
+            [db deleted];
+        }
     }
     self.bodiesToDelete = [NSMutableArray array];
 }
