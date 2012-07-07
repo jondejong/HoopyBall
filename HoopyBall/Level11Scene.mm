@@ -11,7 +11,7 @@
 #import "HBUserData.h"
 #import "GB2ShapeCache.h"
 
-@implementation Level3Scene {
+@implementation Level11Scene {
     
 @private
     CGSize size;
@@ -103,7 +103,7 @@
     [self addObs1At: ccp(3,2)];
     [self addObs1At: ccp(2,10)];
     [self addObs2At: ccp(4,20)];
-
+    
     [self addObs1At: ccp(2,30)];
     [self addObs2At: ccp(4,40)];
     
@@ -144,7 +144,7 @@
             [self addCoinAt:ccp(i, j)];
         }
     }
-
+    
     
 }
 

@@ -13,31 +13,34 @@
 #import "PhysicsSprite.h"
 #import "ScreenSize.h"
 
-@implementation Level1Scene {
+@implementation Level05Scene {
+    
     @private
-    CCTexture2D* borderTexture;
-
+    float height;
+    float width;
+    
+    float startX;
+    float startY;
+    
+    float defaultBorderTileSize;
+    
     enum {
         kBorderParentNode = 2
     };
-
+    
 }
-
-float height = 768.0;
-float width = 1024.0;
-
-float startX = 0.6f;
-float startY = 3.55f;
-
-float defaultBorderTileSize = 2.0 * PTM_RATIO;
 
 
 -(id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super's" return value
-	if( (self=[super init])) {
+	if((self=[super init])) {
         [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"border1_shapes.plist"];
+        
+        height = 768.0;
+        width = 1024.0;
+        
+        startX = 0.6f;
+        startY = 3.55f;
     }
     return self;
 } 
@@ -105,17 +108,17 @@ float defaultBorderTileSize = 2.0 * PTM_RATIO;
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
     bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
-
+    
     [[GameManager sharedInstance] addCachedObstacle:name with:&bodyDef ];
     
 }
 
 -(void) createTargets {
-  
+    
     for(int i=4; i<14; i+=2) {
         [self addCoinAt:ccp(i, 9.5f)];
     }
-
+    
 }
 
 -(void) dealloc 

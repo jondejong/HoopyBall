@@ -100,6 +100,10 @@
     return (rand == 1); 
 }
 
+-(int) belongsTo {
+    return 0;
+}
+
 - (void)dealloc
 {
     coinTexture =  nil;

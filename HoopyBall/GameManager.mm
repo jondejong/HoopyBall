@@ -78,17 +78,64 @@ GameManager * sharedInstance;
     //is dependent upon values from the level
     switch (level) {
         case 1:
-            self.levelScene = [Level1Scene node];
+            self.levelScene = [Level01Scene node];
             break;
             
         case 2:
-            self.levelScene = [Level2Scene node];
+            self.levelScene = [Level02Scene node];
             break;
             
         case 3:
-            self.levelScene = [Level3Scene node];
+            self.levelScene = [Level03Scene node];
+            break;
+        
+        case 4:
+            self.levelScene = [Level04Scene node];
             break;
             
+        case 5:
+            self.levelScene = [Level05Scene node];
+            break;
+            
+        case 6:
+            self.levelScene = [Level06Scene node];
+            break;
+            
+        case 7:
+            self.levelScene = [Level07Scene node];
+            break;
+            
+        case 8:
+            self.levelScene = [Level08Scene node];
+            break;
+            
+        case 9:
+            self.levelScene = [Level09Scene node];
+            break;
+            
+        case 10:
+            self.levelScene = [Level10Scene node];
+            break;
+         
+        case 11:
+            self.levelScene = [Level11Scene node];
+            break;
+            
+        case 12:
+            self.levelScene = [Level12Scene node];
+            break;
+            
+        case 13:
+            self.levelScene = [Level13Scene node];
+            break;
+            
+        case 14:
+            self.levelScene = [Level14Scene node];
+            break;
+            
+        case 15:
+            self.levelScene = [Level15Scene node];
+            break;
         default:
             break;
     }
