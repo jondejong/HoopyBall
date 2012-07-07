@@ -23,6 +23,7 @@
 -(float) getBadGuyXSpeed;
 -(float) getBadGuyYSpeed;
 -(int) getBadGuyFrequency;
+-(bool) addBadGuy;
 -(void) createObstacles;
 -(void) createTargets;
 -(void) addCoinAt: (CGPoint) p;

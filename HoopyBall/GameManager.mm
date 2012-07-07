@@ -167,8 +167,8 @@ GameManager * sharedInstance;
 -(float) getCurrentLevelBadGuyYSpeed {
     return [levelScene getBadGuyYSpeed];
 }
--(int) getCurrentLevelBadGuyFrequency {
-    return [levelScene getBadGuyFrequency];
+-(bool) addBadGuy {
+    return [levelScene addBadGuy];
 }
 
 -(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {

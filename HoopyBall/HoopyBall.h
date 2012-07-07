@@ -137,7 +137,7 @@
 -(CGPoint) getCurrentLevelBadGuyPoint;
 -(float) getCurrentLevelBadGuyXSpeed;
 -(float) getCurrentLevelBadGuyYSpeed;
--(int) getCurrentLevelBadGuyFrequency;
+-(bool) addBadGuy;
 
 -(void) markBodyForDeletion : (b2Body*)body;
 

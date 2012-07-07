@@ -93,6 +93,13 @@
     [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
 }
 
+-(bool) addBadGuy {
+    int freq = [self getBadGuyFrequency];
+    int rand = arc4random() % freq;
+    
+    return (rand == 1); 
+}
+
 - (void)dealloc
 {
     coinTexture =  nil;

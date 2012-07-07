@@ -379,10 +379,7 @@ bool ballCreated = false;
         b2Vec2 pos  = ballBody->GetPosition();
         
 #if DRAW_ENEMIES
-        int freq = [[GameManager sharedInstance] getCurrentLevelBadGuyFrequency];
-        int rand = arc4random() % freq;
-
-        if(rand == 1) {
+        if([[GameManager sharedInstance] addBadGuy]) {
             [self addBadGuy];
         }
 #endif
