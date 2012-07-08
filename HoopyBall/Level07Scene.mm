@@ -57,7 +57,7 @@
 -(CGPoint) getStartPoint {return ccp(.5, 3); }
 
 -(CGPoint) getEndPoint {
-    return ccp(5, 5);
+    return ccp(10, 10);
 }
 
 -(CGPoint) getBadGuyStartPoint {
@@ -98,57 +98,48 @@
         [self addBrickAt:ccp(13 * brickSideLen, i*brickSideLen)];
     }
     
-    //    [self addObs1At: ccp(5,5)];
-        [self addObs1At: ccp(5, 15)];
-    //    [self addObs1At: ccp(5, 25)];
-    //    [self addObs1At: ccp(5, 35)];
-    //    
-    //    [self addObs1At: ccp(15, 5)];
-    //    [self addObs1At: ccp(15, 15)];
-    //    [self addObs1At: ccp(15, 25)];
-    //    [self addObs1At: ccp(15, 35)];
-    //    
-    //    [self addObs1At: ccp(25, 5)];
-    //    [self addObs1At: ccp(25, 15)];
-    //    [self addObs1At: ccp(25, 25)];
-    //    [self addObs1At: ccp(25, 35)];
-    //    
-    //    [self addObs1At: ccp(35, 5)];
-    //    [self addObs1At: ccp(35, 15)];
-    //    [self addObs1At: ccp(35, 25)];
-    //    [self addObs1At: ccp(35, 35)];
+    [self addObs1At: ccp(5, 5)];
+    [self addObs1At: ccp(5, 11.5)];
+    [self addObs1At: ccp(9, 14.75)];
+    [self addObs1At: ccp(9, 7)];
     
+    [self addObs1At: ccp(13, 5)];
+    [self addObs1At: ccp(13, 11.5)];
+    [self addObs1At: ccp(17, 14.75)];
+    [self addObs1At: ccp(17, 7)];
+    
+    [self addObs1At: ccp(20, 4)];
+    [self addObs1At: ccp(20, 9)];
+    [self addObs1At: ccp(20, 14)];
+
 }
 
 -(void) createTargets {
     
-    //    for(int i=9; i<46; i+=2) {
-    //        [self addCoinAt:ccp(4, i)];
-    //    }
-    //    
-    //    for(int i=9; i<46; i+=2) {
-    //        [self addCoinAt:ccp(50, i)];
-    //    }
-    //    for(int i=48; i>40; i-=2) {
-    //        [self addCoinAt:ccp(i, 45)];
-    //    }
-    //    for(int i=48; i>40; i-=2) {
-    //        [self addCoinAt:ccp(i, 43)];
-    //    }
-    //    for(int i=48; i>40; i-=2) {
-    //        [self addCoinAt:ccp(i, 41)];
-    //    }
-    //    for(int i=48; i>40; i-=2) {
-    //        [self addCoinAt:ccp(i, 39)];
-    //    }
-    //    for(int i=48; i>40; i-=2) {
-    //        [self addCoinAt:ccp(i, 37)];
-    //    }
-    //    for(int i=48; i>40; i-=2) {
-    //        [self addCoinAt:ccp(i, 35)];
-    //    }
+    for(int i=8; i<18; i+=2) {
+        [self addCoinAt:ccp(4, i)];
+    }
+
+    [self addCoinAt:ccp(5.5, 16)];
+    [self addCoinAt:ccp(7, 16)];
+    [self addCoinAt:ccp(8.5, 16)];
+    
+    [self addCoinAt:ccp(24, 5)];
+    [self addCoinAt:ccp(23.5, 8)];
+    [self addCoinAt:ccp(24.5, 8)];
+    
+    for(float i=11; i<18; i+=1.2) {
+        [self addCoinAt:ccp(22.8, i)];
+        [self addCoinAt:ccp(24, i)];
+        [self addCoinAt:ccp(25.2, i)];
+    }
+    
+    for(int i=4; i<18; i+=2) {
+        [self addCoinAt:ccp(15.5, i)];
+    }
     
 }
+
 
 -(void) addObs1At: (CGPoint) p {
     CCSprite * sprite = [CCSprite spriteWithTexture:obs1Texture_ ];
