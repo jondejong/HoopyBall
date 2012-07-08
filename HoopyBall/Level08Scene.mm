@@ -16,17 +16,20 @@
     
 @private
     CGSize size;
-    CCTexture2D* brickTexture_;
-    CCTexture2D* obs1Texture_;
-    CCTexture2D* coinTexture_;
-    
     float brickSideLen;
     
     enum {
         kBrickParentTag = 1,
-        kObs1ParentTag = 2
+        kObs1ParentTag = 2,
+        kObs2ParentTag = 3,
+        kSmallObstacleType = 4,
+        kBigObstacleType = 5
     };
 }
+
+@synthesize brickTexture;
+@synthesize obs1Texture;
+@synthesize obs2Texture;
 
 -(id) init {
     if(self = [super init]) {
@@ -34,16 +37,19 @@
         size.width = 3200;
         size.height = 1792;
         
-        
         //Cache obstacle textures
         
         CCSpriteBatchNode *brick = [CCSpriteBatchNode batchNodeWithFile:@"l2_base_brick.png" capacity:100];
-        brickTexture_ = [brick texture];
+        self.brickTexture = [brick texture];
         [self addChild:brick z:0 tag: kBrickParentTag];
         
         CCSpriteBatchNode *obs1 = [CCSpriteBatchNode batchNodeWithFile:@"l2_obs_1_base.png" capacity:100];
-        obs1Texture_ = [obs1 texture];
+        self.obs1Texture = [obs1 texture];
         [self addChild:obs1 z:0 tag: kObs1ParentTag];
+        
+        CCSpriteBatchNode *obs2 = [CCSpriteBatchNode batchNodeWithFile:@"l2_obs_1_base_small.png" capacity:100];
+        self.obs2Texture = [obs2 texture];
+        [self addChild:obs2 z:0 tag: kObs2ParentTag];
         
         // Add Obstacle Shapes to cache
         [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"l2_obs_shapes.plist"];
@@ -98,60 +104,35 @@
         [self addBrickAt:ccp(24 * brickSideLen, i*brickSideLen)];
     }
     
-//    [self addObs1At: ccp(5,5)];
-//    [self addObs1At: ccp(5, 15)];
-//    [self addObs1At: ccp(5, 25)];
-//    [self addObs1At: ccp(5, 35)];
-//    
-//    [self addObs1At: ccp(15, 5)];
-//    [self addObs1At: ccp(15, 15)];
-//    [self addObs1At: ccp(15, 25)];
-//    [self addObs1At: ccp(15, 35)];
-//    
-//    [self addObs1At: ccp(25, 5)];
-//    [self addObs1At: ccp(25, 15)];
-//    [self addObs1At: ccp(25, 25)];
-//    [self addObs1At: ccp(25, 35)];
-//    
-//    [self addObs1At: ccp(35, 5)];
-//    [self addObs1At: ccp(35, 15)];
-//    [self addObs1At: ccp(35, 25)];
-//    [self addObs1At: ccp(35, 35)];
+    for(int i=5; i<=15; i+=10) {
+        [self addObs1At: ccp(5,i)];
+        [self addObs2At: ccp(15,i+2)];
+        [self addObs1At: ccp(25,i)];
+        [self addObs2At: ccp(35,i+2)];
+    }
     
+    [self addObs2At:ccp(42, 15.5)];
+    [self addObs2At:ccp(42, 7.5)];
+
 }
 
 -(void) createTargets {
-//    
-//    for(int i=9; i<46; i+=2) {
-//        [self addCoinAt:ccp(4, i)];
-//    }
-//    
-//    for(int i=9; i<46; i+=2) {
-//        [self addCoinAt:ccp(50, i)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 45)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 43)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 41)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 39)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 37)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 35)];
-//    }
-    
+    int row = 1;
+    int col = 1;
+    for(int i=4; i<25; i+=2) {
+        for(int j=40; j<48; j+=2) {
+            if( !( (row==3 || row==4 || row==7 || row==8 ) && (col==2 || col==3) )) {
+                [self addCoinAt:ccp(j, i)];
+            }
+            col++;
+        }
+        row++;
+        col = 1;
+    }
 }
 
 -(void) addObs1At: (CGPoint) p {
-    CCSprite * sprite = [CCSprite spriteWithTexture:obs1Texture_ ];
+    CCSprite * sprite = [CCSprite spriteWithTexture:obs1Texture];
     sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
     sprite.anchorPoint = [[GB2ShapeCache sharedShapeCache] anchorPointForShape:@"l2_obs_1_base"];
     
@@ -159,7 +140,17 @@
     bodyDef.type = b2_staticBody;
     bodyDef.position.Set(p.x, p.y);
     [[GameManager sharedInstance] addCachedObstacle:@"l2_obs_1_base" with:&bodyDef andWith:sprite];
+}
+
+-(void) addObs2At: (CGPoint) p {
+    CCSprite * sprite = [CCSprite spriteWithTexture:obs2Texture];
+    sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
+    sprite.anchorPoint = [[GB2ShapeCache sharedShapeCache] anchorPointForShape:@"l2_obs_1_base_small"];
     
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.position.Set(p.x, p.y);
+    [[GameManager sharedInstance] addCachedObstacle:@"l2_obs_1_base_small" with:&bodyDef andWith:sprite];
 }
 
 -(void) addBrickAt: (CGPoint) p {
@@ -181,7 +172,7 @@
     fixture.density = 1.0;
     fixture.restitution = 1.0;
     
-    CCSprite *sprite = [CCSprite spriteWithTexture:brickTexture_ ];	
+    CCSprite *sprite = [CCSprite spriteWithTexture:brickTexture ];	
     sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
     
     [[GameManager sharedInstance] addObstacle:&fixture with:&bodyDef andWith: sprite];
@@ -190,9 +181,15 @@
 
 - (void)dealloc
 {
-    coinTexture_ = nil;
-    brickTexture_ = nil;
-    obs1Texture_ = nil;
+    [brickTexture release];
+    brickTexture = nil;
+    
+    [obs1Texture release];
+    obs1Texture = nil;
+    
+    [obs2Texture release];
+    obs2Texture = nil;
+    
     [super dealloc];
 }
 @end

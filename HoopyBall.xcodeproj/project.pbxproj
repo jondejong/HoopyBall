@@ -920,6 +920,45 @@
 			path = Rope;
 			sourceTree = "<group>";
 		};
+		C2178CB915AA1A75004F7330 /* Level Set 1 */ = {
+			isa = PBXGroup;
+			children = (
+				C246C6D515A8DEFF000453ED /* LevelSet1.mm */,
+				C246C6C615A8DEFF000453ED /* Level01Scene.mm */,
+				C246C6C715A8DEFF000453ED /* Level02Scene.mm */,
+				C246C6C815A8DEFF000453ED /* Level03Scene.mm */,
+				C246C6C915A8DEFF000453ED /* Level04Scene.mm */,
+				C246C6CA15A8DEFF000453ED /* Level05Scene.mm */,
+			);
+			name = "Level Set 1";
+			sourceTree = "<group>";
+		};
+		C2178CBA15AA1A84004F7330 /* Level Set 2 */ = {
+			isa = PBXGroup;
+			children = (
+				C246C6D615A8DEFF000453ED /* LevelSet2.mm */,
+				C246C6CB15A8DEFF000453ED /* Level06Scene.mm */,
+				C246C6CC15A8DEFF000453ED /* Level07Scene.mm */,
+				C246C6CD15A8DEFF000453ED /* Level08Scene.mm */,
+				C246C6CE15A8DEFF000453ED /* Level09Scene.mm */,
+				C246C6CF15A8DEFF000453ED /* Level10Scene.mm */,
+			);
+			name = "Level Set 2";
+			sourceTree = "<group>";
+		};
+		C2178CBB15AA1A96004F7330 /* Level Set 3 */ = {
+			isa = PBXGroup;
+			children = (
+				C246C6D715A8DEFF000453ED /* LevelSet3.mm */,
+				C246C6D015A8DEFF000453ED /* Level11Scene.mm */,
+				C246C6D115A8DEFF000453ED /* Level12Scene.mm */,
+				C246C6D215A8DEFF000453ED /* Level13Scene.mm */,
+				C246C6D315A8DEFF000453ED /* Level14Scene.mm */,
+				C246C6D415A8DEFF000453ED /* Level15Scene.mm */,
+			);
+			name = "Level Set 3";
+			sourceTree = "<group>";
+		};
 		C2407EBA14F2A42000BB1C4A = {
 			isa = PBXGroup;
 			children = (
@@ -1471,24 +1510,9 @@
 			children = (
 				C26288BD15118BF700BAD658 /* HBLevel.h */,
 				C2F09B1E1512D6A60071726C /* HBLevel.mm */,
-				C246C6D515A8DEFF000453ED /* LevelSet1.mm */,
-				C246C6C615A8DEFF000453ED /* Level01Scene.mm */,
-				C246C6C715A8DEFF000453ED /* Level02Scene.mm */,
-				C246C6C815A8DEFF000453ED /* Level03Scene.mm */,
-				C246C6C915A8DEFF000453ED /* Level04Scene.mm */,
-				C246C6CA15A8DEFF000453ED /* Level05Scene.mm */,
-				C246C6D615A8DEFF000453ED /* LevelSet2.mm */,
-				C246C6CB15A8DEFF000453ED /* Level06Scene.mm */,
-				C246C6CC15A8DEFF000453ED /* Level07Scene.mm */,
-				C246C6CD15A8DEFF000453ED /* Level08Scene.mm */,
-				C246C6CE15A8DEFF000453ED /* Level09Scene.mm */,
-				C246C6CF15A8DEFF000453ED /* Level10Scene.mm */,
-				C246C6D715A8DEFF000453ED /* LevelSet3.mm */,
-				C246C6D015A8DEFF000453ED /* Level11Scene.mm */,
-				C246C6D115A8DEFF000453ED /* Level12Scene.mm */,
-				C246C6D215A8DEFF000453ED /* Level13Scene.mm */,
-				C246C6D315A8DEFF000453ED /* Level14Scene.mm */,
-				C246C6D415A8DEFF000453ED /* Level15Scene.mm */,
+				C2178CB915AA1A75004F7330 /* Level Set 1 */,
+				C2178CBA15AA1A84004F7330 /* Level Set 2 */,
+				C2178CBB15AA1A96004F7330 /* Level Set 3 */,
 			);
 			name = Levels;
 			sourceTree = "<group>";

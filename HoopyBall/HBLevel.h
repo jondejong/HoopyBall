@@ -46,7 +46,12 @@
 
 @interface Level06Scene : LevelSet2 @end
 @interface Level07Scene : LevelSet2 @end
-@interface Level08Scene : LevelSet2 @end
+@interface Level08Scene : LevelSet2 
+    @property(nonatomic, retain) CCTexture2D* brickTexture;
+    @property(nonatomic, retain) CCTexture2D* obs1Texture;
+    @property(nonatomic, retain) CCTexture2D* obs2Texture;
+@end
+
 @interface Level09Scene : LevelSet2 @end
 @interface Level10Scene : LevelSet2 @end
 
