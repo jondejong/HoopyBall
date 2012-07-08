@@ -31,8 +31,8 @@
 -(id) init {
     if(self = [super init]) {
         brickSideLen = 2;
-        size.width = 3840;
-        size.height = 3200;
+        size.width = 1792;
+        size.height = 1280;
         
         
         //Cache obstacle textures
@@ -41,7 +41,7 @@
         brickTexture_ = [brick texture];
         [self addChild:brick z:0 tag: kBrickParentTag];
         
-        CCSpriteBatchNode *obs1 = [CCSpriteBatchNode batchNodeWithFile:@"l2_obs_1_base.png" capacity:100];
+        CCSpriteBatchNode *obs1 = [CCSpriteBatchNode batchNodeWithFile:@"l2_obs_1_base_small.png" capacity:100];
         obs1Texture_ = [obs1 texture];
         [self addChild:obs1 z:0 tag: kObs1ParentTag];
         
@@ -57,7 +57,7 @@
 -(CGPoint) getStartPoint {return ccp(.5, 3); }
 
 -(CGPoint) getEndPoint {
-    return ccp(20, 20);
+    return ccp(5, 5);
 }
 
 -(CGPoint) getBadGuyStartPoint {
@@ -76,7 +76,7 @@
     [self addBrickAt:ccp(0.0f, 0.0f)];
     
     //left wall
-    for(int i = 2; i < 25;  i++){
+    for(int i = 2; i < 10;  i++){
         [self addBrickAt: ccp(0.0f, i*brickSideLen)];
     }
     
@@ -84,81 +84,81 @@
     [self addBrickAt:ccp(brickSideLen, 0.0f)];
     [self addBrickAt:ccp(2 * brickSideLen, 0.0f)];
     
-    for(int i=4; i<30; i++) {
+    for(int i=4; i<14; i++) {
         [self addBrickAt:ccp(i * brickSideLen, 0.0f)];
     }
     
     //top
-    for(int i=1; i<30; i++) {
-        [self addBrickAt:ccp(i * brickSideLen, 24*brickSideLen)];
+    for(int i=1; i<14; i++) {
+        [self addBrickAt:ccp(i * brickSideLen, 9*brickSideLen)];
     }
     
     //right
-    for(int i=1; i<29; i++) {
-        [self addBrickAt:ccp(29 * brickSideLen, i*brickSideLen)];
+    for(int i=1; i<9; i++) {
+        [self addBrickAt:ccp(13 * brickSideLen, i*brickSideLen)];
     }
     
-    [self addObs1At: ccp(5,5)];
-    [self addObs1At: ccp(5, 15)];
-    [self addObs1At: ccp(5, 25)];
-    [self addObs1At: ccp(5, 35)];
-    
-    [self addObs1At: ccp(15, 5)];
-    [self addObs1At: ccp(15, 15)];
-    [self addObs1At: ccp(15, 25)];
-    [self addObs1At: ccp(15, 35)];
-    
-    [self addObs1At: ccp(25, 5)];
-    [self addObs1At: ccp(25, 15)];
-    [self addObs1At: ccp(25, 25)];
-    [self addObs1At: ccp(25, 35)];
-    
-    [self addObs1At: ccp(35, 5)];
-    [self addObs1At: ccp(35, 15)];
-    [self addObs1At: ccp(35, 25)];
-    [self addObs1At: ccp(35, 35)];
+    //    [self addObs1At: ccp(5,5)];
+        [self addObs1At: ccp(5, 15)];
+    //    [self addObs1At: ccp(5, 25)];
+    //    [self addObs1At: ccp(5, 35)];
+    //    
+    //    [self addObs1At: ccp(15, 5)];
+    //    [self addObs1At: ccp(15, 15)];
+    //    [self addObs1At: ccp(15, 25)];
+    //    [self addObs1At: ccp(15, 35)];
+    //    
+    //    [self addObs1At: ccp(25, 5)];
+    //    [self addObs1At: ccp(25, 15)];
+    //    [self addObs1At: ccp(25, 25)];
+    //    [self addObs1At: ccp(25, 35)];
+    //    
+    //    [self addObs1At: ccp(35, 5)];
+    //    [self addObs1At: ccp(35, 15)];
+    //    [self addObs1At: ccp(35, 25)];
+    //    [self addObs1At: ccp(35, 35)];
     
 }
 
 -(void) createTargets {
     
-    for(int i=9; i<46; i+=2) {
-        [self addCoinAt:ccp(4, i)];
-    }
-    
-    for(int i=9; i<46; i+=2) {
-        [self addCoinAt:ccp(50, i)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 45)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 43)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 41)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 39)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 37)];
-    }
-    for(int i=48; i>40; i-=2) {
-        [self addCoinAt:ccp(i, 35)];
-    }
+    //    for(int i=9; i<46; i+=2) {
+    //        [self addCoinAt:ccp(4, i)];
+    //    }
+    //    
+    //    for(int i=9; i<46; i+=2) {
+    //        [self addCoinAt:ccp(50, i)];
+    //    }
+    //    for(int i=48; i>40; i-=2) {
+    //        [self addCoinAt:ccp(i, 45)];
+    //    }
+    //    for(int i=48; i>40; i-=2) {
+    //        [self addCoinAt:ccp(i, 43)];
+    //    }
+    //    for(int i=48; i>40; i-=2) {
+    //        [self addCoinAt:ccp(i, 41)];
+    //    }
+    //    for(int i=48; i>40; i-=2) {
+    //        [self addCoinAt:ccp(i, 39)];
+    //    }
+    //    for(int i=48; i>40; i-=2) {
+    //        [self addCoinAt:ccp(i, 37)];
+    //    }
+    //    for(int i=48; i>40; i-=2) {
+    //        [self addCoinAt:ccp(i, 35)];
+    //    }
     
 }
 
 -(void) addObs1At: (CGPoint) p {
     CCSprite * sprite = [CCSprite spriteWithTexture:obs1Texture_ ];
     sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
-    sprite.anchorPoint = [[GB2ShapeCache sharedShapeCache] anchorPointForShape:@"l2_obs_1_base"];
+    sprite.anchorPoint = [[GB2ShapeCache sharedShapeCache] anchorPointForShape:@"l2_obs_1_base_small"];
     
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
     bodyDef.position.Set(p.x, p.y);
-    [[GameManager sharedInstance] addCachedObstacle:@"l2_obs_1_base" with:&bodyDef andWith:sprite];
+    [[GameManager sharedInstance] addCachedObstacle:@"l2_obs_1_base_small" with:&bodyDef andWith:sprite];
     
 }
 
