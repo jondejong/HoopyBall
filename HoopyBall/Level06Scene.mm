@@ -99,54 +99,23 @@
     }
     
     [self addObs1At: ccp(5,5)];
-//    [self addObs1At: ccp(5, 15)];
-//    [self addObs1At: ccp(5, 25)];
-//    [self addObs1At: ccp(5, 35)];
-//    
-//    [self addObs1At: ccp(15, 5)];
-//    [self addObs1At: ccp(15, 15)];
-//    [self addObs1At: ccp(15, 25)];
-//    [self addObs1At: ccp(15, 35)];
-//    
-//    [self addObs1At: ccp(25, 5)];
-//    [self addObs1At: ccp(25, 15)];
-//    [self addObs1At: ccp(25, 25)];
-//    [self addObs1At: ccp(25, 35)];
-//    
-//    [self addObs1At: ccp(35, 5)];
-//    [self addObs1At: ccp(35, 15)];
-//    [self addObs1At: ccp(35, 25)];
-//    [self addObs1At: ccp(35, 35)];
+    [self addObs1At: ccp(5, 14.75)];
+    [self addObs1At: ccp(9, 11.5)];
+    [self addObs1At: ccp(9, 7)];;
     
 }
 
 -(void) createTargets {
     
-//    for(int i=9; i<46; i+=2) {
-//        [self addCoinAt:ccp(4, i)];
-//    }
-//    
-//    for(int i=9; i<46; i+=2) {
-//        [self addCoinAt:ccp(50, i)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 45)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 43)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 41)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 39)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 37)];
-//    }
-//    for(int i=48; i>40; i-=2) {
-//        [self addCoinAt:ccp(i, 35)];
-//    }
+    for(int i=8; i<18; i+=2) {
+        [self addCoinAt:ccp(4, i)];
+    }
+    
+    for(float i=10; i<17; i+=1.5) {
+        [self addCoinAt:ccp(14, i)];
+        [self addCoinAt:ccp(16, i)];
+    }
+
     
 }
 
