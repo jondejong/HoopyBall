@@ -40,6 +40,8 @@
         
         startX = 0.6f;
         startY = 3.55f;
+        
+        defaultBorderTileSize = 128.0f;
     }
     return self;
 } 

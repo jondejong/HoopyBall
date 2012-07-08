@@ -20,12 +20,12 @@
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 
-//#define START_VELOCITY_X 4.0f
-#define START_VELOCITY_X 7.0f
+#define START_VELOCITY_X 4.0f
+//#define START_VELOCITY_X 7.0f
 #define START_VELOCITY_Y 0.0f
 
-//#define WALL_RESTITUTION 1.07f
-#define WALL_RESTITUTION 1.00f
+#define WALL_RESTITUTION 1.07f
+//#define WALL_RESTITUTION 1.00f
 
 #define SHOW_FRAMERATE 0
 
@@ -36,7 +36,7 @@
 #define OBJECT_FRICTION 0.5f
 
 // Usefull to turn this off when working out issues
-#define DRAW_ENEMIES 0
+#define DRAW_ENEMIES 1
 
 // Usefull to turn this on when trying to place the bad guy in a new level
 #define START_WITH_BAD_GUY 0
