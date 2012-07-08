@@ -34,7 +34,6 @@
         size.width = 1280;
         size.height = 1280;
         
-        
         //Cache obstacle textures
         
         CCSpriteBatchNode *brick = [CCSpriteBatchNode batchNodeWithFile:@"l2_base_brick.png" capacity:100];
@@ -52,7 +51,7 @@
 }
 
 -(CGSize) getLevelSize { return size; }
--(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level2_bg-hd.tmx" : @"level2_bg.tmx";}
+-(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level6_bg-hd.tmx" : @"level6_bg.tmx";}
 
 -(CGPoint) getStartPoint {return ccp(.5, 3); }
 

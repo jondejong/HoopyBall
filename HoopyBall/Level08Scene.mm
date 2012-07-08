@@ -52,7 +52,7 @@
 }
 
 -(CGSize) getLevelSize { return size; }
--(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level2_bg-hd.tmx" : @"level2_bg.tmx";}
+-(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level8_bg-hd.tmx" : @"level8_bg.tmx";}
 
 -(CGPoint) getStartPoint {return ccp(.5, 3); }
 
