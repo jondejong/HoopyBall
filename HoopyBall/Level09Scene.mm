@@ -35,16 +35,14 @@
     return ccp(20, 20);
 }
 
--(CGPoint) getBadGuyStartPoint {
+-(CGPoint) getgetEnemyStartPoint {
     return ccp(7, .5);
 }
 
--(int) getBadGuyFrequency {return 300;}
-
--(float) getBadGuyXSpeed {
+-(float) getgetEnemyXSpeed {
     return  0;
 }
--(float) getBadGuyYSpeed {return 4;}
+-(float) getgetEnemyYSpeed {return 4;}
 
 -(void) createObstacles {
     //Start
@@ -52,25 +50,25 @@
     
     //left wall
     for(int i = 2; i < 25;  i++){
-        [self addBrickAt: ccp(0.0f, i*[self brickSideLen])];
+        [self addBrickAt: ccp(0.0f, i)];
     }
     
     //bottom
-    [self addBrickAt:ccp([self brickSideLen], 0.0f)];
-    [self addBrickAt:ccp(2 * [self brickSideLen], 0.0f)];
+    [self addBrickAt:ccp(1, 0.0f)];
+    [self addBrickAt:ccp(2, 0.0f)];
     
     for(int i=4; i<30; i++) {
-        [self addBrickAt:ccp(i * [self brickSideLen], 0.0f)];
+        [self addBrickAt:ccp(i, 0.0f)];
     }
     
     //top
     for(int i=1; i<30; i++) {
-        [self addBrickAt:ccp(i * [self brickSideLen], 24*[self brickSideLen])];
+        [self addBrickAt:ccp(i, 24)];
     }
     
     //right
     for(int i=1; i<29; i++) {
-        [self addBrickAt:ccp(29 * [self brickSideLen], i*[self brickSideLen])];
+        [self addBrickAt:ccp(29, i)];
     }
     
     [self addObs2At: ccp(5,5)];

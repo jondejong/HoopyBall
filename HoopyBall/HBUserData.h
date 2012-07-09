@@ -20,7 +20,7 @@
 #define WALL_NODE_TYPE 1
 #define BALL_NODE_TYPE 2
 #define STAR_NODE_TYPE 3
-#define BAD_GUY_NODE_TYPE 4
+#define ENEMY_NODE_TYPE 4
 #define COIN_NODE_TYPE 5
 
 #endif
@@ -36,7 +36,7 @@
 
 @interface BallUserData : HBUserData {} @end
 @interface StarUserData : HBUserData {} @end
-@interface BadGuyUserData : HBUserData {} @end
+@interface EnemyUserData : HBUserData {} @end
 @interface CoinUserData : HBUserData {}
     -(void) setSprite:(CCSprite*)sprite;
 @end

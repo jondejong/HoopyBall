@@ -17,10 +17,8 @@
     return 1;
 }
 
--(bool) addBadGuy {
-    
-    uint64_t  mach_absolute_time();
-    return false;
+- (void)dealloc{
+    [super dealloc];
 }
 
 @end

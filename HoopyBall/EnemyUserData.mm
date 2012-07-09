@@ -1,5 +1,5 @@
 //
-//  BadGuyUserData.m
+//  EnemyUserData.mm
 //  HoopyBall
 //
 //  Created by Jonathan DeJong on 3/25/12.
@@ -8,16 +8,17 @@
 #import "HoopyBall.h"
 #import "HBUserData.h"
 
-@implementation BadGuyUserData
+@implementation EnemyUserData
 
 -(void) handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody{
 
+#if ENEMIES_KILL
     if([otherBody nodeType] == BALL_NODE_TYPE) {
         [[GameManager sharedInstance] handleLoseLevel];
     }
-    
+#endif
 }
 
--(int) nodeType { return BAD_GUY_NODE_TYPE;}
+-(int) nodeType { return ENEMY_NODE_TYPE;}
 
 @end

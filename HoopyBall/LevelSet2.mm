@@ -66,40 +66,18 @@
     [[GameManager sharedInstance] addCachedObstacle:@"l2_obs_1_base" with:&bodyDef andWith:sprite];
 }
 
--(void) addBrickAt: (CGPoint) p {
-    p = ccp(p.x + 1, p.y + 1);
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(p.x, p.y);
-    
-    HBUserData* data = [HBUserData node];
-    [self addChild:data];
-    bodyDef.userData = data;
-    
-    b2PolygonShape brickShape;
-    brickShape.SetAsBox(1.0, 1.0);
-    b2FixtureDef fixture;
-    fixture.shape = &brickShape;
-    fixture.friction = OBJECT_FRICTION;
-    fixture.density = 1.0;
-    fixture.restitution = 1.0;
-    
-    CCSprite *sprite = [CCSprite spriteWithTexture:[self brickTexture] ];	
-    sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
-    
-    [[GameManager sharedInstance] addObstacle:&fixture with:&bodyDef andWith: sprite];
-    
-}
 
-- (void)dealloc
-{
+
+- (void) dealloc {
     [brickTexture release];
     brickTexture = nil;
+    
     [obs1Texture release];
     obs1Texture = nil;
+    
     [obs2Texture release];
     obs2Texture = nil;
+    
     [super dealloc];
 }
 

@@ -272,7 +272,7 @@
 		C2E8520C153B46EC00A20BAA /* CoinUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E8520B153B46EC00A20BAA /* CoinUserData.mm */; };
 		C2E9FB3B151E732900906B40 /* black-ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB39151E732900906B40 /* black-ball.png */; };
 		C2E9FB3C151E732900906B40 /* black-ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E9FB3A151E732900906B40 /* black-ball-hd.png */; };
-		C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */; };
+		C2E9FB40151F838E00906B40 /* EnemyUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB3F151F838E00906B40 /* EnemyUserData.mm */; };
 		C2E9FB44151F865200906B40 /* LoseLevelLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2E9FB43151F865200906B40 /* LoseLevelLayer.mm */; };
 		C2EB24C6156E8764001649AD /* Level1_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C2EB24C2156E8764001649AD /* Level1_bg.png */; };
 		C2EB24CC156E90A7001649AD /* level1_bg.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C2EB24C9156E90A7001649AD /* level1_bg.tmx */; };
@@ -724,7 +724,7 @@
 		C2E8520B153B46EC00A20BAA /* CoinUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CoinUserData.mm; sourceTree = "<group>"; };
 		C2E9FB39151E732900906B40 /* black-ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball.png"; path = "Resources/black-ball.png"; sourceTree = "<group>"; };
 		C2E9FB3A151E732900906B40 /* black-ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-ball-hd.png"; path = "Resources/black-ball-hd.png"; sourceTree = "<group>"; };
-		C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BadGuyUserData.mm; sourceTree = "<group>"; };
+		C2E9FB3F151F838E00906B40 /* EnemyUserData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EnemyUserData.mm; sourceTree = "<group>"; };
 		C2E9FB42151F865200906B40 /* LoseLevelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoseLevelLayer.h; sourceTree = "<group>"; };
 		C2E9FB43151F865200906B40 /* LoseLevelLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoseLevelLayer.mm; sourceTree = "<group>"; };
 		C2EB24C2156E8764001649AD /* Level1_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Level1_bg.png; path = Resources/Level1_bg.png; sourceTree = "<group>"; };
@@ -1482,7 +1482,7 @@
 				C22CCB741516BF8500B0C4C3 /* HBUserData.mm */,
 				C28D9EED15194F31002F7FF6 /* BallUserData.mm */,
 				C28D9EF015196051002F7FF6 /* StarUserData.mm */,
-				C2E9FB3F151F838E00906B40 /* BadGuyUserData.mm */,
+				C2E9FB3F151F838E00906B40 /* EnemyUserData.mm */,
 				C2E8520B153B46EC00A20BAA /* CoinUserData.mm */,
 			);
 			name = NodeUserData;
@@ -1821,7 +1821,7 @@
 				C28D9EEE15194F31002F7FF6 /* BallUserData.mm in Sources */,
 				C28D9EF115196051002F7FF6 /* StarUserData.mm in Sources */,
 				C28D9EF415196856002F7FF6 /* WinLevelLayer.mm in Sources */,
-				C2E9FB40151F838E00906B40 /* BadGuyUserData.mm in Sources */,
+				C2E9FB40151F838E00906B40 /* EnemyUserData.mm in Sources */,
 				C2E9FB44151F865200906B40 /* LoseLevelLayer.mm in Sources */,
 				C2E8520C153B46EC00A20BAA /* CoinUserData.mm in Sources */,
 				C2DE37F9153D09D2005C6488 /* ScoreLayer.mm in Sources */,

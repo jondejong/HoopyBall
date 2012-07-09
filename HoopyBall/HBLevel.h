@@ -9,47 +9,61 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Box2D.h"
-#include <mach/mach.h>
-#include <mach/mach_time.h>
-#include <unistd.h>
 
 #ifndef HB_LEVEL_H
 #define HB_LEVEL_H
 
+#define HB_LEVEL_DEFAULT_SECONDS_BETWEEN_ENEMIES 10
+#define HB_LEVEL_DEFUALT_MAX_ENEMIES 5
+
 @interface HBLevel : CCScene {
     
 }
+
+@property(nonatomic, retain) CCTexture2D* brickTexture;
+@property(nonatomic, retain) CCTexture2D* coinTexture;
 
 -(CGSize) getLevelSize;
 -(NSString*) getBackgroundTMX;
 -(NSString*) getObsTMX;
 -(CGPoint) getStartPoint;
 -(CGPoint) getEndPoint;
--(CGPoint) getBadGuyStartPoint;
--(float) getBadGuyXSpeed;
--(float) getBadGuyYSpeed;
--(int) getBadGuyFrequency;
--(bool) addBadGuy;
+-(CGPoint) getEnemyStartPoint;
+-(float) getEnemyXSpeed;
+-(float) getEnemyYSpeed;
+-(bool) addEnemy;
 -(void) createObstacles;
 -(void) createTargets;
 -(void) addCoinAt: (CGPoint) p;
 -(int) belongsTo;
 -(void) start;
--(uint64_t) startTime;
-
+-(double) startTime;
+-(float) brickSideLen;
+-(void) addBrickAt: (CGPoint) p;
+-(double) lastEnemyAddedTime;
+-(double) secondsBetweenEnemies;
+-(int) maxEnemies;
+-(int) enemiesAdded;
 @end 
 
 @interface LevelSet1 : HBLevel @end
+
 @interface LevelSet2 : HBLevel 
-    @property(nonatomic, retain) CCTexture2D* brickTexture;
-    @property(nonatomic, retain) CCTexture2D* obs1Texture;
-    @property(nonatomic, retain) CCTexture2D* obs2Texture;
-    -(float) brickSideLen;
-    -(void) addObs1At: (CGPoint) p;
-    -(void) addObs2At: (CGPoint) p;
-    -(void) addBrickAt: (CGPoint) p;
-@end
-@interface LevelSet3 : HBLevel @end
+@property(nonatomic, retain) CCTexture2D* obs1Texture;
+@property(nonatomic, retain) CCTexture2D* obs2Texture;
+-(float) brickSideLen;
+-(void) addObs1At: (CGPoint) p;
+-(void) addObs2At: (CGPoint) p;
+
+@end // Level Set 2
+
+@interface LevelSet3 : HBLevel 
+@property(nonatomic, retain) CCTexture2D* obs1Texture;
+@property(nonatomic, retain) CCTexture2D* obs2Texture;
+-(void) addObs1At: (CGPoint) p;
+-(void) addObs2At: (CGPoint) p;
+
+@end // Level Set 3
 
 @interface Level01Scene : LevelSet1 {} @end
 @interface Level02Scene : LevelSet1 {} @end
@@ -65,10 +79,10 @@
 @interface Level10Scene : LevelSet2 @end
 
 @interface Level11Scene : LevelSet3 @end
-@interface Level12Scene : LevelSet2 @end
-@interface Level13Scene : LevelSet2 @end
-@interface Level14Scene : LevelSet2 @end
-@interface Level15Scene : LevelSet2 @end
+@interface Level12Scene : LevelSet3 @end
+@interface Level13Scene : LevelSet3 @end
+@interface Level14Scene : LevelSet3 @end
+@interface Level15Scene : LevelSet3 @end
 
 #endif
 

@@ -70,13 +70,11 @@
     return ccp(9, 5);
 }
 
--(CGPoint) getBadGuyStartPoint {
+-(CGPoint) getEnemyStartPoint {
     return ccp(3.5, .5);
 }
--(float) getBadGuyXSpeed {return 0;}
--(float) getBadGuyYSpeed {return 3;}
-
--(int) getBadGuyFrequency {return 500;}
+-(float) getEnemyXSpeed {return 0;}
+-(float) getEnemyYSpeed {return 3;}
 
 -(void) createObstacles {   
     

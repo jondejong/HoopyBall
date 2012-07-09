@@ -15,22 +15,23 @@
 
 @private
     @private
-    CCTexture2D* coinTexture;
-    uint64_t _startTime;
-    
-    enum {
-        kCoinParentTag = 1
-    };
+    double _startTime;
+    double _lastEnemyAddedTime;
+    int _enemiesAdded;
     
 }
+
+@synthesize brickTexture;
+@synthesize coinTexture;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        _enemiesAdded = 0;
         CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
-        coinTexture = [coin texture];
-        [self addChild:coin z:0 tag: kCoinParentTag];
+        self.coinTexture = [coin texture];
+        [self addChild:coin z:0];
     }
     return self;
 }
@@ -56,14 +57,12 @@
     return ccp([ScreenSize screenSize].width, [ScreenSize screenSize].height);
 }
 
--(CGPoint) getBadGuyStartPoint {
+-(CGPoint) getEnemyStartPoint {
     return ccp(-1000, -1000);
 }
 
--(float) getBadGuyXSpeed {return 0;}
--(float) getBadGuyYSpeed {return 0;}
-
--(int) getBadGuyFrequency {return 10000;}
+-(float) getEnemyXSpeed {return 0;}
+-(float) getEnemyYSpeed {return 0;}
 
 -(void) createObstacles{}
 -(void) createTargets{}
@@ -87,18 +86,69 @@
     coinFixture.restitution = 0.0;
     coinFixture.isSensor = true;
     
-    CCSprite *sprite = [CCSprite spriteWithTexture:coinTexture];	
+    CCSprite *sprite = [CCSprite spriteWithTexture:[self coinTexture]];	
     sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
     [data setSprite:sprite];
     
     [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
 }
 
--(bool) addBadGuy {
-    int freq = [self getBadGuyFrequency];
-    int rand = arc4random() % freq;
+-(bool) addEnemy {
+    // The default add enemy method will add an enemy at the level
+    // prescribed interval up to the level prescribed maximum, defualting
+    // to the default values for both.
     
-    return (rand == 1); 
+    bool addVal = false;
+    if([self enemiesAdded] < [self maxEnemies]) {
+        
+        double last = [self lastEnemyAddedTime];
+        double now = CACurrentMediaTime();
+        
+        if((now - last) > [self secondsBetweenEnemies]) {
+            addVal = true;
+            _enemiesAdded++;
+            _lastEnemyAddedTime = now;
+        }
+    }
+    return addVal;
+}
+
+-(double) secondsBetweenEnemies {
+    return HB_LEVEL_DEFAULT_SECONDS_BETWEEN_ENEMIES;
+}
+
+-(int) maxEnemies {
+    return HB_LEVEL_DEFUALT_MAX_ENEMIES;
+}
+
+-(int) enemiesAdded {
+    return _enemiesAdded;
+}
+
+-(void) addBrickAt: (CGPoint) p {
+    p = ccp((p.x * [self brickSideLen]) + 1, (p.y * [self brickSideLen] )+ 1);
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.gravityScale = 0.0f;
+    bodyDef.position.Set(p.x, p.y);
+    
+    HBUserData* data = [HBUserData node];
+    [self addChild:data];
+    bodyDef.userData = data;
+    
+    b2PolygonShape brickShape;
+    brickShape.SetAsBox(1.0, 1.0);
+    b2FixtureDef fixture;
+    fixture.shape = &brickShape;
+    fixture.friction = OBJECT_FRICTION;
+    fixture.density = 1.0;
+    fixture.restitution = 1.0;
+    
+    CCSprite *sprite = [CCSprite spriteWithTexture:[self brickTexture] ];	
+    sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
+    
+    [[GameManager sharedInstance] addObstacle:&fixture with:&bodyDef andWith: sprite];
+    
 }
 
 -(int) belongsTo {
@@ -106,15 +156,24 @@
 }
 
 -(void) start {
-    _startTime = mach_absolute_time();
+    _startTime = CACurrentMediaTime(); 
+    _lastEnemyAddedTime = _startTime;
 }
 
--(uint64_t) startTime {
+-(double) startTime {
     return _startTime;
 }
 
-- (void)dealloc
-{
+-(float) brickSideLen {
+    return 0.0;
+}
+
+-(double) lastEnemyAddedTime {
+    return _lastEnemyAddedTime;
+}
+
+- (void)dealloc {
+    [coinTexture release];
     coinTexture =  nil;
     [super dealloc];
 }

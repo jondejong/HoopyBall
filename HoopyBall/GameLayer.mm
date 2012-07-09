@@ -20,7 +20,7 @@ enum {
     kBlockParentNode = 2,
     kBallSprite = 3,
     kEndSprite = 4,
-    kBadGuySpriteTag = 5,
+    kEnemySpriteTag = 5,
     kBrickTexture = 6,
     kWallTexture = 7,
     kCoinTexture = 8
@@ -48,7 +48,7 @@ bool ballCreated = false;
 @synthesize blockTexture;
 @synthesize spriteTexture;
 @synthesize starTexture;
-@synthesize badGuyTexture;
+@synthesize enemyTexture;
 @synthesize wallTexture;
 @synthesize coinTexture;
 
@@ -72,9 +72,9 @@ bool ballCreated = false;
         self.spriteTexture = [parent texture];
         [self addChild:parent z:0 tag:kTagParentNode];
         
-        CCSpriteBatchNode *badGuy = [CCSpriteBatchNode batchNodeWithFile:@"black-ball.png" capacity:25];
-        self.badGuyTexture = [badGuy texture];
-        [self addChild:badGuy z:0 tag:kBadGuySpriteTag];
+        CCSpriteBatchNode *enemey = [CCSpriteBatchNode batchNodeWithFile:@"black-ball.png" capacity:25];
+        self.enemyTexture = [enemey texture];
+        [self addChild:enemey z:0 tag:kEnemySpriteTag];
         
         // Add the end point
         CCSpriteBatchNode *star = [CCSpriteBatchNode batchNodeWithFile: 
@@ -94,7 +94,7 @@ bool ballCreated = false;
         [self addBall];
         
 #if START_WITH_BAD_GUY
-        [self addBadGuy];
+        [self addEnemy];
 #endif
         
 	}
@@ -322,13 +322,13 @@ bool ballCreated = false;
 
 }
 
--(void) addBadGuy {
-    CCNode *badGuy = [self getChildByTag:kBadGuySpriteTag];
+-(void) addEnemy {
+    CCNode *enemy = [self getChildByTag:kEnemySpriteTag];
 	
-    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:badGuyTexture ];						
-    [badGuy addChild:sprite];
+    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:[self enemyTexture] ];						
+    [enemy addChild:sprite];
 	
-    CGPoint lp = [[GameManager sharedInstance] getCurrentLevelBadGuyPoint];
+    CGPoint lp = [[GameManager sharedInstance] getCurrentLevelEnemyPoint];
     sprite.position = ccp(lp.x * PTM_RATIO, lp.y * PTM_RATIO); 
 	
     // Define the dynamic body.
@@ -336,14 +336,14 @@ bool ballCreated = false;
     bodyDef.type = b2_dynamicBody;
     bodyDef.gravityScale = 0.0f;
     bodyDef.position.Set(lp.x, lp.y);
-    bodyDef.linearVelocity.Set([[GameManager sharedInstance] getCurrentLevelBadGuyXSpeed], [[GameManager sharedInstance] getCurrentLevelBadGuyYSpeed]);
+    bodyDef.linearVelocity.Set([[GameManager sharedInstance] getCurrentLevelEnemyXSpeed], [[GameManager sharedInstance] getCurrentLevelEnemyYSpeed]);
     bodyDef.bullet = true;
     
-    HBUserData* data = [BadGuyUserData node];
+    HBUserData* data = [EnemyUserData node];
     [self addChild:data];
     bodyDef.userData = data;
     
-    b2Body* badGuyBody = world->CreateBody(&bodyDef);
+    b2Body* enemyBody = world->CreateBody(&bodyDef);
 	
     // Define another box shape for our dynamic body.
     b2CircleShape ballShape;
@@ -354,9 +354,9 @@ bool ballCreated = false;
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.0f;
     fixtureDef.restitution = 1.0f;
-    badGuyBody->CreateFixture(&fixtureDef);
+    enemyBody->CreateFixture(&fixtureDef);
     
-    [sprite setPhysicsBody:badGuyBody];
+    [sprite setPhysicsBody:enemyBody];
     
 }
 
@@ -379,8 +379,8 @@ bool ballCreated = false;
         b2Vec2 pos  = ballBody->GetPosition();
         
 #if DRAW_ENEMIES
-        if([[GameManager sharedInstance] addBadGuy]) {
-            [self addBadGuy];
+        if([[GameManager sharedInstance] addEnemy]) {
+            [self addEnemy];
         }
 #endif
         
@@ -535,14 +535,14 @@ bool ballCreated = false;
     [blockTexture release];
     [spriteTexture release];
     [starTexture release];
-    [badGuyTexture release];
+    [enemyTexture release];
     [wallTexture release];
     [coinTexture release];
     
     blockTexture = nil;
     spriteTexture = nil;
     starTexture = nil;
-    badGuyTexture = nil;
+    enemyTexture = nil;
     wallTexture = nil;
     coinTexture = nil;
     

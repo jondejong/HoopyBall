@@ -36,17 +36,17 @@ enum {
     StartLevelTag
 };
 
-GameManager * sharedInstance;
+GameManager * _sharedInstance;
 
 -(id) init {
     if(self = [super init]) {
-        sharedInstance = self;
+        _sharedInstance = self;
     }
     return self;
 }
 
 +(GameManager*) sharedInstance {
-    return sharedInstance;
+    return _sharedInstance;
 }
 
 -(void) startGame {
@@ -186,37 +186,42 @@ GameManager * sharedInstance;
 
 -(void) handleLevelPlayStarted {
     [rootNode removeChildByTag:StartLevelTag cleanup:true];
+    [levelScene start];
     [controlLayer handleUnpause];
-}
-
--(CGSize) getCurrentLevelSize {
-    return [levelScene getLevelSize];
-}
-
--(void)markBodyForDeletion : (b2Body*)body {
-    [gameLayer markBodyForDeletion :body];
-}
-
--(CGPoint) getCurrentLevelStartPoint {
-    return [levelScene getStartPoint];
 }
 
 -(CGPoint) getCurrentLevelEndPoint {
     return [levelScene getEndPoint];
 }
 
--(CGPoint) getCurrentLevelBadGuyPoint{
-    return [levelScene getBadGuyStartPoint];
+-(CGSize) getCurrentLevelSize {
+    return [levelScene getLevelSize];
 }
--(float) getCurrentLevelBadGuyXSpeed {
-    return [levelScene getBadGuyXSpeed];
+
+-(CGPoint) getCurrentLevelStartPoint {
+    return [levelScene getStartPoint];
 }
--(float) getCurrentLevelBadGuyYSpeed {
-    return [levelScene getBadGuyYSpeed];
+
+-(CGPoint) getCurrentLevelEnemyPoint{
+    return [levelScene getEnemyStartPoint];
 }
--(bool) addBadGuy {
-    return [levelScene addBadGuy];
+
+-(float) getCurrentLevelEnemyXSpeed {
+    return [levelScene getEnemyXSpeed];
 }
+
+-(float) getCurrentLevelEnemyYSpeed {
+    return [levelScene getEnemyYSpeed];
+}
+
+-(bool) addEnemy {
+    return [levelScene addEnemy];
+}
+
+-(void)markBodyForDeletion : (b2Body*)body {
+    [gameLayer markBodyForDeletion :body];
+}
+
 
 -(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
     [gameLayer addStaticBody: fixture with: body andWith: sprite];
@@ -250,7 +255,7 @@ GameManager * sharedInstance;
     [controlLayer release];
     [scoreLayer release];
     
-    sharedInstance = nil;
+    _sharedInstance = nil;
     rootNode = nil;
     gameLayer = nil;
     controlLayer = nil;

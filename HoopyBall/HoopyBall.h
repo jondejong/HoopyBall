@@ -16,16 +16,16 @@
 #ifndef HoopyBall_HoopyBall_h
 #define HoopyBall_HoopyBall_h
 
-#define DEBUG_DRAW_OUTLINE 1
+#define DEBUG_DRAW_OUTLINE 0
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 
 #define START_VELOCITY_X 4.0f
-//#define START_VELOCITY_X 7.0f
+//#define START_VELOCITY_X 0.0f
 #define START_VELOCITY_Y 0.0f
 
-#define WALL_RESTITUTION 1.07f
-//#define WALL_RESTITUTION 1.00f
+//#define WALL_RESTITUTION 1.07f
+#define WALL_RESTITUTION 1.00f
 
 #define SHOW_FRAMERATE 0
 
@@ -35,11 +35,12 @@
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
 
-// Usefull to turn this off when working out issues
+// Usefull flags for debugging enemy issues
 #define DRAW_ENEMIES 1
+#define ENEMIES_KILL 1
 
-// Usefull to turn this on when trying to place the bad guy in a new level
-#define START_WITH_BAD_GUY 0
+// Usefull to turn this on when trying to place the enemy in a new level
+#define START_WITH_ENEMY 0
 
 //Usefull to turn this off when designing a new level
 #define ALLOW_PLAYER_TO_WIN 1
@@ -82,7 +83,7 @@
 @property(nonatomic, retain) CCTexture2D *blockTexture;
 @property(nonatomic, retain) CCTexture2D *spriteTexture;
 @property(nonatomic, retain) CCTexture2D *starTexture;
-@property(nonatomic, retain) CCTexture2D *badGuyTexture;
+@property(nonatomic, retain) CCTexture2D *enemyTexture;
 @property(nonatomic, retain) CCTexture2D *wallTexture;
 @property(nonatomic, retain) CCTexture2D *coinTexture;
 
@@ -97,7 +98,7 @@
 
 -(void) updateBGPosition: (CGPoint)position;
 
--(void) addBadGuy;
+-(void) addEnemy;
 
 -(void) addStaticBody: (b2FixtureDef*)fixture with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite;
 -(void) addCachedStaticBody: (NSString*)fixtureShapeName with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite;
@@ -141,10 +142,10 @@
 -(CGSize) getCurrentLevelSize;
 -(CGPoint) getCurrentLevelStartPoint;
 
--(CGPoint) getCurrentLevelBadGuyPoint;
--(float) getCurrentLevelBadGuyXSpeed;
--(float) getCurrentLevelBadGuyYSpeed;
--(bool) addBadGuy;
+-(CGPoint) getCurrentLevelEnemyPoint;
+-(float) getCurrentLevelEnemyXSpeed;
+-(float) getCurrentLevelEnemyYSpeed;
+-(bool) addEnemy;
 
 -(void) markBodyForDeletion : (b2Body*)body;
 
