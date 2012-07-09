@@ -16,7 +16,7 @@
 #ifndef HoopyBall_HoopyBall_h
 #define HoopyBall_HoopyBall_h
 
-#define DEBUG_DRAW_OUTLINE 0
+#define DEBUG_DRAW_OUTLINE 1
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 

@@ -30,7 +30,7 @@
 
 -(id) init {
     if(self = [super init]) {
-        brickSideLen = 2;
+        brickSideLen = 2;   
         size.width = 1024;
         size.height = 6400;
         

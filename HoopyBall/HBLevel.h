@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Box2D.h"
+#include <mach/mach.h>
+#include <mach/mach_time.h>
+#include <unistd.h>
 
 #ifndef HB_LEVEL_H
 #define HB_LEVEL_H
@@ -31,11 +34,21 @@
 -(void) createTargets;
 -(void) addCoinAt: (CGPoint) p;
 -(int) belongsTo;
+-(void) start;
+-(uint64_t) startTime;
 
 @end 
 
 @interface LevelSet1 : HBLevel @end
-@interface LevelSet2 : HBLevel @end
+@interface LevelSet2 : HBLevel 
+    @property(nonatomic, retain) CCTexture2D* brickTexture;
+    @property(nonatomic, retain) CCTexture2D* obs1Texture;
+    @property(nonatomic, retain) CCTexture2D* obs2Texture;
+    -(float) brickSideLen;
+    -(void) addObs1At: (CGPoint) p;
+    -(void) addObs2At: (CGPoint) p;
+    -(void) addBrickAt: (CGPoint) p;
+@end
 @interface LevelSet3 : HBLevel @end
 
 @interface Level01Scene : LevelSet1 {} @end
@@ -46,11 +59,7 @@
 
 @interface Level06Scene : LevelSet2 @end
 @interface Level07Scene : LevelSet2 @end
-@interface Level08Scene : LevelSet2 
-    @property(nonatomic, retain) CCTexture2D* brickTexture;
-    @property(nonatomic, retain) CCTexture2D* obs1Texture;
-    @property(nonatomic, retain) CCTexture2D* obs2Texture;
-@end
+@interface Level08Scene : LevelSet2 @end
 
 @interface Level09Scene : LevelSet2 @end
 @interface Level10Scene : LevelSet2 @end

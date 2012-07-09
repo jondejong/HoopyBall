@@ -16,6 +16,7 @@
 @private
     @private
     CCTexture2D* coinTexture;
+    uint64_t _startTime;
     
     enum {
         kCoinParentTag = 1
@@ -102,6 +103,14 @@
 
 -(int) belongsTo {
     return 0;
+}
+
+-(void) start {
+    _startTime = mach_absolute_time();
+}
+
+-(uint64_t) startTime {
+    return _startTime;
 }
 
 - (void)dealloc
