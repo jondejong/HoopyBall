@@ -42,7 +42,7 @@
 #define START_WITH_BAD_GUY 0
 
 //Usefull to turn this off when designing a new level
-#define ALLOW_PLAYER_TO_WIN 0
+#define ALLOW_PLAYER_TO_WIN 1
 
 // Layering
 #define WALL_Z -4

@@ -129,6 +129,29 @@
         row++;
         col = 1;
     }
+    
+    for(int i=4; i<20; i+=2) {
+        for(int j=20; j<26; j+=2) {
+            [self addCoinAt:ccp(j,i)];
+        }
+    }
+    
+    for(float i=20; i<25; i+=1.5) {
+        for(float j=3; j<6; j+=1.5) {
+            [self addCoinAt:ccp(j,i)];
+        }
+    }
+    
+    for(float i=23;  i<25; i+=1.5) {
+        for(float j=6; j<12; j+=1.5) {
+            [self addCoinAt:ccp(j, i)];
+        }
+    }
+    
+    for(float i=12; i<17; i+=1.5) {
+        [self addCoinAt:ccp(i, 24.5)];
+    }
+
 }
 
 -(void) addObs1At: (CGPoint) p {
