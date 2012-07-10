@@ -93,7 +93,7 @@ bool ballCreated = false;
         
         [self addBall];
         
-#if START_WITH_BAD_GUY
+#if START_WITH_ENEMY
         [self addEnemy];
 #endif
         
