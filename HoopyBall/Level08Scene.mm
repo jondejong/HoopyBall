@@ -29,20 +29,9 @@
 -(CGSize) getLevelSize { return size; }
 -(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level8_bg-hd.tmx" : @"level8_bg.tmx";}
 
--(CGPoint) getStartPoint {return ccp(.5, 3); }
-
 -(CGPoint) getEndPoint {
     return ccp(20, 20);
 }
-
--(CGPoint) getgetEnemyStartPoint {
-    return ccp(7, .5);
-}
-
--(float) getgetEnemyXSpeed {
-    return  0;
-}
--(float) getgetEnemyYSpeed {return 4;}
 
 -(void) createObstacles {
     //Start
@@ -72,14 +61,14 @@
     }
     
     for(int i=5; i<=15; i+=10) {
-        [self addObs1At: ccp(5,i)];
-        [self addObs2At: ccp(15,i+2)];
-        [self addObs1At: ccp(25,i)];
-        [self addObs2At: ccp(35,i+2)];
+        [self addObs2At: ccp(5,i)];
+        [self addObs1At: ccp(15,i+2)];
+        [self addObs2At: ccp(25,i)];
+        [self addObs1At: ccp(35,i+2)];
     }
     
-    [self addObs2At:ccp(42, 15.5)];
-    [self addObs2At:ccp(42, 7.5)];
+    [self addObs1At:ccp(42, 15.5)];
+    [self addObs1At:ccp(42, 7.5)];
 
 }
 

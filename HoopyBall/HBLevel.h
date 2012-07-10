@@ -65,16 +65,15 @@
 
 @end // Level Set 3
 
-@interface Level01Scene : LevelSet1 {} @end
-@interface Level02Scene : LevelSet1 {} @end
-@interface Level03Scene : LevelSet1 {} @end
-@interface Level04Scene : LevelSet1 {} @end
-@interface Level05Scene : LevelSet1 {} @end
+@interface Level01Scene : LevelSet1 @end
+@interface Level02Scene : LevelSet1 @end
+@interface Level03Scene : LevelSet1 @end
+@interface Level04Scene : LevelSet1 @end
+@interface Level05Scene : LevelSet1 @end
 
 @interface Level06Scene : LevelSet2 @end
 @interface Level07Scene : LevelSet2 @end
 @interface Level08Scene : LevelSet2 @end
-
 @interface Level09Scene : LevelSet2 @end
 @interface Level10Scene : LevelSet2 @end
 

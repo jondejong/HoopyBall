@@ -66,7 +66,16 @@
     [[GameManager sharedInstance] addCachedObstacle:@"l2_obs_1_base" with:&bodyDef andWith:sprite];
 }
 
+-(CGPoint) getEnemyStartPoint {
+    return ccp(7, .5);
+}
 
+-(float) getEnemyXSpeed {
+    return  0;
+}
+-(float) getEnemyYSpeed {return 4;}
+
+-(CGPoint) getStartPoint {return ccp(.5, 3); }
 
 - (void) dealloc {
     [brickTexture release];

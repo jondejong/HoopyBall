@@ -53,6 +53,15 @@
     [[GameManager sharedInstance] addCachedObstacle:@"l3_obs2" with:&bodyDef andWith:sprite];
 }
 
+-(CGPoint) getEnemyStartPoint {
+    return ccp(13, .5);
+}
+
+-(float) getEnemyXSpeed {
+    return  0;
+}
+-(float) getEnemyYSpeed {return 4;}
+
 -(int) belongsTo {
     return 3;
 }

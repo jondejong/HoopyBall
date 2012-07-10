@@ -19,11 +19,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/Level08Scene.mm"
-         timestampString = "363551870.086474"
+         timestampString = "363623444.636804"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "-createObstacles"
          landmarkType = "5">
       </FileBreakpoint>
@@ -43,11 +43,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "HoopyBall/Level09Scene.mm"
-         timestampString = "363552452.45497"
+         timestampString = "363623444.636804"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
          landmarkName = "-createObstacles"
          landmarkType = "5">
       </FileBreakpoint>
@@ -114,6 +114,32 @@
          startingLineNumber = "99"
          endingLineNumber = "99"
          landmarkName = "-addEnemy"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "HoopyBall/HBLevel.mm"
+         timestampString = "363623095.497387"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
+         landmarkName = "-addEnemy"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "HoopyBall/HBLevel.mm"
+         timestampString = "363623260.402698"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
+         landmarkName = "-getEnemyStartPoint"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

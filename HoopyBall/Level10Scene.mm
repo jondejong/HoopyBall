@@ -29,20 +29,9 @@
 -(CGSize) getLevelSize { return size; }
 -(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level9_bg-hd.tmx" : @"level9_bg.tmx";}
 
--(CGPoint) getStartPoint {return ccp(.5, 3); }
-
 -(CGPoint) getEndPoint {
     return ccp(20, 20);
 }
-
--(CGPoint) getgetEnemyStartPoint {
-    return ccp(7, .5);
-}
-
--(float) getgetEnemyXSpeed {
-    return  0;
-}
--(float) getgetEnemyYSpeed {return 4;}
 
 -(void) createObstacles {
     //Start
