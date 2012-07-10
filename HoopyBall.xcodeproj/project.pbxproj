@@ -283,6 +283,10 @@
 		C2ED1F8914F72B11005BA172 /* red_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C2ED1F8814F72B11005BA172 /* red_ball.png */; };
 		C2ED860E14F2F4A600834972 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C2ED860D14F2F4A600834972 /* Default.png */; };
 		C2F09B1F1512D6A60071726C /* HBLevel.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2F09B1E1512D6A60071726C /* HBLevel.mm */; };
+		C2FB4C0F15ACF32D005E1CD8 /* level12_bg-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C2FB4C0D15ACF32D005E1CD8 /* level12_bg-hd.tmx */; };
+		C2FB4C1015ACF32D005E1CD8 /* level12_bg.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C2FB4C0E15ACF32D005E1CD8 /* level12_bg.tmx */; };
+		C2FB4C1415ACF578005E1CD8 /* level13_bg-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C2FB4C1215ACF578005E1CD8 /* level13_bg-hd.tmx */; };
+		C2FB4C1515ACF578005E1CD8 /* level13_bg.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C2FB4C1315ACF578005E1CD8 /* level13_bg.tmx */; };
 		C2FDBC9E14F498EA00F9B5CA /* scene_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FDBC9D14F498EA00F9B5CA /* scene_1.png */; };
 		C2FDBCA414F4A1AF00F9B5CA /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2FDBCA314F4A1AF00F9B5CA /* PauseLayer.mm */; };
 /* End PBXBuildFile section */
@@ -740,6 +744,10 @@
 		C2F09B1E1512D6A60071726C /* HBLevel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HBLevel.mm; sourceTree = "<group>"; };
 		C2F2ED0B159C02C40019A361 /* HoopyBall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HoopyBall.h; sourceTree = "<group>"; };
 		C2F2ED0E159C03FC0019A361 /* DeletableBody.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeletableBody.mm; sourceTree = "<group>"; };
+		C2FB4C0D15ACF32D005E1CD8 /* level12_bg-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "level12_bg-hd.tmx"; path = "Resources/level12_bg-hd.tmx"; sourceTree = "<group>"; };
+		C2FB4C0E15ACF32D005E1CD8 /* level12_bg.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = level12_bg.tmx; path = Resources/level12_bg.tmx; sourceTree = "<group>"; };
+		C2FB4C1215ACF578005E1CD8 /* level13_bg-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "level13_bg-hd.tmx"; path = "Resources/level13_bg-hd.tmx"; sourceTree = "<group>"; };
+		C2FB4C1315ACF578005E1CD8 /* level13_bg.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = level13_bg.tmx; path = Resources/level13_bg.tmx; sourceTree = "<group>"; };
 		C2FDBC9D14F498EA00F9B5CA /* scene_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scene_1.png; sourceTree = "<group>"; };
 		C2FDBCA214F4A1AF00F9B5CA /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
 		C2FDBCA314F4A1AF00F9B5CA /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
@@ -1429,6 +1437,10 @@
 				C242C69E1572DB6D005073C3 /* l3_obs2.png */,
 				C21D06BD15ACDE3900D71610 /* level11_bg.tmx */,
 				C21D06BF15ACDEB400D71610 /* level11_bg-hd.tmx */,
+				C2FB4C0D15ACF32D005E1CD8 /* level12_bg-hd.tmx */,
+				C2FB4C0E15ACF32D005E1CD8 /* level12_bg.tmx */,
+				C2FB4C1215ACF578005E1CD8 /* level13_bg-hd.tmx */,
+				C2FB4C1315ACF578005E1CD8 /* level13_bg.tmx */,
 			);
 			name = "Level Set 3";
 			sourceTree = "<group>";
@@ -1660,6 +1672,10 @@
 				C21D06BC15ACDC8B00D71610 /* l2_obs_1_base_small-hd.png in Resources */,
 				C21D06BE15ACDE3900D71610 /* level11_bg.tmx in Resources */,
 				C21D06C015ACDEB400D71610 /* level11_bg-hd.tmx in Resources */,
+				C2FB4C0F15ACF32D005E1CD8 /* level12_bg-hd.tmx in Resources */,
+				C2FB4C1015ACF32D005E1CD8 /* level12_bg.tmx in Resources */,
+				C2FB4C1415ACF578005E1CD8 /* level13_bg-hd.tmx in Resources */,
+				C2FB4C1515ACF578005E1CD8 /* level13_bg.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

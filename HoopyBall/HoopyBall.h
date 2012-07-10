@@ -16,7 +16,7 @@
 #ifndef HoopyBall_HoopyBall_h
 #define HoopyBall_HoopyBall_h
 
-#define DEBUG_DRAW_OUTLINE 1
+#define DEBUG_DRAW_OUTLINE 0
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 
@@ -30,13 +30,13 @@
 #define SHOW_FRAMERATE 0
 
 // Usefull to see outside the ground box when debugging levels
-#define CAMERA_FOLLOW_BALL 1
+#define CAMERA_FOLLOW_BALL 0
 
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
 #define OBJECT_FRICTION 0.5f
 
 // Usefull flags for debugging enemy issues
-#define DRAW_ENEMIES 1
+#define DRAW_ENEMIES 0
 #define ENEMIES_KILL 0
 
 // Usefull to turn this on when trying to place the enemy in a new level

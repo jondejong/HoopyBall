@@ -67,7 +67,6 @@
         [self addBrickAt:ccp(11, i)];
     }
 
-    
 }
 
 -(void) createTargets {
