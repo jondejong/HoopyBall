@@ -17,12 +17,14 @@
 
 -(void)handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody {
     
+#if WALLS_BREAK
     if(otherBody.nodeType == BALL_NODE_TYPE || otherBody.nodeType == ENEMY_NODE_TYPE) {
         [[GameManager sharedInstance] markBodyForDeletion: thisBody];
         for(CCSprite * sprite in sprites) {
             [[GameManager sharedInstance] removeSpriteFromGame:sprite];
         }
     }
+#endif
 }
 
 -(int) nodeType {

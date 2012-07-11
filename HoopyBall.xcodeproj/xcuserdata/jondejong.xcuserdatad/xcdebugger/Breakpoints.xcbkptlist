@@ -155,5 +155,18 @@
          landmarkName = "-getEnemyStartPoint"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "HoopyBall/HBLevel.h"
+         timestampString = "363670345.916267"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
+         landmarkName = "-secondsBetweenEnemies"
+         landmarkType = "4">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

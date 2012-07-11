@@ -104,7 +104,7 @@
         double last = [self lastEnemyAddedTime];
         double now = CACurrentMediaTime();
         
-        if((now - last) > [self secondsBetweenEnemies]) {
+        if((now - last) >= [self secondsBetweenEnemies]) {
             addVal = true;
             _enemiesAdded++;
             _lastEnemyAddedTime = now;

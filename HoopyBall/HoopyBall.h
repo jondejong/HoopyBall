@@ -20,12 +20,12 @@
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 
-//#define START_VELOCITY_X 4.0f
-#define START_VELOCITY_X 7.0f
+#define START_VELOCITY_X 4.0f
+//#define START_VELOCITY_X 7.0f
 #define START_VELOCITY_Y 0.0f
 
-//#define WALL_RESTITUTION 1.07f
-#define WALL_RESTITUTION 1.00f
+#define WALL_RESTITUTION 1.07f
+//#define WALL_RESTITUTION 1.00f
 
 #define SHOW_FRAMERATE 0
 
@@ -36,14 +36,15 @@
 #define OBJECT_FRICTION 0.5f
 
 // Usefull flags for debugging enemy issues
-#define DRAW_ENEMIES 0
-#define ENEMIES_KILL 0
+#define DRAW_ENEMIES 1
+#define ENEMIES_KILL 1
 
 // Usefull to turn this on when trying to place the enemy in a new level
-#define START_WITH_ENEMY 1
+#define START_WITH_ENEMY 0
 
 //Usefull to turn this off when designing a new level
-#define ALLOW_PLAYER_TO_WIN 0
+#define ALLOW_PLAYER_TO_WIN 1
+#define WALLS_BREAK 1
 
 // Layering
 #define WALL_Z -4

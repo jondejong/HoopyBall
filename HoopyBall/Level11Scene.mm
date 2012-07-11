@@ -66,6 +66,8 @@
     for(int i=1; i<12; i++) {
         [self addBrickAt:ccp(11, i)];
     }
+    
+    [self addObs1SmallAt:ccp(2,2)];
 
 }
 

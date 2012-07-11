@@ -60,9 +60,12 @@
 @interface LevelSet3 : HBLevel 
 @property(nonatomic, retain) CCTexture2D* obs1Texture;
 @property(nonatomic, retain) CCTexture2D* obs2Texture;
+@property(nonatomic, retain) CCTexture2D* obs1SmallTexture;
+@property(nonatomic, retain) CCTexture2D* obs2SmallTexture;
 -(void) addObs1At: (CGPoint) p;
 -(void) addObs2At: (CGPoint) p;
-
+-(void) addObs1SmallAt: (CGPoint) p;
+-(void) addObs2SmallAt: (CGPoint) p;
 @end // Level Set 3
 
 @interface Level01Scene : LevelSet1 @end
