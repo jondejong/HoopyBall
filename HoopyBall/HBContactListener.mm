@@ -5,15 +5,7 @@
     
 
 
-void HBContactListener::BeginContact(b2Contact* contact)
-
-{ /* handle begin event */ }
-
-
-
-void HBContactListener::EndContact(b2Contact* contact)
-
-{
+void HBContactListener::BeginContact(b2Contact* contact) { 
     b2Body* bodyA = contact->GetFixtureA()->GetBody();
     b2Body* bodyB = contact->GetFixtureB()->GetBody();
     NSObject* dataObjectA = (NSObject*)bodyA->GetUserData();
@@ -24,6 +16,12 @@ void HBContactListener::EndContact(b2Contact* contact)
     
     [userDataA handleCollisionBetween:bodyA with:userDataB];
     [userDataB handleCollisionBetween:bodyB with:userDataA];
+
+}
+
+
+
+void HBContactListener::EndContact(b2Contact* contact) {
 
 
 }
