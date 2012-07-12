@@ -21,4 +21,18 @@
     [super dealloc];
 }
 
+-(int) maxEnemies {
+    return 1;
+}
+
+-(double) secondsBetweenEnemies {
+    return 15;
+}
+
+-(CGPoint) getEnemyStartPoint {
+    return ccp(3.5, .5);
+}
+-(float) getEnemyXSpeed {return 0;}
+-(float) getEnemyYSpeed {return 3;}
+
 @end
