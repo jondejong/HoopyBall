@@ -100,7 +100,7 @@
     }
     
     for(int i=4; i<18; i+=2) {
-        [self addCoinAt:ccp(15.5, i)];
+        [self addCoinAt:ccp(15.9, i)];
     }
     
 }
