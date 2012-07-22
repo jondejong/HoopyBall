@@ -26,6 +26,9 @@
     return self;
 }
 
+-(double)secondsBetweenEnemies {return 20;}
+-(int) maxEnemies {return 2;}
+
 -(CGSize) getLevelSize { return size; }
 -(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level7_bg-hd.tmx" : @"level7_bg.tmx";}
 
