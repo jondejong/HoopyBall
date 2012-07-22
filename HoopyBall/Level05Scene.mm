@@ -71,12 +71,6 @@
     return ccp(9, 5);
 }
 
--(CGPoint) getgetEnemyStartPoint {
-    return ccp(3.5, .5);
-}
--(float) getgetEnemyXSpeed {return 0;}
--(float) getgetEnemyYSpeed {return 3;}
-
 -(void) createObstacles {   
     
     // Bottom

@@ -35,15 +35,6 @@
     return ccp(10, 45);
 }
 
--(float) getgetEnemyXSpeed {
-    return  0;
-}
--(float) getgetEnemyYSpeed {return 4;}
-
--(CGPoint) getEnemyStartPoint {
-    return ccp(5, .5);
-}
-
 -(void) createObstacles {
     //Start
     [self addBrickAt:ccp(0.0f, 0.0f)];
