@@ -97,14 +97,14 @@
     // The default add enemy method will add an enemy at the level
     // prescribed interval up to the level prescribed maximum, defualting
     // to the default values for both.
-    
     bool addVal = false;
     if([self enemiesAdded] < [self maxEnemies]) {
         
         double last = [self lastEnemyAddedTime];
         double now = CACurrentMediaTime();
         
-        if((now - last) >= [self secondsBetweenEnemies]) {
+        if((now - last) >= ((0 == [self enemiesAdded]) ? [self secondsBeforeFirstEnemy] : [self secondsBetweenEnemies]) ) {
+            CCLOG(@"Adding enemy after %f seconds.", (now - last));
             addVal = true;
             _enemiesAdded++;
             _lastEnemyAddedTime = now;
@@ -170,6 +170,10 @@
 
 -(double) lastEnemyAddedTime {
     return _lastEnemyAddedTime;
+}
+
+-(double) secondsBeforeFirstEnemy {
+    return [self secondsBetweenEnemies];
 }
 
 - (void)dealloc {

@@ -26,6 +26,7 @@
     }
     return self;
 }
+
 -(double)secondsBetweenEnemies {return 30;}
 -(int) maxEnemies {return 1;}
                                                

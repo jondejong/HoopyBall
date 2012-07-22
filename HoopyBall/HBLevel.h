@@ -42,6 +42,7 @@
 -(void) addBrickAt: (CGPoint) p;
 -(double) lastEnemyAddedTime;
 -(double) secondsBetweenEnemies;
+-(double) secondsBeforeFirstEnemy;
 -(int) maxEnemies;
 -(int) enemiesAdded;
 @end 

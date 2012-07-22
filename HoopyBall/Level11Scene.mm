@@ -32,13 +32,12 @@
 -(CGPoint) getStartPoint {return ccp(.5, 5); }
 
 -(CGPoint) getEndPoint {
-    return ccp(10, 45);
+    return ccp(20, 19.5);
 }
 
 -(CGPoint) getEnemyStartPoint {
     return ccp(5, .5);
 }
-
 
 -(void) createObstacles {
     //Start
@@ -67,7 +66,7 @@
         [self addBrickAt:ccp(11, i)];
     }
     
-    [self addObs1SmallAt:ccp(2,2)];
+//    [self addObs1SmallAt:ccp(2,2)];
 
 }
 
