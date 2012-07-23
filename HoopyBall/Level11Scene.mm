@@ -26,13 +26,17 @@
     return self;
 }
 
+-(double)secondsBetweenEnemies {return 5;}
+-(int) maxEnemies {return 3;}
+-(double)secondsBeforeFirstEnemy{return 10;}
+
 -(CGSize) getLevelSize { return size; }
 -(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"level11_bg-hd.tmx" : @"level11_bg.tmx";}
 
 -(CGPoint) getStartPoint {return ccp(.5, 5); }
 
 -(CGPoint) getEndPoint {
-    return ccp(20, 19.5);
+    return ccp(3, 18.5);
 }
 
 -(CGPoint) getEnemyStartPoint {
@@ -66,14 +70,46 @@
         [self addBrickAt:ccp(11, i)];
     }
     
-//    [self addObs1SmallAt:ccp(2,2)];
+    [self addObs1SmallAt:ccp(7, 2)];
+    [self addObs2SmallAt:ccp(7, 8)];
+    [self addObs1SmallAt:ccp(7, 16)];
+    
+    [self addObs2SmallAt:ccp(15, 2)];
+    [self addObs1SmallAt:ccp(15, 8)];
+    [self addObs2SmallAt:ccp(15, 16)];
 
 }
 
 -(void) createTargets {
+    float offset = 1.4;
+    float xStart = 9.5;
     
+    for(float x = 1; x<6; x++) {
+        float newx = (xStart + (x * offset));
+        [self addCoinAt:ccp(newx, 2.5)];
+    }
 
+    xStart = 18.25;
+    float yStart = 2.5 - offset;
     
+    for(float x = 1; x<3; x++) {
+        for(float y = 1; y<15; y++) {
+            float newx = xStart + (x * offset);
+            float newy = yStart + (y * offset);
+            [self addCoinAt:ccp(newx, newy)];
+        }
+    }
+    
+    xStart = 9.5;
+    yStart = 9.0;
+    
+    for(float x=1; x<5; x++) {
+        for(float y=1; y<7; y++) {
+            float newx = xStart + (x * offset);
+            float newy = yStart + (y * offset);
+            [self addCoinAt:ccp(newx, newy)];
+        }
+    }
     
 }
 

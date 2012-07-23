@@ -43,8 +43,10 @@
     return 2;
 }
 
+-(double) secondsBeforeFirstEnemy { return 20; }
+
 -(double) secondsBetweenEnemies {
-    return 20;
+    return 10;
 }
 
 -(void) createObstacles {

@@ -21,11 +21,11 @@
 #define PTM_RATIO [ScreenSize ptmRatio]
 
 #define START_VELOCITY_X 4.0f
-//#define START_VELOCITY_X 6.0f
+//#define START_VELOCITY_X 0.0f
 #define START_VELOCITY_Y 0.0f
 
-//#define WALL_RESTITUTION 1.07f
-#define WALL_RESTITUTION 1.00f
+#define WALL_RESTITUTION 1.07f
+//#define WALL_RESTITUTION 1.00f
 
 #define SHOW_FRAMERATE 0
 

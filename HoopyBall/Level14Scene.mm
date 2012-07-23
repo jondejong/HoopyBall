@@ -21,13 +21,22 @@
     if(self = [super init]) {  
         size.width = 1024;
         size.height = 6400;
-        
     }
     return self;
 }
 
 -(CGSize) getLevelSize { return size; }
 -(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"l3_bg-hd.tmx" : @"l3_bg.tmx";}
+
+-(int) maxEnemies {
+    return 5;
+}
+
+-(double) secondsBeforeFirstEnemy { return 10; }
+
+-(double) secondsBetweenEnemies {
+    return 10;
+}
 
 -(CGPoint) getStartPoint {return ccp(.5, 3); }
 
@@ -105,8 +114,6 @@
             [self addCoinAt:ccp(i, j)];
         }
     }
-    
-    
 }
 
 - (void)dealloc {

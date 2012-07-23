@@ -29,9 +29,7 @@
 
 }
 
--(id) init
-{
-
+-(id) init {
 	if( (self=[super init])) {
         [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"border1_shapes.plist"];
         

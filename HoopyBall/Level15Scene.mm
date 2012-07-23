@@ -26,6 +26,16 @@
     return self;
 }
 
+-(int) maxEnemies {
+    return 5;
+}
+
+-(double) secondsBeforeFirstEnemy { return 10; }
+
+-(double) secondsBetweenEnemies {
+    return 10;
+}
+
 -(CGSize) getLevelSize { return size; }
 -(NSString*) getBackgroundTMX { return[ScreenSize isRetina] ? @"l3_bg-hd.tmx" : @"l3_bg.tmx";}
 
