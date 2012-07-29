@@ -467,7 +467,8 @@ void b2Distance(b2DistanceOutput* output,
 
 	b2Vec2 closestPoint = simplex.GetClosestPoint();
 	float32 distanceSqr1 = closestPoint.LengthSquared();
-	float32 distanceSqr2 = distanceSqr1;
+//  JWD -- removing analyze warnings
+//	float32 distanceSqr2 = distanceSqr1;
 
 	// Main iteration loop.
 	int32 iter = 0;
@@ -506,7 +507,7 @@ void b2Distance(b2DistanceOutput* output,
 
 		// Compute closest point.
 		b2Vec2 p = simplex.GetClosestPoint();
-		distanceSqr2 = p.LengthSquared();
+		float32 distanceSqr2 = p.LengthSquared();
 
 		// Ensure progress
 		if (distanceSqr2 >= distanceSqr1)

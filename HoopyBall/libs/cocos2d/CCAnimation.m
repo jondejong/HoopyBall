@@ -70,7 +70,7 @@
 
 - (NSString*) description
 {
-	return [NSString stringWithFormat:@"<%@ = %08X | frames=%d, delay:%f>", [self class], self,
+	return [NSString stringWithFormat:@"<%@ = %p | frames=%d, delay:%f>", [self class], self,
 			[frames_ count],
 			delay_
 			];

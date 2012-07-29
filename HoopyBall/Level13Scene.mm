@@ -98,10 +98,9 @@
     }
 
     baseX = 26.75;
-    float y;
+    float y = 3;
     
     for(float x=baseX; x<=baseX + 3; x+=1.25) {
-        y=3;
         for(; y<=6; y+=1.25) {
             CCLOG(@"Adding coin at %f %f", x, y);
             [self addCoinAt:ccp(x, y)];
@@ -110,7 +109,6 @@
     
     for(float x=baseX+1.25; x<=baseX + 3; x+= 1.25) {
         for(float newY = y; newY <= y+2.5; newY+=1.25) {
-            CCLOG(@"Adding coin at %f %f", x, y);
             [self addCoinAt:ccp(x, newY)];
         }
     }

@@ -160,7 +160,8 @@ kmBool kmRay2IntersectTriangle(const kmRay2* ray, const kmVec2* p1, const kmVec2
         if(this_distance < distance) {
             final_intersect.x = intersect.x;
             final_intersect.y = intersect.y;
-            distance = this_distance;
+//            Modified by JWD to clear analyze warning
+//            distance = this_distance;
 
             calculate_line_normal(*p3, *p1, &normal);
         }
