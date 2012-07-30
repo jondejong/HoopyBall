@@ -43,7 +43,7 @@
 #define START_WITH_ENEMY 0
 
 //Usefull to turn this off when designing a new level
-#define ALLOW_PLAYER_TO_WIN 0
+#define ALLOW_PLAYER_TO_WIN 1
 #define WALLS_BREAK 1
 
 // Layering
