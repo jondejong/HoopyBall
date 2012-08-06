@@ -45,6 +45,7 @@
 -(double) secondsBeforeFirstEnemy;
 -(int) maxEnemies;
 -(int) enemiesAdded;
+-(int) coinCount;
 @end 
 
 @interface LevelSet1 : HBLevel @end

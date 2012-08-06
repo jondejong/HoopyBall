@@ -162,6 +162,8 @@ GameManager * _sharedInstance;
     [levelScene createObstacles];
     [levelScene createTargets];
     
+    CCLOG(@"Coin count for level %d is %d.", level, [levelScene coinCount]);
+    
     [controlLayer deactivate];
     
     [[CCDirector sharedDirector] replaceScene:rootNode];

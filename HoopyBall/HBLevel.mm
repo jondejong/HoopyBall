@@ -18,7 +18,7 @@
     double _startTime;
     double _lastEnemyAddedTime;
     int _enemiesAdded;
-    
+    int _coinCount;
 }
 
 @synthesize brickTexture;
@@ -29,6 +29,7 @@
     self = [super init];
     if (self) {
         _enemiesAdded = 0;
+        _coinCount = 0;
         CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
         self.coinTexture = [coin texture];
         [self addChild:coin z:0];
@@ -89,6 +90,8 @@
     CCSprite *sprite = [CCSprite spriteWithTexture:[self coinTexture]];	
     sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
     [data setSprite:sprite];
+
+    _coinCount++;
     
     [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
 }
@@ -174,6 +177,10 @@
 
 -(double) secondsBeforeFirstEnemy {
     return [self secondsBetweenEnemies];
+}
+
+-(int) coinCount {
+    return _coinCount;
 }
 
 - (void)dealloc {
