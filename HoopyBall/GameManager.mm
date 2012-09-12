@@ -13,9 +13,11 @@
 #import "LoseLevelLayer.h"
 #import "ScoreLayer.h"
 #import "StartLevelLayer.h"
+#import "PDKeychainBindings.h"
 
 @implementation GameManager {
-    
+    @private
+    int _totalCoins;
 }
 
 
@@ -41,12 +43,25 @@ GameManager * _sharedInstance;
 -(id) init {
     if(self = [super init]) {
         _sharedInstance = self;
+        NSString * coinCountString = [[PDKeychainBindings sharedKeychainBindings] stringForKey:@"totalCoinCount"];
+        _totalCoins = 0;
+        if(coinCountString) {
+            _totalCoins = [coinCountString intValue];
+        }
+        
     }
     return self;
 }
 
 +(GameManager*) sharedInstance {
     return _sharedInstance;
+}
+
+-(void) resetScores {
+    _totalCoins = 0;
+    NSString * coinString = [NSString stringWithFormat:@"%i", _totalCoins];
+    [[PDKeychainBindings sharedKeychainBindings] setString:coinString forKey:@"totalCoinCount"];
+    
 }
 
 -(void) startGame {
@@ -76,6 +91,9 @@ GameManager * _sharedInstance;
     
     //The Level must be defined before the game layer, the game layer
     //is dependent upon values from the level
+    
+    //NSClassFromString
+    
     switch (level) {
         case 1:
             self.levelScene = [Level01Scene node];
@@ -177,6 +195,9 @@ GameManager * _sharedInstance;
     WinLevelLayer* winLayer = [WinLevelLayer layer];
     [rootNode addChild:winLayer z:0 tag:WinLevelLayerTag];
     [winLayer displayScore: [scoreLayer getScore]];
+    _totalCoins += [scoreLayer getScore];
+    NSString * coinString = [NSString stringWithFormat:@"%i", _totalCoins];
+    [[PDKeychainBindings sharedKeychainBindings] setString:coinString forKey:@"totalCoinCount"];
 }
 
 -(void) handleLoseLevel {
@@ -247,6 +268,10 @@ GameManager * _sharedInstance;
 
 -(void) addToScore: (int) scoreAddition {
     [scoreLayer addToScore:scoreAddition];
+}
+
+-(int) totalCoins {
+    return _totalCoins;
 }
 
 - (void)dealloc

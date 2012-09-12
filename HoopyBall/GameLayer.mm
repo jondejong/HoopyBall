@@ -39,7 +39,6 @@ bool ballCreated = false;
 	GLESDebugDraw *m_debugDraw;		// strong ref
     HBContactListener* contactListener;
 
-    
     float xOffset;
     float yOffset;
 }
@@ -51,6 +50,7 @@ bool ballCreated = false;
 @synthesize enemyTexture;
 @synthesize wallTexture;
 @synthesize coinTexture;
+@synthesize walls;
 
 -(id) init
 {
@@ -83,6 +83,9 @@ bool ballCreated = false;
         
         CCSpriteBatchNode *wall = [CCSpriteBatchNode batchNodeWithFile:@"wall.png" capacity: 200];
         self.wallTexture = [wall texture];
+        
+        self.walls = [NSMutableArray arrayWithCapacity:5];
+        
         [self addChild:wall z:WALL_Z tag:kWallTexture];
         
         self.starTexture = [star texture];
@@ -115,22 +118,23 @@ bool ballCreated = false;
 	
 	world->SetContinuousPhysics(true);
 	
+    contactListener = new HBContactListener();
+    world->SetContactListener(contactListener);
+    
+#if DEBUG_DRAW_OUTLINE
 	m_debugDraw = new GLESDebugDraw( PTM_RATIO );
 	world->SetDebugDraw(m_debugDraw);
     
-    contactListener = new HBContactListener();
-    world->SetContactListener(contactListener);
-	
 	uint32 flags = 0;
-#if DEBUG_DRAW_OUTLINE 
+
 	flags += b2Draw::e_shapeBit;
-#endif
+
 	//		flags += b2Draw::e_jointBit;
 	//		flags += b2Draw::e_aabbBit;
 	//		flags += b2Draw::e_pairBit;
 //		flags += b2Draw::e_centerOfMassBit;
 	m_debugDraw->SetFlags(flags);		
-	
+#endif	
 	
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
@@ -196,7 +200,7 @@ bool ballCreated = false;
 	// This is only for debug purposes
 	// It is recommend to disable it
 	//
-	[super draw];
+//	[super draw];
 	
 	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
 	
@@ -207,7 +211,7 @@ bool ballCreated = false;
 	kmGLPopMatrix();
 }
 
--(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a{
+-(void) addNewWall:(CGPoint)p withLength: (float) l andAngle: (float) a{
 
     // Wall length needs to be redefined to align with the sprite.
     // Round it up to the neares multiple of 1/2 the PTM Ratio
@@ -277,6 +281,18 @@ bool ballCreated = false;
     wallFixture.restitution = WALL_RESTITUTION;
     
     body->CreateFixture(&wallFixture);
+    [data setBody:body];
+    
+#if ONLY_ALLOW_ONE_WALL
+    // Destroy previously drawn walls
+    int wallCount = [walls count];
+    for(int i = 0; i< wallCount; i++) {
+        [(WallUserData*)walls[i] removeThisWall];
+    }
+    self.walls = [NSMutableArray arrayWithCapacity:5];
+    // Add This Wall
+    [walls addObject: data];
+#endif
 
 }
 
@@ -329,7 +345,7 @@ bool ballCreated = false;
     [enemy addChild:sprite];
 	
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelEnemyPoint];
-    sprite.position = ccp(lp.x * PTM_RATIO, lp.y * PTM_RATIO); 
+    sprite.position = ccp(lp.x * PTM_RATIO, lp.y * PTM_RATIO);
 	
     // Define the dynamic body.
     b2BodyDef bodyDef;
@@ -420,7 +436,7 @@ bool ballCreated = false;
             CGPoint center = ccp(newX, newY);
             center = [[CCDirector sharedDirector] convertToGL: center];
             
-            [self addNewWall:center withLength:distance andAndle:angle];
+            [self addNewWall:center withLength:distance andAngle:angle];
         }
         break;
     }
@@ -520,6 +536,13 @@ bool ballCreated = false;
 
 -(void) dealloc
 {
+    for (b2Body* b = world->GetBodyList(); b; /*b = b->GetNext()*/)  // remove GetNext() call
+    {
+        b2Body* next = b->GetNext();  // remember next body before *b gets destroyed
+        world->DestroyBody(b); // do I need to destroy fixture as well(and how?) or it does that for me?
+        b = next;  // go to next body
+    }
+    
     delete contactListener;
     contactListener = NULL;
     
@@ -546,6 +569,7 @@ bool ballCreated = false;
     wallTexture = nil;
     coinTexture = nil;
     
+    [walls release];
     
 	[super dealloc];
 }

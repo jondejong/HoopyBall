@@ -37,7 +37,7 @@
 
 -(void) addToScore: (int) scoreAddition {
     score += scoreAddition;
-    [scoreText setString:[NSString stringWithFormat:@"Score: %i", score]];
+    [scoreText setString:[NSString stringWithFormat:@"Coins: %i", score]];
 }
 
 -(int) getScore {

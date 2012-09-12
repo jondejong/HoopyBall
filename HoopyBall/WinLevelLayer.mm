@@ -57,7 +57,7 @@
 }
 
 -(void) displayScore: (int) score {
-    CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Score: %d", score] fontName:@"Marker Felt" fontSize:48];
+    CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"New Coins!: %d", score] fontName:@"Marker Felt" fontSize:48];
     CGSize size = [[CCDirector sharedDirector] winSize];
     label.position =  ccp(size.width/2, size.height - ((2*size.height)/5));
     [self addChild: label];

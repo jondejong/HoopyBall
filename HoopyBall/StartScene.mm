@@ -43,17 +43,23 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init])) {
 		
+        int coins = [[GameManager sharedInstance] totalCoins];
+        NSString * coinString =[NSString stringWithFormat:@"Coins: %i", coins];
+        
 		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Jonny Awesomesauce's Hoopy Ball" fontName:@"Marker Felt" fontSize:64];
+		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hoopy Ball" fontName:@"Marker Felt" fontSize:64];
+        CCLabelTTF *coinLabel = [CCLabelTTF labelWithString:coinString fontName:@"Marker Felt" fontSize:32];
 
 		// ask director the the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
 	
 		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 + 100);
+		label.position = ccp( size.width /2 , size.height/2 + 125);
+        coinLabel.position = ccp( size.width /2 , size.height/2 + 70);
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
+        [self addChild: coinLabel];
 		
 		// Default font size will be 28 points.
 		[CCMenuItemFont setFontSize:28];
@@ -147,8 +153,6 @@
         //		// Add the menu to the layer
 		[self addChild:menuSet3];
 
-
-        
 	}
 	return self;
 }

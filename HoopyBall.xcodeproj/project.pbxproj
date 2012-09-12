@@ -261,6 +261,9 @@
 		C2BD6F32156E9F8600414FD2 /* level1_bg-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C2BD6F2F156E9F8600414FD2 /* level1_bg-hd.tmx */; };
 		C2BD6F33156E9F8600414FD2 /* level1_obs-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BD6F30156E9F8600414FD2 /* level1_obs-hd.png */; };
 		C2BD6F34156E9F8600414FD2 /* level1_obs-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C2BD6F31156E9F8600414FD2 /* level1_obs-hd.tmx */; };
+		C2BE7F1315FED39700B06BED /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BE7F1015FED39700B06BED /* PDKeychainBindings.m */; };
+		C2BE7F1415FED39700B06BED /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BE7F1215FED39700B06BED /* PDKeychainBindingsController.m */; };
+		C2BE7F1615FEFF2100B06BED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BE7F1515FEFF2100B06BED /* Security.framework */; };
 		C2C6985E1509A87900C58976 /* GamePlayRootNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */; };
 		C2DE37F9153D09D2005C6488 /* ScoreLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2DE37F8153D09D2005C6488 /* ScoreLayer.mm */; };
 		C2DE37FC153D0DBE005C6488 /* score.fnt in Resources */ = {isa = PBXBuildFile; fileRef = C2DE37FA153D0DBE005C6488 /* score.fnt */; };
@@ -722,6 +725,11 @@
 		C2BD6F2F156E9F8600414FD2 /* level1_bg-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "level1_bg-hd.tmx"; path = "Resources/level1_bg-hd.tmx"; sourceTree = "<group>"; };
 		C2BD6F30156E9F8600414FD2 /* level1_obs-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "level1_obs-hd.png"; path = "Resources/level1_obs-hd.png"; sourceTree = "<group>"; };
 		C2BD6F31156E9F8600414FD2 /* level1_obs-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "level1_obs-hd.tmx"; path = "Resources/level1_obs-hd.tmx"; sourceTree = "<group>"; };
+		C2BE7F0F15FED39700B06BED /* PDKeychainBindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindings.h; sourceTree = "<group>"; };
+		C2BE7F1015FED39700B06BED /* PDKeychainBindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindings.m; sourceTree = "<group>"; };
+		C2BE7F1115FED39700B06BED /* PDKeychainBindingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindingsController.h; sourceTree = "<group>"; };
+		C2BE7F1215FED39700B06BED /* PDKeychainBindingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindingsController.m; sourceTree = "<group>"; };
+		C2BE7F1515FEFF2100B06BED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C2C6985D1509A87900C58976 /* GamePlayRootNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GamePlayRootNode.mm; sourceTree = "<group>"; };
 		C2DE37F7153D09D2005C6488 /* ScoreLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLayer.h; sourceTree = "<group>"; };
 		C2DE37F8153D09D2005C6488 /* ScoreLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScoreLayer.mm; sourceTree = "<group>"; };
@@ -766,6 +774,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BE7F1615FEFF2100B06BED /* Security.framework in Frameworks */,
 				C2407ECA14F2A42000BB1C4A /* QuartzCore.framework in Frameworks */,
 				C2407ECC14F2A42000BB1C4A /* OpenGLES.framework in Frameworks */,
 				C2407ECE14F2A42000BB1C4A /* OpenAL.framework in Frameworks */,
@@ -999,6 +1008,7 @@
 		C2407EC814F2A42000BB1C4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2BE7F1515FEFF2100B06BED /* Security.framework */,
 				C2407EC914F2A42000BB1C4A /* QuartzCore.framework */,
 				C2407ECB14F2A42000BB1C4A /* OpenGLES.framework */,
 				C2407ECD14F2A42000BB1C4A /* OpenAL.framework */,
@@ -1032,6 +1042,7 @@
 				C2A1A4BD14F9EB7E00B61269 /* GLES-Render.h */,
 				C2A1A4BE14F9EB7E00B61269 /* GLES-Render.mm */,
 				C2F2ED0E159C03FC0019A361 /* DeletableBody.mm */,
+				C2BE7F0D15FED38500B06BED /* Security */,
 				C2E9FB41151F860600906B40 /* DisplayLayers */,
 				C28D9EEB15194EE9002F7FF6 /* NodeUserData */,
 				C27D7D7B15165E2C00044163 /* Utils */,
@@ -1518,6 +1529,17 @@
 			name = NodeUserData;
 			sourceTree = "<group>";
 		};
+		C2BE7F0D15FED38500B06BED /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				C2BE7F0F15FED39700B06BED /* PDKeychainBindings.h */,
+				C2BE7F1015FED39700B06BED /* PDKeychainBindings.m */,
+				C2BE7F1115FED39700B06BED /* PDKeychainBindingsController.h */,
+				C2BE7F1215FED39700B06BED /* PDKeychainBindingsController.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
 		C2E9FB41151F860600906B40 /* DisplayLayers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1884,6 +1906,8 @@
 				C246C6E715A8DEFF000453ED /* LevelSet1.mm in Sources */,
 				C246C6E815A8DEFF000453ED /* LevelSet2.mm in Sources */,
 				C246C6E915A8DEFF000453ED /* LevelSet3.mm in Sources */,
+				C2BE7F1315FED39700B06BED /* PDKeychainBindings.m in Sources */,
+				C2BE7F1415FED39700B06BED /* PDKeychainBindingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1909,7 +1933,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -1930,7 +1954,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

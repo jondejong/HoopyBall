@@ -16,7 +16,7 @@
 
 -(void) handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody {
     if(BALL_NODE_TYPE == [otherBody nodeType]) {
-        [[GameManager sharedInstance] addToScore: 10];
+        [[GameManager sharedInstance] addToScore: 1];
         [[GameManager sharedInstance] markBodyForDeletion: thisBody];
         [[GameManager sharedInstance] removeSpriteFromGame: _sprite];
     }

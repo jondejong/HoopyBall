@@ -80,7 +80,8 @@
 
 -(void) dealloc
 {
-	// 
+	//
+    body_ = nil;
 	[super dealloc];
 }
 

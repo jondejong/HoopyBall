@@ -11,6 +11,15 @@
 
 @implementation HBUserData
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 -(void) handleCollisionBetween : (b2Body *)thisBody with : (HBUserData*) otherBody{}
 -(int) nodeType {return -1;}
 

@@ -16,6 +16,10 @@
 #ifndef HoopyBall_HoopyBall_h
 #define HoopyBall_HoopyBall_h
 
+#define SCORES_RESETTABLE 1
+
+#define ONLY_ALLOW_ONE_WALL 1
+
 #define DEBUG_DRAW_OUTLINE 0
 
 #define PTM_RATIO [ScreenSize ptmRatio]
@@ -33,7 +37,7 @@
 #define CAMERA_FOLLOW_BALL 0
 
 #define CAMERA_SCROLL_SCREEN_OFFSET .25f
-#define OBJECT_FRICTION 0.5f
+#define OBJECT_FRICTION 0.0f
 
 // Usefull flags for debugging enemy issues
 #define DRAW_ENEMIES 1
@@ -88,12 +92,14 @@
 @property(nonatomic, retain) CCTexture2D *wallTexture;
 @property(nonatomic, retain) CCTexture2D *coinTexture;
 
+@property(nonatomic, retain) NSMutableArray* walls;
+
 -(void) markBodyForDeletion:(b2Body*)body;
 -(void) cleanupDeletableItems;
 
 -(void) initPhysics;
 -(void) addBall;
--(void) addNewWall:(CGPoint)p withLength: (float) l andAndle: (float) a;
+-(void) addNewWall:(CGPoint)p withLength: (float) l andAngle: (float) a;
 -(void) initStartLocation;
 -(float) vec2rad : (b2Vec2) v;
 
@@ -159,6 +165,10 @@
 
 -(void) removeSpriteFromGame: (CCSprite*) sprite;
 -(void) addToScore: (int) scoreAddition;
+
+-(int) totalCoins;
+
+-(void) resetScores;
 
 @end //GameManager
 
