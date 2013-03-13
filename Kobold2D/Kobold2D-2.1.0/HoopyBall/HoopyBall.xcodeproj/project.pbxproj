@@ -115,6 +115,25 @@
 		C2CAF4E516F00CFF00349999 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		C2CAF4E616F00CFF00349999 /* wall-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wall-hd.png"; sourceTree = "<group>"; };
 		C2CAF4E716F00CFF00349999 /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wall.png; sourceTree = "<group>"; };
+		C2CAF4E816F00EE600349999 /* HoopyBall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HoopyBall.h; sourceTree = "<group>"; };
+		C2CAF4E916F00EE600349999 /* Level01Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level01Scene.mm; sourceTree = "<group>"; };
+		C2CAF4EA16F00EE600349999 /* Level02Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level02Scene.mm; sourceTree = "<group>"; };
+		C2CAF4EB16F00EE600349999 /* Level03Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level03Scene.mm; sourceTree = "<group>"; };
+		C2CAF4EC16F00EE600349999 /* Level04Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level04Scene.mm; sourceTree = "<group>"; };
+		C2CAF4ED16F00EE600349999 /* Level05Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level05Scene.mm; sourceTree = "<group>"; };
+		C2CAF4EE16F00EE600349999 /* Level06Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level06Scene.mm; sourceTree = "<group>"; };
+		C2CAF4EF16F00EE600349999 /* Level07Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level07Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F016F00EE600349999 /* Level08Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level08Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F116F00EE600349999 /* Level09Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level09Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F216F00EE600349999 /* Level10Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level10Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F316F00EE600349999 /* Level11Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level11Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F416F00EE600349999 /* Level12Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level12Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F516F00EE600349999 /* Level13Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level13Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F616F00EE600349999 /* Level14Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level14Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F716F00EE600349999 /* Level15Scene.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Level15Scene.mm; sourceTree = "<group>"; };
+		C2CAF4F816F00EE600349999 /* LevelSet1.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSet1.mm; sourceTree = "<group>"; };
+		C2CAF4F916F00EE600349999 /* LevelSet2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSet2.mm; sourceTree = "<group>"; };
+		C2CAF4FA16F00EE600349999 /* LevelSet3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSet3.mm; sourceTree = "<group>"; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		DC193EB313B6872600500B56 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		DC193EBA13B6956F00500B56 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -184,6 +203,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2CAF4FB16F00F0900349999 /* LevelSet1 */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAF4F816F00EE600349999 /* LevelSet1.mm */,
+				C2CAF4E916F00EE600349999 /* Level01Scene.mm */,
+				C2CAF4EA16F00EE600349999 /* Level02Scene.mm */,
+				C2CAF4EB16F00EE600349999 /* Level03Scene.mm */,
+				C2CAF4EC16F00EE600349999 /* Level04Scene.mm */,
+				C2CAF4ED16F00EE600349999 /* Level05Scene.mm */,
+			);
+			name = LevelSet1;
+			sourceTree = "<group>";
+		};
+		C2CAF4FC16F00F2800349999 /* LevelSet2 */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAF4F916F00EE600349999 /* LevelSet2.mm */,
+				C2CAF4EE16F00EE600349999 /* Level06Scene.mm */,
+				C2CAF4EF16F00EE600349999 /* Level07Scene.mm */,
+				C2CAF4F016F00EE600349999 /* Level08Scene.mm */,
+				C2CAF4F116F00EE600349999 /* Level09Scene.mm */,
+				C2CAF4F216F00EE600349999 /* Level10Scene.mm */,
+			);
+			name = LevelSet2;
+			sourceTree = "<group>";
+		};
+		C2CAF4FD16F00F4400349999 /* LevelSet3 */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAF4F316F00EE600349999 /* Level11Scene.mm */,
+				C2CAF4F416F00EE600349999 /* Level12Scene.mm */,
+				C2CAF4F516F00EE600349999 /* Level13Scene.mm */,
+				C2CAF4F616F00EE600349999 /* Level14Scene.mm */,
+				C2CAF4F716F00EE600349999 /* Level15Scene.mm */,
+				C2CAF4FA16F00EE600349999 /* LevelSet3.mm */,
+			);
+			name = LevelSet3;
+			sourceTree = "<group>";
+		};
 		DC193EBE13B6969B00500B56 /* David Gervais Tilesets */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +377,9 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
+				C2CAF4FD16F00F4400349999 /* LevelSet3 */,
+				C2CAF4FC16F00F2800349999 /* LevelSet2 */,
+				C2CAF4FB16F00F0900349999 /* LevelSet1 */,
 				DC2A3EC2149A30B400EF78B0 /* Box2DDebugLayer.h */,
 				DC2A3EC3149A30B400EF78B0 /* Box2DDebugLayer.mm */,
 				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
@@ -329,6 +390,7 @@
 				DC193EB313B6872600500B56 /* GLES-Render.mm */,
 				DCC1A38D13A94F1A005BD75D /* AppDelegate.h */,
 				DCC1A38E13A94F1A005BD75D /* AppDelegate.m */,
+				C2CAF4E816F00EE600349999 /* HoopyBall.h */,
 				DCC1A39413A94F1A005BD75D /* Resources */,
 				DCC1A3CF13A94F2C005BD75D /* Supporting Files */,
 			);
