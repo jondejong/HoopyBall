@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HoopyBall/HoopyBall.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:__Kobold2D__/Kobold2D-Libraries.xcodeproj">
    </FileRef>
 </Workspace>
