@@ -70,14 +70,14 @@ GameManager * _sharedInstance;
 
 -(void) handlePause {
     [gameLayer pauseSchedulerAndActions];
-    [gameLayer setIsTouchEnabled:false];
+    [gameLayer setTouchEnabled:NO];
     [rootNode addChild:[PauseLayer layer] z:0 tag:PauseLayerTag];
 }
 
 -(void) handleUnpause {
     [rootNode removeChildByTag:PauseLayerTag cleanup:true]; 
     [controlLayer handleUnpause];
-    [gameLayer setIsTouchEnabled: true];
+    [gameLayer setTouchEnabled:YES];
     [gameLayer resumeSchedulerAndActions];
 }
 
@@ -189,7 +189,7 @@ GameManager * _sharedInstance;
 }
 
 -(void) handleWinLevel {
-    [gameLayer setIsTouchEnabled: false];
+    [gameLayer setTouchEnabled:NO];
     [gameLayer pauseSchedulerAndActions];
     [controlLayer deactivate];
     WinLevelLayer* winLayer = [WinLevelLayer layer];
@@ -201,7 +201,7 @@ GameManager * _sharedInstance;
 }
 
 -(void) handleLoseLevel {
-    [gameLayer setIsTouchEnabled: false];
+    [gameLayer setTouchEnabled:NO];
     [gameLayer pauseSchedulerAndActions];
     [controlLayer deactivate];
     [rootNode addChild:[LoseLevelLayer layer] z:0 tag:LoseLevelLayerTag];

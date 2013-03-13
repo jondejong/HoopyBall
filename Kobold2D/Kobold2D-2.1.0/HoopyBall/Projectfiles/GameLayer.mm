@@ -62,8 +62,7 @@ bool ballCreated = false;
 		
 		// enable events
 		
-		self.isTouchEnabled = YES;
-		self.isAccelerometerEnabled = YES;
+		[self setTouchEnabled:YES];
 
 		//Set up sprite
 
