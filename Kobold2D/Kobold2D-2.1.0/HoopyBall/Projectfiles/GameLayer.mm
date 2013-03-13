@@ -12,7 +12,6 @@
 #import "HBUserData.h"
 #import "HBContactListener.h"
 #import "GLES-Render.h"
-#import "PhysicsSprite.h"
 #import "GB2ShapeCache.h"
 
 enum {
@@ -178,16 +177,16 @@ bool ballCreated = false;
     
     HBUserData* starData = [StarUserData node];
     [self addChild:starData];
-    starBodyDef.userData = starData;
+    starBodyDef.userData = (__bridge void*)starData;
     
     b2Body* starBody = world->CreateBody(&starBodyDef);
     
     GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
-    [shapeCache addFixturesToBody:starBody forShapeName: @"star"];
-    
-    PhysicsSprite *starSprite = [PhysicsSprite spriteWithTexture:starTexture];
+    [shapeCache addFixturesToBody:starBody forShapeName: @"HBPhysicsSprite"];
+    HBPhysicsSprite *starSprite = [HBPhysicsSprite spriteWithTexture:starTexture];
     starSprite.anchorPoint = [shapeCache anchorPointForShape:@"star"];
-    [starSprite setPhysicsBody:starBody];
+//    [starSprite b2:starBody];
+    [starSprite setB2Body:starBody];
     CCNode *parent = [self getChildByTag:kEndSprite];
     [parent addChild:starSprite];
     
@@ -269,7 +268,7 @@ bool ballCreated = false;
     [data setSprites:sprites];
     
     [self addChild:data];
-    wallDef.userData = data;
+    wallDef.userData = (__bridge void*)data;
     
     b2Body *body = world->CreateBody(&wallDef);
     b2PolygonShape wallShape;
@@ -301,7 +300,7 @@ bool ballCreated = false;
 //    CCLOG(@"Add ball %0.2f x %02.f",p.x,p.y);
     CCNode *parent = [self getChildByTag:kTagParentNode];
 	
-    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:spriteTexture];						
+    HBPhysicsSprite *sprite = [HBPhysicsSprite spriteWithTexture:spriteTexture];						
     [parent addChild:sprite z:BALL_Z];
 
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelStartPoint];
@@ -317,7 +316,7 @@ bool ballCreated = false;
     
     HBUserData* data = [BallUserData node];
     [self addChild:data];
-    bodyDef.userData = data;
+    bodyDef.userData = (__bridge void*)data;
     
     ballBody = world->CreateBody(&bodyDef);
     
@@ -334,14 +333,14 @@ bool ballCreated = false;
     
     ballBody->CreateFixture(&fixtureDef);	
     
-    [sprite setPhysicsBody:ballBody];
+    [sprite setB2Body:ballBody];
 
 }
 
 -(void) addEnemy {
     CCNode *enemy = [self getChildByTag:kEnemySpriteTag];
 	
-    PhysicsSprite *sprite = [PhysicsSprite spriteWithTexture:[self enemyTexture] ];						
+    HBPhysicsSprite *sprite = [HBPhysicsSprite spriteWithTexture:[self enemyTexture] ];						
     [enemy addChild:sprite];
 	
     CGPoint lp = [[GameManager sharedInstance] getCurrentLevelEnemyPoint];
@@ -357,7 +356,7 @@ bool ballCreated = false;
     
     HBUserData* data = [EnemyUserData node];
     [self addChild:data];
-    bodyDef.userData = data;
+    bodyDef.userData = (__bridge void*)data;
     
     b2Body* enemyBody = world->CreateBody(&bodyDef);
 	
@@ -372,7 +371,7 @@ bool ballCreated = false;
     fixtureDef.restitution = 1.0f;
     enemyBody->CreateFixture(&fixtureDef);
     
-    [sprite setPhysicsBody:enemyBody];
+    [sprite setB2Body:enemyBody];
     
 }
 
@@ -491,13 +490,13 @@ bool ballCreated = false;
 
 //-(void) markBodyForDeletion: (b2Body*)body andSprite: (CCSprite*)sprite inWorld: (b2World*) world {
 -(void) markBodyForDeletion : (b2Body*) body {
-    DeletableBody* db = [[[DeletableBody alloc] initWithBody:body]autorelease];
+    DeletableBody* db = [[DeletableBody alloc] initWithBody:body];
     [bodiesToDelete addObject:db];
 }
 
 -(void) cleanupDeletableItems {
     
-    for(int i=0; i < [bodiesToDelete count]; i++) {
+    for(unsigned int i=0; i < [bodiesToDelete count]; i++) {
         DeletableBody* db = [bodiesToDelete objectAtIndex:i];
         if(![db isAlreadyDeleted]) {
             b2Body* body = [db body];
@@ -542,36 +541,7 @@ bool ballCreated = false;
         world->DestroyBody(b); // do I need to destroy fixture as well(and how?) or it does that for me?
         b = next;  // go to next body
     }
-    
-    delete contactListener;
-    contactListener = NULL;
-    
-	delete world;
-	world = NULL;
-	
-	delete m_debugDraw;
-	m_debugDraw = NULL;
-    
-    [bodiesToDelete release];
-    bodiesToDelete = nil;
 
-    [blockTexture release];
-    [spriteTexture release];
-    [starTexture release];
-    [enemyTexture release];
-    [wallTexture release];
-    [coinTexture release];
-    
-    blockTexture = nil;
-    spriteTexture = nil;
-    starTexture = nil;
-    enemyTexture = nil;
-    wallTexture = nil;
-    coinTexture = nil;
-    
-    [walls release];
-    
-	[super dealloc];
 }
 
 @end

@@ -17,10 +17,6 @@
     return 1;
 }
 
-- (void)dealloc{
-    [super dealloc];
-}
-
 -(int) maxEnemies {
     return 1;
 }

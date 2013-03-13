@@ -109,7 +109,6 @@
 		C296053016F0D7AC00F7D951 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296052816F0D7AC00F7D951 /* PauseLayer.mm */; };
 		C296053116F0D7AC00F7D951 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = C296052A16F0D7AC00F7D951 /* PDKeychainBindings.m */; };
 		C296053216F0D7AC00F7D951 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C296052C16F0D7AC00F7D951 /* PDKeychainBindingsController.m */; };
-		C296053316F0D7AC00F7D951 /* PhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296052E16F0D7AC00F7D951 /* PhysicsSprite.mm */; };
 		C296053816F0D7C000F7D951 /* ScoreLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296053516F0D7C000F7D951 /* ScoreLayer.mm */; };
 		C296053916F0D7C000F7D951 /* ScreenSize.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296053716F0D7C000F7D951 /* ScreenSize.mm */; };
 		C296054116F0D7E300F7D951 /* StartLevelLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296053B16F0D7E300F7D951 /* StartLevelLayer.mm */; };
@@ -118,6 +117,8 @@
 		C296054416F0D7E300F7D951 /* WallUserData.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296053E16F0D7E300F7D951 /* WallUserData.mm */; };
 		C296054516F0D7E300F7D951 /* WinLevelLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296054016F0D7E300F7D951 /* WinLevelLayer.mm */; };
 		C296054816F0E3CC00F7D951 /* HBContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296054716F0E3CC00F7D951 /* HBContactListener.mm */; };
+		C296054B16F1130300F7D951 /* HBPhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = C296054A16F1130300F7D951 /* HBPhysicsSprite.mm */; };
+		C296054D16F1151900F7D951 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C296054C16F1151900F7D951 /* Security.framework */; };
 		DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EC113B6969B00500B56 /* Author&License.txt in Resources */ = {isa = PBXBuildFile; fileRef = DC193EBF13B6969B00500B56 /* Author&License.txt */; };
 		DC193EC313B6969B00500B56 /* dg_grounds32.png in Resources */ = {isa = PBXBuildFile; fileRef = DC193EC013B6969B00500B56 /* dg_grounds32.png */; };
@@ -261,8 +262,6 @@
 		C296052A16F0D7AC00F7D951 /* PDKeychainBindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindings.m; sourceTree = "<group>"; };
 		C296052B16F0D7AC00F7D951 /* PDKeychainBindingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindingsController.h; sourceTree = "<group>"; };
 		C296052C16F0D7AC00F7D951 /* PDKeychainBindingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindingsController.m; sourceTree = "<group>"; };
-		C296052D16F0D7AC00F7D951 /* PhysicsSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
-		C296052E16F0D7AC00F7D951 /* PhysicsSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsSprite.mm; sourceTree = "<group>"; };
 		C296053416F0D7C000F7D951 /* ScoreLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreLayer.h; sourceTree = "<group>"; };
 		C296053516F0D7C000F7D951 /* ScoreLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScoreLayer.mm; sourceTree = "<group>"; };
 		C296053616F0D7C000F7D951 /* ScreenSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenSize.h; sourceTree = "<group>"; };
@@ -276,6 +275,9 @@
 		C296054016F0D7E300F7D951 /* WinLevelLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WinLevelLayer.mm; sourceTree = "<group>"; };
 		C296054616F0E3CC00F7D951 /* HBContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBContactListener.h; sourceTree = "<group>"; };
 		C296054716F0E3CC00F7D951 /* HBContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HBContactListener.mm; sourceTree = "<group>"; };
+		C296054916F1130200F7D951 /* HBPhysicsSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBPhysicsSprite.h; sourceTree = "<group>"; };
+		C296054A16F1130300F7D951 /* HBPhysicsSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HBPhysicsSprite.mm; sourceTree = "<group>"; };
+		C296054C16F1151900F7D951 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		DC193EB313B6872600500B56 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		DC193EBF13B6969B00500B56 /* Author&License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Author&License.txt"; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C296054D16F1151900F7D951 /* Security.framework in Frameworks */,
 				DC65615C13A969B600A7AC53 /* libbox2d-ios.a in Frameworks */,
 				DC65615D13A969B600A7AC53 /* libchipmunk-ios.a in Frameworks */,
 				DC65615E13A969B600A7AC53 /* libchipmunk-spacemanager-ios.a in Frameworks */,
@@ -358,6 +361,7 @@
 		DCC1A0D613A94EC0005BD75D = {
 			isa = PBXGroup;
 			children = (
+				C296054C16F1151900F7D951 /* Security.framework */,
 				DCC1A38C13A94F1A005BD75D /* Projectfiles */,
 				DCC1A0F713A94ED5005BD75D /* Projectfiles-iOS */,
 				DCC1A26413A94EE6005BD75D /* Projectfiles-Mac */,
@@ -531,6 +535,8 @@
 				C296054716F0E3CC00F7D951 /* HBContactListener.mm */,
 				C29604F116F0D6F500F7D951 /* HBLevel.h */,
 				C29604F216F0D6F500F7D951 /* HBLevel.mm */,
+				C296054916F1130200F7D951 /* HBPhysicsSprite.h */,
+				C296054A16F1130300F7D951 /* HBPhysicsSprite.mm */,
 				C29604F316F0D6F500F7D951 /* HBUserData.h */,
 				C29604F416F0D6F500F7D951 /* HBUserData.mm */,
 				C29604F516F0D6F500F7D951 /* HoopyBall.h */,
@@ -560,8 +566,6 @@
 				C296052A16F0D7AC00F7D951 /* PDKeychainBindings.m */,
 				C296052B16F0D7AC00F7D951 /* PDKeychainBindingsController.h */,
 				C296052C16F0D7AC00F7D951 /* PDKeychainBindingsController.m */,
-				C296052D16F0D7AC00F7D951 /* PhysicsSprite.h */,
-				C296052E16F0D7AC00F7D951 /* PhysicsSprite.mm */,
 				C296053416F0D7C000F7D951 /* ScoreLayer.h */,
 				C296053516F0D7C000F7D951 /* ScoreLayer.mm */,
 				C296053616F0D7C000F7D951 /* ScreenSize.h */,
@@ -793,7 +797,6 @@
 				C296053016F0D7AC00F7D951 /* PauseLayer.mm in Sources */,
 				C296053116F0D7AC00F7D951 /* PDKeychainBindings.m in Sources */,
 				C296053216F0D7AC00F7D951 /* PDKeychainBindingsController.m in Sources */,
-				C296053316F0D7AC00F7D951 /* PhysicsSprite.mm in Sources */,
 				C296053816F0D7C000F7D951 /* ScoreLayer.mm in Sources */,
 				C296053916F0D7C000F7D951 /* ScreenSize.mm in Sources */,
 				C296054116F0D7E300F7D951 /* StartLevelLayer.mm in Sources */,
@@ -802,6 +805,7 @@
 				C296054416F0D7E300F7D951 /* WallUserData.mm in Sources */,
 				C296054516F0D7E300F7D951 /* WinLevelLayer.mm in Sources */,
 				C296054816F0E3CC00F7D951 /* HBContactListener.mm in Sources */,
+				C296054B16F1130300F7D951 /* HBPhysicsSprite.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@
 #import "HBLevel.h"
 #import "ScoreLayer.h"
 #import "ScreenSize.h"
+#import "HBPhysicsSprite.h"
 
 #ifndef HoopyBall_HoopyBall_h
 #define HoopyBall_HoopyBall_h

@@ -76,7 +76,7 @@
     
     CoinUserData* data = [CoinUserData node];
     [self addChild:data];
-    bodyDef.userData = data;
+    bodyDef.userData = (__bridge void*) data;
     
     b2CircleShape coinShape;
     coinShape.m_radius = .5f;
@@ -137,7 +137,7 @@
     
     HBUserData* data = [HBUserData node];
     [self addChild:data];
-    bodyDef.userData = data;
+    bodyDef.userData = (__bridge void*)data;
     
     b2PolygonShape brickShape;
     brickShape.SetAsBox(1.0, 1.0);
@@ -181,12 +181,6 @@
 
 -(int) coinCount {
     return _coinCount;
-}
-
-- (void)dealloc {
-    [coinTexture release];
-    coinTexture =  nil;
-    [super dealloc];
 }
 
 @end

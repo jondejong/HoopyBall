@@ -103,24 +103,4 @@
     return 2;
 }
 
-- (void)dealloc {
-
-    [brickTexture release];
-    brickTexture = nil;
-    
-    [obs1Texture release];
-    obs1Texture = nil;
-    
-    [obs2Texture release];
-    obs2Texture = nil;
-    
-    [obs1SmallTexture release];
-    obs1SmallTexture = nil;
-    
-    [obs2SmallTexture release];
-    obs2SmallTexture = nil;
-    
-    [super dealloc];
-}
-
 @end

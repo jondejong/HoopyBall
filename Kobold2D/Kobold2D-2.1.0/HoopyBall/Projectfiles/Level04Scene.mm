@@ -10,7 +10,6 @@
 #import "HoopyBall.h"
 #import "GB2ShapeCache.h"
 #import "HBUserData.h"
-#import "PhysicsSprite.h"
 #import "ScreenSize.h"
 
 @implementation Level04Scene {
@@ -110,11 +109,6 @@
         [self addCoinAt:ccp(i, 9.5f)];
     }
     
-}
-
--(void) dealloc 
-{
-    [super dealloc];    
 }
 
 @end

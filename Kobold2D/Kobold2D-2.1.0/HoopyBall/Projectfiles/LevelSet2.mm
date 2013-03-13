@@ -77,17 +77,4 @@
 
 -(CGPoint) getStartPoint {return ccp(.5, 3); }
 
-- (void) dealloc {
-    [brickTexture release];
-    brickTexture = nil;
-    
-    [obs1Texture release];
-    obs1Texture = nil;
-    
-    [obs2Texture release];
-    obs2Texture = nil;
-    
-    [super dealloc];
-}
-
 @end

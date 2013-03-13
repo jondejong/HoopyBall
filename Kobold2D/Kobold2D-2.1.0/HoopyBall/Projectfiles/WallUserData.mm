@@ -58,10 +58,4 @@
     _body = body;
 }
 
-- (void)dealloc{
-    [sprites release];
-    sprites = nil;
-    [super dealloc];
-}
-
 @end

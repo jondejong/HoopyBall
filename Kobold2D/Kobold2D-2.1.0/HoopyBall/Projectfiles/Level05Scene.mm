@@ -10,7 +10,6 @@
 #import "HoopyBall.h"
 #import "GB2ShapeCache.h"
 #import "HBUserData.h"
-#import "PhysicsSprite.h"
 #import "ScreenSize.h"
 
 @implementation Level05Scene {

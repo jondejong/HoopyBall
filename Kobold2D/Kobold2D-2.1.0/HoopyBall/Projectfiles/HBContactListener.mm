@@ -8,8 +8,8 @@
 void HBContactListener::BeginContact(b2Contact* contact) { 
     b2Body* bodyA = contact->GetFixtureA()->GetBody();
     b2Body* bodyB = contact->GetFixtureB()->GetBody();
-    NSObject* dataObjectA = (NSObject*)bodyA->GetUserData();
-    NSObject* dataObjectB = (NSObject*)bodyB->GetUserData();
+    NSObject* dataObjectA = (__bridge NSObject*)bodyA->GetUserData();
+    NSObject* dataObjectB = (__bridge NSObject*)bodyB->GetUserData();
     
     HBUserData* userDataA = (HBUserData*) dataObjectA;
     HBUserData* userDataB = (HBUserData*) dataObjectB;
