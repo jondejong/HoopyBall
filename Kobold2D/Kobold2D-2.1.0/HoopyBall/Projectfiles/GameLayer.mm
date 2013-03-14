@@ -181,7 +181,7 @@ bool ballCreated = false;
     b2Body* starBody = world->CreateBody(&starBodyDef);
     
     GB2ShapeCache* shapeCache = [GB2ShapeCache sharedShapeCache]; 
-    [shapeCache addFixturesToBody:starBody forShapeName: @"HBPhysicsSprite"];
+    [shapeCache addFixturesToBody:starBody forShapeName: @"star"];
     HBPhysicsSprite *starSprite = [HBPhysicsSprite spriteWithTexture:starTexture];
     starSprite.anchorPoint = [shapeCache anchorPointForShape:@"star"];
 //    [starSprite b2:starBody];

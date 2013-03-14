@@ -21,7 +21,7 @@
 
 #define ONLY_ALLOW_ONE_WALL 1
 
-#define DEBUG_DRAW_OUTLINE 0
+#define DEBUG_DRAW_OUTLINE 1
 
 #define PTM_RATIO [ScreenSize ptmRatio]
 

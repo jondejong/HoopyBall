@@ -18,7 +18,13 @@
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
-@implementation StartScene
+@implementation StartScene {
+    @private
+    //hold a ref to the gameManager
+    GameManager* _gameManager;
+}
+
+
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -42,6 +48,8 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init])) {
+        
+        _gameManager = [[GameManager alloc] init];
 		
         int coins = [[GameManager sharedInstance] totalCoins];
         NSString * coinString =[NSString stringWithFormat:@"Coins: %i", coins];
@@ -63,7 +71,6 @@
 		
 		// Default font size will be 28 points.
 		[CCMenuItemFont setFontSize:28];
-
         
         // Level Set 1
 		CCMenuItem *level1 = [CCMenuItemFont itemWithString:@"Level 1" block:^(id sender) {

@@ -17,10 +17,10 @@ local config =
 	KKStartupConfig = 
 	{
 		-- load first scene from a class with this name, or from a Lua script with this name with .lua appended
-		FirstSceneClassName = "PhysicsLayer",
+		FirstSceneClassName = "StartScene",
 
 		MaxFrameRate = 60,
-		DisplayFPS = YES,
+		DisplayFPS = NO,
 
 		EnableUserInteraction = YES,
 		EnableMultiTouch = NO,
@@ -33,7 +33,7 @@ local config =
 		GLViewNumberOfSamples = 0,
 
 		Enable2DProjection = NO,
-		EnableRetinaDisplaySupport = NO,	-- there are no Retina assets in this template project
+		EnableRetinaDisplaySupport = YES,	-- there are no Retina assets in this template project
 		EnableGLViewNodeHitTesting = NO,
 		EnableStatusBar = NO,
 
