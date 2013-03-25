@@ -18,7 +18,7 @@
     if(BALL_NODE_TYPE == [otherBody nodeType]) {
         [[GameManager sharedInstance] addToScore: 1];
         [[GameManager sharedInstance] markBodyForDeletion: thisBody];
-        [[GameManager sharedInstance] removeSpriteFromGame: _sprite];
+        [[GameManager sharedInstance] removeCoinFromGame: _sprite];
     }
 }
 

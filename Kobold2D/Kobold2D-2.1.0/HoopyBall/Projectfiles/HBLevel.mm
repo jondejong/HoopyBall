@@ -22,7 +22,6 @@
 }
 
 @synthesize brickTexture;
-@synthesize coinTexture;
 
 - (id)init
 {
@@ -30,9 +29,6 @@
     if (self) {
         _enemiesAdded = 0;
         _coinCount = 0;
-        CCSpriteBatchNode *coin = [CCSpriteBatchNode batchNodeWithFile:@"smiley.png" capacity:100];
-        self.coinTexture = [coin texture];
-        [self addChild:coin z:0];
     }
     return self;
 }
@@ -69,31 +65,8 @@
 -(void) createTargets{}
 
 -(void) addCoinAt: (CGPoint) p {
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.gravityScale = 0.0f;
-    bodyDef.position.Set(p.x, p.y);
-    
-    CoinUserData* data = [CoinUserData node];
-    [self addChild:data];
-    bodyDef.userData = (__bridge void*) data;
-    
-    b2CircleShape coinShape;
-    coinShape.m_radius = .5f;
-    b2FixtureDef coinFixture;
-    coinFixture.shape = &coinShape;
-    coinFixture.density = 0.0f;
-    coinFixture.friction = 0.0f;
-    coinFixture.restitution = 0.0;
-    coinFixture.isSensor = true;
-    
-    CCSprite *sprite = [CCSprite spriteWithTexture:[self coinTexture]];	
-    sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
-    [data setSprite:sprite];
-
     _coinCount++;
-    
-    [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef andWith: sprite];
+    [[GameManager sharedInstance] addCoinAt:p];
 }
 
 -(bool) addEnemy {

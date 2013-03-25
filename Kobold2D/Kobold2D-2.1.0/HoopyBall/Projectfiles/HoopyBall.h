@@ -54,8 +54,14 @@
 // Layering
 #define WALL_Z -4
 #define OBSTACLE_Z -2
-#define BALL_Z -2
+#define BALL_Z -1
 #define BACKGROUNG_Z -10
+
+
+// Object Tags
+enum {
+    kCoinTag,
+};
 
 @interface DeletableBody : NSObject
 @property (nonatomic) b2Body *body;
@@ -112,6 +118,7 @@
 -(void) addCachedStaticBody: (NSString*)fixtureShapeName with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite;
 
 -(void) addCachedStaticBody: (NSString*)fixtureShapeName with: (b2BodyDef*)bodyDef;
+-(void) addCoinAt: (CGPoint) p;
 
 @end // GameLayer
 
@@ -157,6 +164,7 @@
 
 -(void) markBodyForDeletion : (b2Body*)body;
 
+-(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body;
 -(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite;
 -(void) addCachedObstacle: (NSString*)fixtureShapeName with: (b2BodyDef*)body andWith: (CCSprite*) sprite;
 
@@ -164,6 +172,9 @@
 
 -(void) addTarget: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite;
 
+-(void) addCoinAt: (CGPoint) p;
+
+-(void) removeCoinFromGame: (CCSprite*) sprite;
 -(void) removeSpriteFromGame: (CCSprite*) sprite;
 -(void) addToScore: (int) scoreAddition;
 

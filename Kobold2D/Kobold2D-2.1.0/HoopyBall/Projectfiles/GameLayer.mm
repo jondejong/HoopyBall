@@ -82,6 +82,11 @@ bool ballCreated = false;
         CCSpriteBatchNode *wall = [CCSpriteBatchNode batchNodeWithFile:@"wall.png" capacity: 200];
         self.wallTexture = [wall texture];
         
+        // Spinning Coin
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"coin_spin.plist"];
+        CCSpriteBatchNode *orbSpriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"coin_spin.png"];
+        [self addChild:orbSpriteSheet z:OBSTACLE_Z tag:kCoinTag];
+        
         self.walls = [NSMutableArray arrayWithCapacity:5];
         
         [self addChild:wall z:WALL_Z tag:kWallTexture];
@@ -509,7 +514,10 @@ bool ballCreated = false;
 -(void)addStaticBody: (b2FixtureDef*)fixture with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite{
     b2Body* body = world->CreateBody(bodyDef);
     body->CreateFixture(fixture);
-    [self addChild:sprite z:OBSTACLE_Z];
+    
+    if(sprite != nil) {
+        [self addChild:sprite z:OBSTACLE_Z];
+    }
 }
 
 -(void) addCachedStaticBody: (NSString*)fixtureShapeName with: (b2BodyDef*)bodyDef andWith: (CCSprite*) sprite {
@@ -530,6 +538,47 @@ bool ballCreated = false;
 
 -(float) vec2rad : (b2Vec2) v{
     return atan2(v.y,v.x);
+}
+
+-(void) addCoinAt: (CGPoint) p {
+    
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.gravityScale = 0.0f;
+    bodyDef.position.Set(p.x, p.y);
+    
+    CoinUserData* data = [CoinUserData node];
+    [self addChild:data];
+    bodyDef.userData = (__bridge void*) data;
+    
+    b2CircleShape coinShape;
+    coinShape.m_radius = .4f;
+    b2FixtureDef coinFixture;
+    coinFixture.shape = &coinShape;
+    coinFixture.density = 0.0f;
+    coinFixture.friction = 0.0f;
+    coinFixture.restitution = 0.0;
+    coinFixture.isSensor = true;
+    
+    NSMutableArray *animFrames = [NSMutableArray array];
+    
+    NSString* baseSpriteName = @"coin_spin_000";
+    
+    for(int i = 0; i <= 60; ++i) {
+        [animFrames addObject: [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%@%02i.png", baseSpriteName, i]]];
+    }
+    
+    CCAnimation *animation = [CCAnimation animationWithSpriteFrames:animFrames delay:0.04f];
+    
+    CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"%@00.png", baseSpriteName]];
+    
+    [sprite runAction:[CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation]]];
+    [[self getChildByTag:kCoinTag] addChild:sprite];
+    
+    sprite.position = ccp(p.x * PTM_RATIO, p.y * PTM_RATIO);
+    [data setSprite:sprite];
+
+    [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef];
 }
 
 -(void) dealloc

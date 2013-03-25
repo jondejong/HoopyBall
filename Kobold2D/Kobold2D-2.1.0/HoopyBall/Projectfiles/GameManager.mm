@@ -92,8 +92,6 @@ GameManager * _sharedInstance;
     //The Level must be defined before the game layer, the game layer
     //is dependent upon values from the level
     
-    //NSClassFromString
-    
     switch (level) {
         case 1:
             self.levelScene = [Level01Scene node];
@@ -241,10 +239,13 @@ GameManager * _sharedInstance;
     return [levelScene addEnemy];
 }
 
--(void)markBodyForDeletion : (b2Body*)body {
+-(void)markBodyForDeletion : (b2Body*)body { 
     [gameLayer markBodyForDeletion :body];
 }
 
+-(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body {
+   [gameLayer addStaticBody: fixture with: body andWith: nil];
+}
 
 -(void) addObstacle: (b2FixtureDef*)fixture with: (b2BodyDef*)body andWith: (CCSprite*) sprite {
     [gameLayer addStaticBody: fixture with: body andWith: sprite];
@@ -262,8 +263,16 @@ GameManager * _sharedInstance;
     [gameLayer addStaticBody:fixture with:body andWith:sprite];
 }
 
+-(void) addCoinAt: (CGPoint) p {
+    [gameLayer addCoinAt:p];
+}
+
+-(void) removeCoinFromGame: (CCSprite*) sprite {
+    [[gameLayer getChildByTag:kCoinTag] removeChild:sprite];
+}
+
 -(void) removeSpriteFromGame: (CCSprite*) sprite {
-    [gameLayer removeChild:sprite cleanup:true];
+    [gameLayer removeChild:sprite cleanup:YES];
 }
 
 -(void) addToScore: (int) scoreAddition {

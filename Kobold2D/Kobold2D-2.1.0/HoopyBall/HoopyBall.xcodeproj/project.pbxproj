@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C21A93C016FFA0D4007B0A96 /* coin_spin.plist in Resources */ = {isa = PBXBuildFile; fileRef = C21A93BE16FFA0D4007B0A96 /* coin_spin.plist */; };
+		C21A93C116FFA0D4007B0A96 /* coin_spin.png in Resources */ = {isa = PBXBuildFile; fileRef = C21A93BF16FFA0D4007B0A96 /* coin_spin.png */; };
+		C21A93C416FFD650007B0A96 /* coin_spin-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = C21A93C216FFD650007B0A96 /* coin_spin-hd.plist */; };
+		C21A93C516FFD650007B0A96 /* coin_spin-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = C21A93C316FFD650007B0A96 /* coin_spin-hd.png */; };
 		C296046016F0D5F600F7D951 /* black-ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = C296045C16F0D5F600F7D951 /* black-ball-hd.png */; };
 		C296046116F0D5F600F7D951 /* black-ball.png in Resources */ = {isa = PBXBuildFile; fileRef = C296045D16F0D5F600F7D951 /* black-ball.png */; };
 		C296046216F0D5F600F7D951 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = C296045E16F0D5F600F7D951 /* block.png */; };
@@ -151,6 +155,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C21A93BE16FFA0D4007B0A96 /* coin_spin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = coin_spin.plist; sourceTree = "<group>"; };
+		C21A93BF16FFA0D4007B0A96 /* coin_spin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_spin.png; sourceTree = "<group>"; };
+		C21A93C216FFD650007B0A96 /* coin_spin-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "coin_spin-hd.plist"; sourceTree = "<group>"; };
+		C21A93C316FFD650007B0A96 /* coin_spin-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin_spin-hd.png"; sourceTree = "<group>"; };
 		C296045C16F0D5F600F7D951 /* black-ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-ball-hd.png"; sourceTree = "<group>"; };
 		C296045D16F0D5F600F7D951 /* black-ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-ball.png"; sourceTree = "<group>"; };
 		C296045E16F0D5F600F7D951 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
@@ -301,7 +309,7 @@
 		DC9C33E713B5024400931BF2 /* BuildSettings-Debug-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Debug-Mac.xcconfig"; sourceTree = "<group>"; };
 		DC9C33E813B5024400931BF2 /* BuildSettings-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Mac.xcconfig"; sourceTree = "<group>"; };
 		DC9C33E913B5024400931BF2 /* BuildSettings-Release-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Release-Mac.xcconfig"; sourceTree = "<group>"; };
-		DCC1A0E313A94ED5005BD75D /* HoopyBall-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HoopyBall-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCC1A0E313A94ED5005BD75D /* HoopyBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoopyBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC1A0F913A94ED5005BD75D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DCC1A0FB13A94ED5005BD75D /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		DCC1A0FD13A94ED5005BD75D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -374,7 +382,7 @@
 		DCC1A0E413A94ED5005BD75D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DCC1A0E313A94ED5005BD75D /* HoopyBall-iOS.app */,
+				DCC1A0E313A94ED5005BD75D /* HoopyBall.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -397,6 +405,10 @@
 		DCC1A0F813A94ED5005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C21A93BE16FFA0D4007B0A96 /* coin_spin.plist */,
+				C21A93BF16FFA0D4007B0A96 /* coin_spin.png */,
+				C21A93C216FFD650007B0A96 /* coin_spin-hd.plist */,
+				C21A93C316FFD650007B0A96 /* coin_spin-hd.png */,
 				C296045C16F0D5F600F7D951 /* black-ball-hd.png */,
 				C296045D16F0D5F600F7D951 /* black-ball.png */,
 				C296045E16F0D5F600F7D951 /* block.png */,
@@ -618,9 +630,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DCC1A0E213A94ED5005BD75D /* HoopyBall-iOS */ = {
+		DCC1A0E213A94ED5005BD75D /* HoopyBall */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "HoopyBall-iOS" */;
+			buildConfigurationList = DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "HoopyBall" */;
 			buildPhases = (
 				DCC1A0DF13A94ED5005BD75D /* Sources */,
 				DCC1A0E013A94ED5005BD75D /* Frameworks */,
@@ -630,9 +642,9 @@
 			);
 			dependencies = (
 			);
-			name = "HoopyBall-iOS";
+			name = HoopyBall;
 			productName = "Hello-World-iOS";
-			productReference = DCC1A0E313A94ED5005BD75D /* HoopyBall-iOS.app */;
+			productReference = DCC1A0E313A94ED5005BD75D /* HoopyBall.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -656,7 +668,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DCC1A0E213A94ED5005BD75D /* HoopyBall-iOS */,
+				DCC1A0E213A94ED5005BD75D /* HoopyBall */,
 			);
 		};
 /* End PBXProject section */
@@ -750,6 +762,10 @@
 				C29604E316F0D63D00F7D951 /* star.png in Resources */,
 				C29604E416F0D63D00F7D951 /* wall-hd.png in Resources */,
 				C29604E516F0D63D00F7D951 /* wall.png in Resources */,
+				C21A93C016FFA0D4007B0A96 /* coin_spin.plist in Resources */,
+				C21A93C116FFA0D4007B0A96 /* coin_spin.png in Resources */,
+				C21A93C416FFD650007B0A96 /* coin_spin-hd.plist in Resources */,
+				C21A93C516FFD650007B0A96 /* coin_spin-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,7 +885,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "HoopyBall-iOS" */ = {
+		DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "HoopyBall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCC1A25413A94ED7005BD75D /* Debug */,

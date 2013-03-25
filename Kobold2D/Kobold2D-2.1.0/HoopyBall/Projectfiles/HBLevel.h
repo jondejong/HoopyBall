@@ -21,7 +21,7 @@
 }
 
 @property(nonatomic, retain) CCTexture2D* brickTexture;
-@property(nonatomic, retain) CCTexture2D* coinTexture;
+//@property(nonatomic, retain) CCTe3xture2D* coinTexture;
 
 -(CGSize) getLevelSize;
 -(NSString*) getBackgroundTMX;
