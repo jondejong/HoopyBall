@@ -82,7 +82,8 @@ GameManager * _sharedInstance;
 }
 
 -(void) handleEndLevel {
-    [[CCDirector sharedDirector] replaceScene: [StartScene scene]];
+//    [[CCDirector sharedDirector] replaceScene: [StartScene scene]];
+    [[CCDirector sharedDirector] popScene];
 }
 
 -(void) handleStartLevel: (int) level {
@@ -182,7 +183,7 @@ GameManager * _sharedInstance;
     
     [controlLayer deactivate];
     
-    [[CCDirector sharedDirector] replaceScene:rootNode];
+    [[CCDirector sharedDirector] pushScene:rootNode];
     
 }
 
