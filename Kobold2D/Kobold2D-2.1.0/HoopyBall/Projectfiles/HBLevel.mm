@@ -120,10 +120,16 @@
     fixture.density = 1.0;
     fixture.restitution = 1.0;
     
-    CCSprite *sprite = [CCSprite spriteWithTexture:[self brickTexture] ];	
+    CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:@"basebrick.png"];	
     sprite.position = ccp(p.x*PTM_RATIO, p.y*PTM_RATIO);
     
-    [[GameManager sharedInstance] addObstacle:&fixture with:&bodyDef andWith: sprite];
+    CCNode* batchNode = [self getChildByTag:kObsTag];
+    
+    b2Body* body = [[GameManager sharedInstance] createBody:&bodyDef];
+    body->CreateFixture(&fixture);
+    
+//    [[GameManager sharedInstance] addObstacle:&fixture with:&bodyDef andWith: sprite];
+    [batchNode addChild:sprite z:OBSTACLE_Z];
     
 }
 

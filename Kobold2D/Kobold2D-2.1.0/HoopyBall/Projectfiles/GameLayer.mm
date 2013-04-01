@@ -581,6 +581,10 @@ bool ballCreated = false;
     [[GameManager sharedInstance] addObstacle:&coinFixture with:&bodyDef];
 }
 
+-(b2Body*) createBody:(b2BodyDef*)bodyDef {
+    return world->CreateBody(bodyDef);
+}
+
 -(void) dealloc
 {
     for (b2Body* b = world->GetBodyList(); b; /*b = b->GetNext()*/)  // remove GetNext() call

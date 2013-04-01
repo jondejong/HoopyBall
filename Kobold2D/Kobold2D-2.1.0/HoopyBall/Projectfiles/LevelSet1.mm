@@ -9,7 +9,11 @@
 @implementation LevelSet1
 
 -(id) init {
-	self=[super init];
+	if(self=[super init]) {
+        CCSpriteBatchNode *brick = [CCSpriteBatchNode batchNodeWithFile:@"l2_base_brick.png" capacity:100];
+        self.brickTexture = [brick texture];
+        [self addChild:brick z:0];
+    }
     return self;
 }
 
@@ -30,5 +34,7 @@
 }
 -(float) getEnemyXSpeed {return 0;}
 -(float) getEnemyYSpeed {return 3;}
+
+-(float) brickSideLen {return 2.0;}
 
 @end

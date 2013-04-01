@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-               BuildableName = "HoopyBall-iOS.app"
+               BuildableName = "HoopyBall.app"
                BlueprintName = "HoopyBall"
                ReferencedContainer = "container:HoopyBall.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-            BuildableName = "HoopyBall-iOS.app"
+            BuildableName = "HoopyBall.app"
             BlueprintName = "HoopyBall"
             ReferencedContainer = "container:HoopyBall.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-            BuildableName = "HoopyBall-iOS.app"
+            BuildableName = "HoopyBall.app"
             BlueprintName = "HoopyBall"
             ReferencedContainer = "container:HoopyBall.xcodeproj">
          </BuildableReference>
@@ -74,7 +74,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-            BuildableName = "HoopyBall-iOS.app"
+            BuildableName = "HoopyBall.app"
             BlueprintName = "HoopyBall"
             ReferencedContainer = "container:HoopyBall.xcodeproj">
          </BuildableReference>

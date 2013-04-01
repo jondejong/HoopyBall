@@ -61,6 +61,7 @@
 // Object Tags
 enum {
     kCoinTag,
+    kObsTag,
 };
 
 @interface DeletableBody : NSObject
@@ -119,6 +120,8 @@ enum {
 
 -(void) addCachedStaticBody: (NSString*)fixtureShapeName with: (b2BodyDef*)bodyDef;
 -(void) addCoinAt: (CGPoint) p;
+
+-(b2Body*) createBody:(b2BodyDef*)bodyDef;
 
 @end // GameLayer
 
@@ -181,6 +184,8 @@ enum {
 -(int) totalCoins;
 
 -(void) resetScores;
+
+-(b2Body*) createBody:(b2BodyDef*)bodyDef;
 
 @end //GameManager
 

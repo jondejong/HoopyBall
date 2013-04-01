@@ -284,4 +284,8 @@ GameManager * _sharedInstance;
     return _totalCoins;
 }
 
+-(b2Body*) createBody:(b2BodyDef*)bodyDef {
+    return [gameLayer createBody:bodyDef];
+}
+
 @end

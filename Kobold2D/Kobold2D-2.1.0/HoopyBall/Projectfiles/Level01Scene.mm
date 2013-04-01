@@ -36,9 +36,13 @@
         width = 1024.0;
         
         startX = 0.6f;
-        startY = 3.55f;
+        startY = 3.0f;
         
         defaultBorderTileSize = 128.0f;
+        
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"level1obs.plist"];
+        CCSpriteBatchNode *goodiesSpriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"level1obs.png"];
+        [self addChild:goodiesSpriteSheet z:OBSTACLE_Z tag:kObsTag];
     }
     return self;
 } 
@@ -59,10 +63,6 @@
     return [ScreenSize isRetina] ? @"level1_bg-hd.tmx" : @"level1_bg.tmx";
 }
 
--(NSString*) getObsTMX {
-    return [ScreenSize isRetina] ? @"level1_obs-hd.tmx" : @"level1_obs.tmx";
-}
-
 -(CGPoint) getEndPoint {
     return ccp(9, 5);
 }
@@ -73,46 +73,37 @@
 -(float) getEnemyXSpeed {return 0;}
 -(float) getEnemyYSpeed {return 3;}
 
--(void) createObstacles {   
+-(void) createObstacles {
     
-    // Bottom
-    [self addBorder:@"Level1_13" at: ccp(0.0f, 0.0f)];
-    [self addBorder:@"Level1_14" at: ccp(2* defaultBorderTileSize, 0.0f)];
-    [self addBorder:@"Level1_15" at: ccp(4* defaultBorderTileSize, 0.0f)];
-    [self addBorder:@"Level1_10" at: ccp(2* defaultBorderTileSize, defaultBorderTileSize)];
-    [self addBorder:@"Level1_11" at: ccp(4* defaultBorderTileSize, defaultBorderTileSize)];
+    //Start
+    [self addBrickAt:ccp(0.0f, 0.0f)];
     
-    //Left
-    [self addBorder:@"Level1_09" at: ccp(0.0f, defaultBorderTileSize)];
-    [self addBorder:@"Level1_07" at: ccp(0.0f, 2 * defaultBorderTileSize)];
-    [self addBorder:@"Level1_05" at: ccp(0.0f, 3 * defaultBorderTileSize)];
-    [self addBorder:@"Level1_03" at: ccp(0.0f, 4 * defaultBorderTileSize)];
+    //left wall
+    for(int i = 2; i < 6;  i++){
+        [self addBrickAt: ccp(0.0f, i)];
+    }
     
-    //Top
-    [self addBorder:@"Level1_01" at: ccp(0.0f, 5 * defaultBorderTileSize)];
-    [self addBorder:@"Level1_02" at: ccp(4 * defaultBorderTileSize, 5 * defaultBorderTileSize)];
+    //bottom    
+    for(int i=2; i<7; i++) {
+        [self addBrickAt:ccp(i, 0.0f)];
+    }
     
-    //Right
-    [self addBorder:@"Level1_04" at: ccp(4 * defaultBorderTileSize, 4 * defaultBorderTileSize)];
-    [self addBorder:@"Level1_06" at: ccp(4 * defaultBorderTileSize, 3 * defaultBorderTileSize)];
-    [self addBorder:@"Level1_08" at: ccp(4 * defaultBorderTileSize, 2 * defaultBorderTileSize)];
-    [self addBorder:@"Level1_12" at: ccp(6 * defaultBorderTileSize, defaultBorderTileSize)];
-}
+    //top
+    for(int i=1; i<8; i++) {
+        [self addBrickAt:ccp(i, 5)];
+    }
+    
+    //right
+    for(int i=0; i<6; i++) {
+        [self addBrickAt:ccp(7, i)];
+    }
 
--(void) addBorder: (NSString*) name at: (CGPoint) p {
-    
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
-
-    [[GameManager sharedInstance] addCachedObstacle:name with:&bodyDef ];
-    
 }
 
 -(void) createTargets {
   
     for(int i=4; i<14; i+=2) {
-        [self addCoinAt:ccp(i, 9.5f)];
+        [self addCoinAt:ccp(i, 9.25f)];
     }
 
 }
